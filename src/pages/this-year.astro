@@ -1,8 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { HPCurrentYear } from '../components/hp-current-year.js';
 ---
 
 <Layout title="Тази година">
-  <h1><span class="text-gradient">Почивник</span> - 2023 - Очаквайте скоро</h1>
-  <a href="/holiday-planner/">Home</a>
+  <h1><span class="text-gradient">Почивник</span> - <HPCurrentYear client:only /> - Очаквайте скоро</h1>
+  <a href="/holiday-planner/">Начало</a>
 </Layout>
+<style>
+  hp-current-year {
+    --hp-current-year-background-image: var(--accent-gradient);
+  }
+</style>
