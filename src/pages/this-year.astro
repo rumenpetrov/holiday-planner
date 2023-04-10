@@ -1,12 +1,31 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { HPCurrentYear } from '../components/hp-current-year.js';
+
+interface Item {
+  summary: string,
+  start: {
+    date: string,
+  },
+}
+
+const URL = `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(import.meta.env.CALENDAR_ID)}/events?key=${import.meta.env.ACCESS_KEY}`;
+
+const response = await fetch(URL);
+const data = await response.json();
+const currentYear = new Date().getFullYear();
+const listUnfiltered = data?.items || [];
+const list = listUnfiltered.filter((item: Item) => item.start.date.includes(currentYear.toString()));
 ---
 
 <Layout title="Тази година">
   <h1><HPCurrentYear client:only /> Тази година</h1>
 
-  <a href="/holiday-planner/" rel="prefetch">Към начало</a>
+  <a href={import.meta.env.BASE_URL} rel="prefetch">Към начало</a>
+
+  {list.map((item: Item) => {
+    return <p>{item.start.date} - {item.summary}</p>
+  })}
 </Layout>
 
 <style>
