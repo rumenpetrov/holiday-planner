@@ -4,9 +4,11 @@ import { HPCurrentYear } from '../components/hp-current-year.js';
 ---
 
 <Layout title="Тази година">
-  <h1><span class="text-gradient">Почивник</span> - <HPCurrentYear client:only /> - Очаквайте скоро</h1>
-  <a href="/holiday-planner/" rel="prefetch">Начало</a>
+  <h1><HPCurrentYear client:only /> Тази година</h1>
+
+  <a href="/holiday-planner/" rel="prefetch">Към начало</a>
 </Layout>
+
 <style>
   hp-current-year {
     --hp-current-year-background-image: var(--accent-gradient);

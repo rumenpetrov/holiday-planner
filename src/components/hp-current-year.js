@@ -10,6 +10,7 @@ export class HPCurrentYear extends LitElement {
       font-family: var(--hp-current-year-font-family);
       display: inline-block;
       padding: 0 4px;
+      border-radius: 4px;
     }
   `;
   render() {

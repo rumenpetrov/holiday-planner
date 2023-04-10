@@ -1,5 +1,7 @@
 # holiday-planner
 
+The project is in active development.
+
 ## Check out the [Wiki](https://github.com/rumenpetrov/holiday-planner/wiki)
 
 ## 🚀 Project Structure
