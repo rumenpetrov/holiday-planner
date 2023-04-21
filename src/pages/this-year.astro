@@ -1,31 +1,54 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { HPCurrentYear } from '../components/hp-current-year.js';
+import getMonths from '../data/get-months';
+import getCalendarEvents from '../data/get-calendar-events';
+import type { GoogleEvent } from '../data/get-calendar-events';
 
-interface Item {
-  summary: string,
-  start: {
-    date: string,
-  },
-}
-
-const URL = `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(import.meta.env.CALENDAR_ID)}/events?key=${import.meta.env.ACCESS_KEY}`;
-
-const response = await fetch(URL);
-const data = await response.json();
 const currentYear = new Date().getFullYear();
-const listUnfiltered = data?.items || [];
-const list = listUnfiltered.filter((item: Item) => item.start.date.includes(currentYear.toString()));
----
 
-<Layout title="Тази година">
+const { data: months } = getMonths();
+
+const { data, error } = await getCalendarEvents({ fromYear: currentYear, toYear: currentYear + 1 });
+const listUnSorted = data || [];
+const list = listUnSorted.sort((a, b) => Date.parse(a.start.date) - Date.parse(b.start.date));
+const listOfficial = list.filter((event) => event.description === 'Официален празник');
+let listByMonth = new Array(12).fill([]);
+listOfficial.forEach((event: GoogleEvent) => {
+  const eventStartDate = new Date(Date.parse(event.start.date));
+  const monthIndex = eventStartDate.getMonth();
+
+  if (eventStartDate.getFullYear() === currentYear && monthIndex < 12) {
+    listByMonth[monthIndex] = [...listByMonth[monthIndex], event];
+  }
+});
+---
+<Layout title={`${currentYear} - Тази година`}>
   <h1><HPCurrentYear client:only /> Тази година</h1>
 
   <a href={import.meta.env.BASE_URL} rel="prefetch">Към начало</a>
 
-  {list.map((item: Item) => {
-    return <p>{item.start.date} - {item.summary}</p>
-  })}
+  {error ? (
+    <h3>Има проблем!</h3>
+  ) : (
+    <>
+      {listByMonth.map((month: GoogleEvent[], index: number) => {
+        return (
+          <div>
+            <h3>{months?.[index]?.name || '-'}</h3>
+
+            {Array.isArray(month) && month.length > 0
+              ? month.map((event: GoogleEvent) => {
+                  return <p>{event.start.date} - {event.summary}</p>
+                })
+              : (
+                <p>{`:(`}</p>
+              )}
+          </div>
+        );
+      })}
+    </>
+  )}
 </Layout>
 
 <style>
