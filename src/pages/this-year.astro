@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { HPCurrentYear } from '../components/hp-current-year.js';
+import { HPMonth } from '../components/hp-month';
 import getMonths from '../data/get-months';
 import getCalendarEvents from '../data/get-calendar-events';
 import type { GoogleEvent } from '../data/get-calendar-events';
@@ -13,34 +13,55 @@ const { data, error } = await getCalendarEvents({ fromYear: currentYear, toYear:
 const listUnSorted = data || [];
 const list = listUnSorted.sort((a, b) => Date.parse(a.start.date) - Date.parse(b.start.date));
 const listOfficial = list.filter((event) => event.description === 'Официален празник');
-let listByMonth = new Array(12).fill([]);
+// 12 months + 1 from the next year
+let listByMonth = new Array(13).fill([]);
 listOfficial.forEach((event: GoogleEvent) => {
   const eventStartDate = new Date(Date.parse(event.start.date));
   const monthIndex = eventStartDate.getMonth();
 
+  // Current year events
   if (eventStartDate.getFullYear() === currentYear && monthIndex < 12) {
     listByMonth[monthIndex] = [...listByMonth[monthIndex], event];
+  }
+
+  // January next year
+  if (eventStartDate.getFullYear() === currentYear + 1 && monthIndex === 0) {
+    listByMonth[12] = [...listByMonth[12], event];
   }
 });
 ---
 <Layout title={`${currentYear} - Тази година`}>
-  <h1><HPCurrentYear client:only /> Тази година</h1>
-
   <a href={import.meta.env.BASE_URL} rel="prefetch">Към начало</a>
+
+  <h1>Тази година</h1>
 
   {error ? (
     <h3>Има проблем!</h3>
   ) : (
     <>
-      {listByMonth.map((month: GoogleEvent[], index: number) => {
-        return (
-          <div>
-            <h3>{months?.[index]?.name || '-'}</h3>
+      {listByMonth.map((events: GoogleEvent[], index: number) => {
+        // Accommodate January next year
+        const indexAdjusted = index < 12 ? index : 0;
+        const yearAdjusted = index < 12 ? currentYear : currentYear + 1;
 
-            {Array.isArray(month) && month.length > 0
-              ? month.map((event: GoogleEvent) => {
-                  return <p>{event.start.date} - {event.summary}</p>
-                })
+        return (
+          <div class="section">
+            <h3>{months?.[indexAdjusted]?.name || '-'}</h3>
+
+            {Array.isArray(events) && events.length > 0
+              ? <div>
+                  <HPMonth
+                    client:only
+                    index={indexAdjusted}
+                    year={yearAdjusted}
+                    name={months?.[indexAdjusted]?.name}
+                    holidays={[...new Set(events.map((event: GoogleEvent) => parseInt(event.start.date.substring(8, 10), 10)))]}
+                  />
+
+                  {events.map((event: GoogleEvent) => {
+                    return <p>{event.start.date} - {event.summary}</p>
+                  })}
+                </div>
               : (
                 <p>{`:(`}</p>
               )}
@@ -52,7 +73,13 @@ listOfficial.forEach((event: GoogleEvent) => {
 </Layout>
 
 <style>
-  hp-current-year {
-    --hp-current-year-background-image: var(--accent-gradient);
+  .section {
+    padding-bottom: 16px;
+  }
+
+  hp-month {
+    --hp-month-font-family: var(--font-family-primary);
+    --hp-month-color: var(--text-color-main);
+    --hp-month-th-border-color: var(--text-color-main);
   }
 </style>
