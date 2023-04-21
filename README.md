@@ -1,8 +1,12 @@
 # holiday-planner
 
-The project is in active development.
+The project is in active development phase.
 
 ## Check out the [Wiki](https://github.com/rumenpetrov/holiday-planner/wiki)
+
+## Requirements
+- node 18
+- npm 8.15.0
 
 ## 🚀 Project Structure
 
