@@ -51,7 +51,6 @@ listOfficial.forEach((event: GoogleEvent) => {
             {Array.isArray(events) && events.length > 0
               ? <div>
                   <HPMonth
-                    client:only
                     index={indexAdjusted}
                     year={yearAdjusted}
                     name={months?.[indexAdjusted]?.name}
