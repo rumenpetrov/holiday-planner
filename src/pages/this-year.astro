@@ -77,9 +77,13 @@ listOfficial.forEach((event: GoogleEvent) => {
   }
 
   hp-month {
-    --hp-month-font-family: var(--font-family-primary);
-    --hp-month-color: var(--palette-complimentary);
     --hp-month-th-border-color: var(--palette-complimentary);
     --hp-month-td-border-color: transparent;
+
+    font-family: var(--font-family-primary);
+    padding: 10px;
+    background: var(--palette-dominant);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    color: var(--palette-complimentary);
   }
 </style>

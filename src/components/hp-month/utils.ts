@@ -33,6 +33,8 @@ export interface Day {
 export type WeekData = Day[];
 export type MothData = WeekData[];
 
+const weekendIndexes = [5,6];
+
 export const composeMonthData = (monthIndex: number, year: number, holidays: number[]): MothData => {
   const firstDayNumber = getFirstDayOfMonthNumber(monthIndex, year);
   const totalDays = getTotalDaysInMonth(monthIndex, year);
@@ -73,5 +75,19 @@ export const composeMonthData = (monthIndex: number, year: number, holidays: num
     });
   }
 
-  return data;
+  // Set suggestions
+  const output = data.map((week: WeekData) => {
+    const matchedHolidays = week.find(day => day.holiday);
+
+    if (matchedHolidays) {
+      return week.map((day: Day, index: number) => ({
+        ...day,
+        suggestion: weekendIndexes.includes(index) || day.holiday ? false : true,
+      }))
+    }
+
+    return week;
+  });
+
+  return output;
 }

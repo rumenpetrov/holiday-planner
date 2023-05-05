@@ -1,4 +1,4 @@
-import { LitElement, html, css } from 'lit';
+import { LitElement, html, css, nothing } from 'lit';
 import { composeMonthData } from './utils';
 
 const tagName = 'hp-month';
@@ -6,16 +6,13 @@ const tagName = 'hp-month';
 export class HPMonth extends LitElement {
   static styles = css`
     :host {
-      font-family: var(--hp-month-font-family);
-      background: var(--hp-month-background, #fff);
-      color: var(--hp-month-color, #000);
+      font-family: sans-serif;
+      background: #fff;
+      color: #000;
       display: block;
       overflow: hidden;
       border-radius: 10px;
-      padding: 10px;
-      margin-bottom: 20px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-      transition: all 0.3s ease-in-out;
+      margin: 10px 0;
     }
 
     table {
@@ -75,6 +72,7 @@ export class HPMonth extends LitElement {
       color: var(--hp-month-pre-post-color, #aaa);
     }
   `;
+
   static get properties() {
     return {
       index: { type: Number },
@@ -89,16 +87,62 @@ export class HPMonth extends LitElement {
 
     this.index = 0;
     this.year = null;
-    this.name = 'Unknown';
+    this.name;
     this.holidays = [];
+
+    this.monthData = [];
+  };
+
+  connectedCallback() {
+    super.connectedCallback();
+  };
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+  };
+
+  willUpdate(changedProperties) {
+    if (changedProperties.has('index') || changedProperties.has('year') || changedProperties.has('holidays')) {
+      this.monthData = composeMonthData(this.index, this.year, this.holidays);
+    }
+  };
+
+  renderCaption() {
+    if (typeof this.name !== 'string' || this.name.length < 1) {
+      return nothing;
+    }
+
+    return html`<caption>${this.name}</caption>`;
+  };
+
+  renderPreMonth() {
+    return html`<td class="pre-month">x</td>`;
+  };
+
+  renderPostMonth() {
+    return html`<td class="post-month">x</td>`;
+  };
+
+  renderSuggestion(day) {
+    return html`<td class="suggestion">${day.label}</td>`;
+  };
+
+  renderHoliday(day) {
+    return html`<td class="holiday">${day.label}</td>`;
+  };
+
+  renderDay(day) {
+    return html`<td>${day.label}</td>`;
   };
 
   render() {
-    const monthData = composeMonthData(this.index, this.year, this.holidays);
+    if (!Array.isArray(this.monthData) || this.monthData.length < 1) {
+      return nothing;
+    }
 
     return html`
       <table>
-        <caption>${this.name}</caption>
+        ${this.renderCaption()}
         <thead>
           <tr>
             <th>П</th>
@@ -111,27 +155,27 @@ export class HPMonth extends LitElement {
           </tr>
         </thead>
         <tbody>
-          ${monthData.map((days) => {
+          ${this.monthData.map((days) => {
             return html`
               <tr>
                 ${days.map((day) => {
                   if (day.label === 'preMonth') {
-                    return html`<td class="pre-month">x</td>`;
+                    return this.renderPreMonth();
                   }
 
                   if (day.label === 'postMonth') {
-                    return html`<td class="post-month">x</td>`;
+                    return this.renderPostMonth();
                   }
 
                   if (day.suggestion) {
-                    return html`<td class="suggestion">${day.label}</td>`;
+                    return this.renderSuggestion(day);
                   }
 
                   if (day.holiday) {
-                    return html`<td class="holiday">${day.label}</td>`;
+                    return this.renderHoliday(day);
                   }
 
-                  return html`<td>${day.label}</td>`;
+                  return this.renderDay(day);
                 })}
               </tr>
             `;
@@ -139,7 +183,7 @@ export class HPMonth extends LitElement {
         </tbody>
       </table>
     `;
-  }
+  };
 }
 
 customElements.define(tagName, HPMonth);
