@@ -7,9 +7,8 @@ export class HPMonth extends LitElement {
   static styles = css`
     :host {
       font-family: var(--hp-month-font-family);
+      background: var(--hp-month-background, #fff);
       color: var(--hp-month-color, #000);
-      background-color: var(--hp-month-background-color, #f9f9f9);
-      background-image: var(--hp-month-background-image);
       display: block;
       overflow: hidden;
       border-radius: 10px;
@@ -31,16 +30,16 @@ export class HPMonth extends LitElement {
       font-size: 16px;
       line-height: 1.2;
       font-weight: normal;
-      text-align: center;
+      text-align: var(--hp-month-caption-text-align, center);
     }
 
     table tr th {
-      border-bottom: 1px solid var(--hp-month-th-border-color, #909090);
+      border-bottom: 1px solid var(--hp-month-th-border-color, #000);
       font-weight: normal;
     }
 
     table tr td {
-      border-bottom: 1px solid var(--hp-month-td-border-color, #e9e9e9);
+      border-bottom: 1px solid var(--hp-month-td-border-color, #aaa);
     }
 
     table tr:last-child td {
@@ -57,20 +56,23 @@ export class HPMonth extends LitElement {
 
     table td:nth-last-child(2),
     table td:last-child {
-      background-color: var(--hp-month-weekend-background-color, #edf2fb);
+      background: var(--hp-month-weekend-background, #fff);
+      color: var(--hp-month-weekend-color, #aaa);
     }
 
     table td.suggestion {
-      background-image: var(--hp-month-suggestion-background-image, linear-gradient(225deg, #f5f7fa 0%, #c3cfe2 100%));
+      background: var(--hp-month-suggestion-background, #666);
+      color: var(--hp-month-suggestion-color, #fff);
     }
 
     table td.holiday {
-      background-image: var(--hp-month-holiday-background-image, linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%));
+      background: var(--hp-month-holiday-background, #222);
+      color: var(--hp-month-holiday-color, #fff);
     }
 
     table td.pre-month,
     table td.post-month {
-      color: #aaa
+      color: var(--hp-month-pre-post-color, #aaa);
     }
   `;
   static get properties() {

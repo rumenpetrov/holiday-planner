@@ -26,7 +26,7 @@ const { title } = Astro.props;
       </figure>
 
       <div>
-        <h1><span class="text-gradient">Почивник</span></h1>
+        <h1><span class="accent">Почивник</span></h1>
         <p style={{ margin: 0 }}>[в процес на изграждане]</p>
       </div>
     </header>
@@ -43,14 +43,17 @@ const { title } = Astro.props;
   :root {
     --font-family-primary: 'Sofia Sans', sans-serif;
     --font-family-secondary: 'Cormorant Infant', serif;
-    --accent: #7C3AED;
-    --accent-gradient: linear-gradient(45deg, var(--accent), #da62c4 30%, white 100%);
-    --text-color-main: #222;
+    /* 60% Backgrounds mainly (light/dark) */
+    --palette-dominant: #fff; /* #F6F6F6 */
+    /* 30% Headlines/Imagery (could be gradient) */
+    --palette-complimentary: #000; /* #222222 */
+    /* 10% CTA, highlights (could be gradient) */
+    --palette-accent: #4e4e4e; /* #7fef89, #7C3AED */
   }
   html {
-    background-color: #F6F6F6;
+    background: var(--palette-dominant);
     font-family: var(--font-family-primary);
-    color: var(--text-color-main);
+    color: var(--palette-complimentary);
   }
   header {
     display: flex;
@@ -80,8 +83,8 @@ const { title } = Astro.props;
     font-size: 3rem;
     margin: 0;
   }
-  .text-gradient {
-    background-image: var(--accent-gradient);
+  .accent {
+    background: var(--palette-accent);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-size: 400%;
