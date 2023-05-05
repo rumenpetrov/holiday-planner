@@ -14,18 +14,14 @@ const {
   font,
   className,
 } = Astro.props;
-
-const pathname = new URL(Astro.request.url).pathname;
-const currentPath = pathname.replace('/holiday-planner/', ''); // remove the first "/"
-console.log(currentPath);
 ---
 <nav class:list={[className]}>
   <ul>
-    <li class:list={[{ active: currentPath === '' }]}>
+    <li>
       <Link href="/" className="menu-link">Начало</Link>
     </li>
-    <li class:list={[{ active: currentPath === 'this-year' }]}>
-      <Link href="/this-year" className="menu-link">Текущата година</Link>
+    <li>
+      <Link href="/this-year" className="menu-link">Тази година</Link>
     </li>
   </ul>
 </nav>
@@ -51,9 +47,28 @@ console.log(currentPath);
     text-decoration: none;
   }
 
-  nav .active .menu-link,
+  nav .active.menu-link,
   nav li:hover .menu-link {
     background: var(--palette-accent);
     color: var(--palette-accent-contrast);
   }
 </style>
+
+<script>
+  const navLinks = document.querySelectorAll("nav a");
+
+  navLinks.forEach((link) => {
+    link.classList.remove("active");
+
+    // `slice` here to remove the first `/` in pathname
+    const currentPath = window.location.pathname.replace('/holiday-planner/', '/').slice('1');
+
+    // `link.href` returns a whole url, such as: "https://somedomain.com/posts" and we only need the last part
+    const hrefArray = link.href.split("/");
+    const thisPath = hrefArray[hrefArray.length - 1];
+
+    if (currentPath === thisPath) {
+      link.classList.add("active");
+    }
+  });
+</script>

@@ -32,7 +32,7 @@ listOfficial.forEach((event: GoogleEvent) => {
 });
 ---
 <Layout title={`${currentYear} - Тази година`}>
-  <Typography element="h2" appearance="h1">Тази година</Typography>
+  <Typography element="h2" appearance="h1">{currentYear} - Тази година</Typography>
 
   {error ? (
     <Typography appearance="h3" font="primary">Има проблем!</Typography>

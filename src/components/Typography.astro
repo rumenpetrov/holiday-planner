@@ -5,6 +5,7 @@ export interface Props {
   font?: 'primary' | 'secondary';
   disableMarginBottom?: boolean;
   style?: Object;
+  className?: string;
 };
 
 const {
@@ -12,6 +13,7 @@ const {
   appearance = 'p',
   font,
   disableMarginBottom = false,
+  className,
   ...extraProps
 } = Astro.props;
 
@@ -20,6 +22,7 @@ const classListRoot = [
   { 'font-primary': font === 'primary' },
   { 'font-secondary': font === 'secondary' },
   { 'margin-bottom': !disableMarginBottom },
+  className,
 ];
 ---
 {element === 'h1' && (
