@@ -14,6 +14,6 @@
     "@astrojs/prefetch": "^0.2.1",
     "@webcomponents/template-shadowroot": "^0.2.1",
     "astro": "^2.2.1",
-    "lit": "^2.7.2"
+    "lit": "^2.7.4"
   }
 }
