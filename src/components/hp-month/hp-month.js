@@ -54,7 +54,7 @@ export class HPMonth extends LitElement {
     table td:nth-last-child(2),
     table td:last-child {
       background: var(--hp-month-weekend-background, #fff);
-      color: var(--hp-month-weekend-color, #aaa);
+      color: var(--hp-month-weekend-color, #000);
     }
 
     table td.suggestion {
@@ -69,7 +69,7 @@ export class HPMonth extends LitElement {
 
     table td.pre-month,
     table td.post-month {
-      color: var(--hp-month-pre-post-color, #aaa);
+      color: var(--hp-month-pre-post-color, #000);
     }
   `;
 
