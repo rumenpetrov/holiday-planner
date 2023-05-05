@@ -1,0 +1,71 @@
+---
+export interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Почивник" />
+    <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,400;0,700;1,400;1,700&family=Sofia+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  * {
+    padding: 0;
+    margin: 0;
+    outline: 0;
+  }
+
+  :root {
+    --space-size: 0.8rem;
+    --space-size-x2: 1.6rem;
+    --space-size-x3: 2.4rem;
+    --space-size-x4: 3.2rem;
+    --space-size-x5: 4rem;
+    --font-family-primary: 'Sofia Sans', sans-serif;
+    --font-family-secondary: 'Cormorant Infant', serif;
+    /* 60% Backgrounds mainly (light/dark) */
+    --palette-dominant: #fff; /* #F6F6F6 */
+    /* 30% Headlines/Imagery (could be gradient) */
+    --palette-complimentary: #000; /* #222222 */
+    /* 10% CTA, highlights (could be gradient) */
+    --palette-accent: #4e4e4e; /* #7fef89, #7C3AED */
+    --palette-accent-contrast: #fff; /* #7fef89, #7C3AED */
+  }
+
+  .accent {
+    background: var(--palette-accent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 400%;
+    background-position: 0%;
+  }
+</style>
+
+<style>
+  html {
+    background: var(--palette-dominant);
+    font-family: var(--font-family-primary);
+    font-size: 10px;
+    color: var(--palette-complimentary);
+  }
+
+  body {
+    font-size: 1.6rem;
+  }
+</style>

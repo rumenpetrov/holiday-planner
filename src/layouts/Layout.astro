@@ -1,98 +1,87 @@
 ---
+import App from '../components/App.astro';
+import MainMenuDesktop from '../components/MainMenuDesktop.astro';
+import Typography from '../components/Typography.astro';
+
 export interface Props {
   title: string;
 }
 
 const { title } = Astro.props;
 ---
-
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Почивник" />
-    <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,400;0,700;1,400;1,700&family=Sofia+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
-  </head>
-  <body>
-    <header>
-      <figure class="logo">
-        <img
-          src={`${import.meta.env.BASE_URL}logo.svg`}
-          alt="logo"
-          width="80"
-          height="80"
+<App title={title}>
+  <header>
+    <figure class="logo">
+      <img
+        src={`${import.meta.env.BASE_URL}logo.svg`}
+        alt="logo"
+        width="80"
+        height="80"
         />
-      </figure>
 
-      <div>
-        <h1><span class="accent">Почивник</span></h1>
-        <p style={{ margin: 0 }}>[в процес на изграждане]</p>
-      </div>
-    </header>
+        <div>
+          <Typography element="h1" appearance="h1" disableMarginBottom>
+            <span class="accent">Почивник</span>
+          </Typography>
 
-    <main>
-      <div class="wrapper">
-        <slot />
-      </div>
-    </main>
-  </body>
-</html>
+          <Typography disableMarginBottom>[в процес на изграждане]</Typography>
+        </div>
+    </figure>
 
-<style is:global>
-  :root {
-    --font-family-primary: 'Sofia Sans', sans-serif;
-    --font-family-secondary: 'Cormorant Infant', serif;
-    /* 60% Backgrounds mainly (light/dark) */
-    --palette-dominant: #fff; /* #F6F6F6 */
-    /* 30% Headlines/Imagery (could be gradient) */
-    --palette-complimentary: #000; /* #222222 */
-    /* 10% CTA, highlights (could be gradient) */
-    --palette-accent: #4e4e4e; /* #7fef89, #7C3AED */
-  }
-  html {
-    background: var(--palette-dominant);
-    font-family: var(--font-family-primary);
-    font-size: 10px;
-    color: var(--palette-complimentary);
-  }
-  body {
-    font-size: 1.6rem;
-  }
+    <MainMenuDesktop className="menu" />
+  </header>
+
+  <main>
+    <div class="wrapper">
+      <slot />
+    </div>
+  </main>
+</App>
+
+<style>
   header {
+    padding: var(--space-size);
+  }
+
+  @media (min-width: 700px) {
+    header {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+  }
+
+  .logo {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
+    margin: var(--space-size);
   }
-  .logo {
+
+  .logo img {
     width: 80px;
     flex: 0 0 auto;
-    margin: 0 8px 0 0;
   }
+
+  @media (min-width: 700px) {
+    .menu {
+      margin-left: auto;
+    }
+  }
+
   main {
     padding: 1.5rem 0;
   }
+
   .wrapper {
     max-width: 100%;
-    padding: 0 8px;
+    padding: 0 var(--space-size);
     margin: 0 auto;
   }
+
   @media (min-width: 1200px) {
     .wrapper {
       width: 1200px;
     }
-  }
-  .accent {
-    background: var(--palette-accent);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-size: 400%;
-    background-position: 0%;
   }
 </style>

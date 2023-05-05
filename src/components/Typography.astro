@@ -3,34 +3,43 @@ export interface Props {
   element?: string;
   appearance?: 'h1' | 'h2' | 'h3' | 'h4' | 'p';
   font?: 'primary' | 'secondary';
+  disableMarginBottom?: boolean;
+  style?: Object;
 };
 
 const {
   element = 'p',
   appearance = 'p',
   font,
+  disableMarginBottom = false,
+  ...extraProps
 } = Astro.props;
 
-const classListRoot = [appearance, { 'font-primary': font === 'primary' }, { 'font-secondary': font === 'secondary' }];
+const classListRoot = [
+  appearance,
+  { 'font-primary': font === 'primary' },
+  { 'font-secondary': font === 'secondary' },
+  { 'margin-bottom': !disableMarginBottom },
+];
 ---
 {element === 'h1' && (
-  <h1 class:list={classListRoot}><slot /></h1>
+  <h1 class:list={classListRoot} {...extraProps}><slot /></h1>
 )}
 
 {element === 'h2' && (
-  <h2 class:list={classListRoot}><slot /></h2>
+  <h2 class:list={classListRoot} {...extraProps}><slot /></h2>
 )}
 
 {element === 'h3' && (
-  <h3 class:list={classListRoot}><slot /></h3>
+  <h3 class:list={classListRoot} {...extraProps}><slot /></h3>
 )}
 
 {element === 'h4' && (
-  <h4 class:list={classListRoot}><slot /></h4>
+  <h4 class:list={classListRoot} {...extraProps}><slot /></h4>
 )}
 
 {element === 'p' && (
-  <p class:list={classListRoot}><slot /></p>
+  <p class:list={classListRoot} {...extraProps}><slot /></p>
 )}
 
 <style>
@@ -67,5 +76,9 @@ const classListRoot = [appearance, { 'font-primary': font === 'primary' }, { 'fo
 
   .font-secondary {
     font-family: var(--font-family-secondary);
+  }
+
+  .margin-bottom {
+    margin-bottom: 0.6em;
   }
 </style>

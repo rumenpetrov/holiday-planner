@@ -1,0 +1,25 @@
+---
+export interface Props {
+  href: string;
+  className?: string,
+};
+
+const {
+  href,
+  className,
+} = Astro.props;
+---
+<a href={`${import.meta.env.BASE_URL}${href.replace('/', '')}`} rel="prefetch" class:list={['root', className]}>
+  <slot />
+</a>
+
+<style>
+  .root {
+    color: var(--palette-accent);
+    transition: all 0.3s ease;
+  }
+
+  .root:hover {
+    color: var(--palette-complimentary);
+  }
+</style>

@@ -1,0 +1,59 @@
+---
+import Link from './Link.astro';
+
+export interface Props {
+  element?: string;
+  appearance?: 'h1' | 'h2' | 'h3' | 'h4' | 'p';
+  font?: 'primary' | 'secondary';
+  className?: string,
+};
+
+const {
+  element = 'p',
+  appearance = 'p',
+  font,
+  className,
+} = Astro.props;
+
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.replace('/holiday-planner/', ''); // remove the first "/"
+console.log(currentPath);
+---
+<nav class:list={[className]}>
+  <ul>
+    <li class:list={[{ active: currentPath === '' }]}>
+      <Link href="/" className="menu-link">Начало</Link>
+    </li>
+    <li class:list={[{ active: currentPath === 'this-year' }]}>
+      <Link href="/this-year" className="menu-link">Текущата година</Link>
+    </li>
+  </ul>
+</nav>
+
+<style>
+  nav {
+    padding: var(--space-size);
+  }
+
+  nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+  }
+
+  nav li .menu-link {
+    display: block;
+    border-radius: var(--space-size);
+    padding: var(--space-size) var(--space-size-x2);
+    margin: 0 calc(var(--space-size) / 2);
+    background: var(--palette-accent-contrast);
+    color: var(--palette-accent);
+    text-decoration: none;
+  }
+
+  nav .active .menu-link,
+  nav li:hover .menu-link {
+    background: var(--palette-accent);
+    color: var(--palette-accent-contrast);
+  }
+</style>

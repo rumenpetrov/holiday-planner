@@ -32,9 +32,7 @@ listOfficial.forEach((event: GoogleEvent) => {
 });
 ---
 <Layout title={`${currentYear} - Тази година`}>
-  <a href={import.meta.env.BASE_URL} rel="prefetch">Към начало</a>
-
-  <Typography element="h1" appearance="h1">Тази година</Typography>
+  <Typography element="h2" appearance="h1">Тази година</Typography>
 
   {error ? (
     <Typography appearance="h3" font="primary">Има проблем!</Typography>
@@ -50,17 +48,21 @@ listOfficial.forEach((event: GoogleEvent) => {
             <Typography appearance="h3" font="primary">{months?.[indexAdjusted]?.name || '-'}</Typography>
 
             {Array.isArray(events) && events.length > 0
-              ? <div>
-                  <HPMonth
-                    index={indexAdjusted}
-                    year={yearAdjusted}
-                    name={months?.[indexAdjusted]?.name}
-                    holidays={[...new Set(events.map((event: GoogleEvent) => parseInt(event.start.date.substring(8, 10), 10)))]}
-                  />
+              ? <div class="section-grid">
+                  <div class="section-grid-column">
+                    <HPMonth
+                      index={indexAdjusted}
+                      year={yearAdjusted}
+                      name={months?.[indexAdjusted]?.name}
+                      holidays={[...new Set(events.map((event: GoogleEvent) => parseInt(event.start.date.substring(8, 10), 10)))]}
+                    />
+                  </div>
 
-                  {events.map((event: GoogleEvent) => {
-                    return <Typography>{event.start.date} - {event.summary}</Typography>
-                  })}
+                  <div class="section-grid-column">
+                    {events.map((event: GoogleEvent) => {
+                      return <Typography>{event.start.date} - {event.summary}</Typography>
+                    })}
+                  </div>
                 </div>
               : (
                 <Typography>{`:(`}</Typography>
@@ -74,17 +76,36 @@ listOfficial.forEach((event: GoogleEvent) => {
 
 <style>
   .section {
-    padding-bottom: 16px;
+    padding-bottom: var(--space-size-x2);
+  }
+
+  @media (min-width: 700px) {
+    .section-grid {
+      display: flex;
+      flex-wrap: wrap;
+      margin: var(--space-size) calc(var(--space-size-x2) * -1);
+    }
+
+    .section-grid-column {
+      box-sizing: border-box;
+      width: 50%;
+      padding: var(--space-size-x2);
+    }
   }
 
   hp-month {
     --hp-month-th-border-color: var(--palette-complimentary);
     --hp-month-td-border-color: transparent;
+    --hp-month-weekend-color: #aaa;
+    --hp-month-pre-post-color: #aaa;
 
+    min-width: 300px;
+    box-sizing: border-box;
     font-family: var(--font-family-primary);
-    padding: 10px;
+    padding: var(--space-size);
+    margin-bottom: var(--space-size-x2);
     background: var(--palette-dominant);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--palette-complimentary);
     color: var(--palette-complimentary);
   }
 </style>
