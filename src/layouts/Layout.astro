@@ -1,7 +1,7 @@
 ---
 import App from '../components/App.astro';
 import MainMenuDesktop from '../components/MainMenuDesktop.astro';
-import Typography from '../components/Typography.astro';
+import { HPTypography } from '../components/hp-typography';
 
 export interface Props {
   title: string;
@@ -20,11 +20,11 @@ const { title } = Astro.props;
         />
 
         <div>
-          <Typography element="h1" appearance="h1" disableMarginBottom>
+          <HPTypography element="h1" appearance="h1" disableMarginBottom>
             <span class="accent">Почивник</span>
-          </Typography>
+          </HPTypography>
 
-          <Typography disableMarginBottom>[в процес на изграждане]</Typography>
+          <HPTypography disableMarginBottom>[в процес на изграждане]</HPTypography>
         </div>
     </figure>
 

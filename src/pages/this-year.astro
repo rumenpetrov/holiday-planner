@@ -1,51 +1,38 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Typography from '../components/Typography.astro';
+import { HPTypography } from '../components/hp-typography';
 import { HPMonth } from '../components/hp-month';
 import getMonths from '../data/get-months';
-import getCalendarEvents from '../data/get-calendar-events';
 import type { GoogleEvent } from '../data/get-calendar-events';
+import getCalendarEvents from '../data/get-calendar-events';
+import { sortCalendarEvents } from '../utilities/sort-calendar-events';
+import { filterOutUnofficialCalendarEvents } from '../utilities/filter-out-unofficial-calendar-events';
+import { transformToThisYearData } from '../utilities/transform-to-this-year-data';
+import { addExtraProperties } from '../utilities/add-extra-properties';
 
 const currentYear = new Date().getFullYear();
 
 const { data: months } = getMonths();
-
 const { data, error } = await getCalendarEvents({ fromYear: currentYear, toYear: currentYear + 1 });
-const listUnSorted = data || [];
-const list = listUnSorted.sort((a, b) => Date.parse(a.start.date) - Date.parse(b.start.date));
-const listOfficial = list.filter((event) => event.description === 'Официален празник');
-// 12 months + 1 from the next year
-let listByMonth = new Array(13).fill([]);
-listOfficial.forEach((event: GoogleEvent) => {
-  const eventStartDate = new Date(Date.parse(event.start.date));
-  const monthIndex = eventStartDate.getMonth();
 
-  // Current year events
-  if (eventStartDate.getFullYear() === currentYear && monthIndex < 12) {
-    listByMonth[monthIndex] = [...listByMonth[monthIndex], event];
-  }
-
-  // January next year
-  if (eventStartDate.getFullYear() === currentYear + 1 && monthIndex === 0) {
-    listByMonth[12] = [...listByMonth[12], event];
-  }
-});
+const listOfficial = addExtraProperties(filterOutUnofficialCalendarEvents(sortCalendarEvents(data)));
+const listYear = transformToThisYearData(listOfficial, currentYear);
 ---
 <Layout title={`${currentYear} - Тази година`}>
-  <Typography element="h2" appearance="h1">{currentYear} - Тази година</Typography>
+  <HPTypography element="h2" appearance="h1">{currentYear} - Тази година</HPTypography>
 
   {error ? (
-    <Typography appearance="h3" font="primary">Има проблем!</Typography>
+    <HPTypography appearance="h3" font="primary">Има проблем!</HPTypography>
   ) : (
     <>
-      {listByMonth.map((events: GoogleEvent[], index: number) => {
+      {listYear.map((events: GoogleEvent[], index: number) => {
         // Accommodate January next year
         const indexAdjusted = index < 12 ? index : 0;
         const yearAdjusted = index < 12 ? currentYear : currentYear + 1;
 
         return (
           <div class="section">
-            <Typography appearance="h3" font="primary">{months?.[indexAdjusted]?.name || '-'}</Typography>
+            <HPTypography appearance="h3" font="primary">{months?.[indexAdjusted]?.name || '-'}</HPTypography>
 
             {Array.isArray(events) && events.length > 0
               ? <div class="section-grid">
@@ -60,12 +47,12 @@ listOfficial.forEach((event: GoogleEvent) => {
 
                   <div class="section-grid-column">
                     {events.map((event: GoogleEvent) => {
-                      return <Typography>{event.start.date} - {event.summary}</Typography>
+                      return <HPTypography>{event.start.displayDate} - {event.displaySummary}</HPTypography>
                     })}
                   </div>
                 </div>
               : (
-                <Typography>{`:(`}</Typography>
+                <HPTypography>{`:(`}</HPTypography>
               )}
           </div>
         );

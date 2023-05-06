@@ -19,7 +19,7 @@ const { title } = Astro.props;
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,400;0,700;1,400;1,700&family=Sofia+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
   </head>
-  <body>
+  <body id="body" data-calendar-id={import.meta.env.CALENDAR_ID} data-access-key={import.meta.env.ACCESS_KEY}>
     <slot />
   </body>
 </html>

@@ -1,26 +1,34 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Typography from '../components/Typography.astro';
 import Link from '../components/Link.astro';
+import { HPEventList } from '../components/hp-event-list';
+import { HPTypography } from '../components/hp-typography';
 ---
-
 <Layout title="Почивник">
-  <Typography element="h2" appearance="h1">Начало</Typography>
+  <HPTypography element="h2" appearance="h1">Начало</HPTypography>
 
   <div class="section">
     <div class="pad">
-      <Typography element="p" appearance="h4" font="primary" className="pad-text">Почивник те приближава с крачка по-близо до мечтаната ваканция.</Typography>
+      <HPTypography element="h2" appearance="h4" font="primary" lineHeight="1.2">Почивник те приближава с крачка по-близо до мечтаната ваканция.</HPTypography>
 
-      <Typography element="p" appearance="p" font="primary" className="pad-text">Той е инструмент, който ти позволява да разгледаш всички официални празници през годината, за да можеш по-лесно да планираш своите почивни дни.</Typography>
+      <HPTypography element="p" appearance="p" font="primary">Той е инструмент, който ти позволява да разгледаш всички официални празници през годината, за да можеш по-лесно да планираш своите почивни дни.</HPTypography>
 
       <Link href="/this-year" className="pad-link">Към тази година</Link>
     </div>
+  </div>
+
+  <div class="section">
+    <HPTypography element="h3" appearance="h3">Официални почивни дни този месец</HPTypography>
+
+    <HPEventList client:load id="event-list">
+      <HPTypography slot="fallback" disableMarginBottom>:(</HPTypography>
+    </HPEventList>
   </div>
 </Layout>
 
 <style>
   .section {
-    margin: var(--space-size-x2) 0;
+    margin: 0 0 var(--space-size-x4);
   }
 
   .pad {
@@ -31,10 +39,6 @@ import Link from '../components/Link.astro';
     line-height: 1.3;
   }
 
-  .pad-text {
-    line-height: 1.2;
-  }
-
   .pad-link {
     color: var(--palette-dominant);
   }
@@ -43,3 +47,25 @@ import Link from '../components/Link.astro';
     color: var(--palette-accent);
   }
 </style>
+
+<script>
+  import getCalendarEvents from '../data/get-calendar-events';
+
+  const index = new Date().getMonth();
+  const year = new Date().getFullYear();
+
+  const eventListElement = document.getElementById('event-list');
+  const calendarId = document.body?.dataset?.calendarId;
+  const accessKey = document.body?.dataset?.accessKey;
+
+  const { data, error } = await getCalendarEvents({
+    fromYear: year,
+    toYear: year + 1,
+    calendarId,
+    accessKey,
+  });
+
+  if (!error && eventListElement) {
+    eventListElement.data = data;
+  }
+</script>
