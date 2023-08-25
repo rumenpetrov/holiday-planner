@@ -25,9 +25,25 @@ const listYear = transformToThisYearData(listOfficial, currentYear);
   <HPTypography element="h2" appearance="h1">{currentYear} - {t('PAGES.THIS_YEAR.TITLE')}</HPTypography>
 
   {error ? (
-    <HPTypography appearance="h3" font="primary">Има проблем!</HPTypography>
+    <HPTypography appearance="h3" font="primary">{t('GLOBAL.ERROR')}</HPTypography>
   ) : (
     <>
+      <div class="legend">
+        <HPTypography appearance="h4" font="primary">{t('PAGES.THIS_YEAR.LEGEND.TITLE')}</HPTypography>
+
+        <dl>
+          <div class="legend-row">
+            <dt class="legend-preview" style={{ backgroundColor: 'var(--palett-holiday-background)' }}>{t('PAGES.THIS_YEAR.LEGEND.HOLIDAY')}</dt>
+            <dd>{t('PAGES.THIS_YEAR.LEGEND.HOLIDAY')}</dd>
+          </div>
+
+          <div class="legend-row">
+            <dt class="legend-preview" style={{ backgroundColor: 'var(--palett-suggestion-background)' }}>{t('PAGES.THIS_YEAR.LEGEND.SUGGESTION')}</dt>
+            <dd>{t('PAGES.THIS_YEAR.LEGEND.SUGGESTION')}</dd>
+          </div>
+        </dl>
+      </div>
+
       {listYear.map((events: GoogleEvent[], index: number) => {
         // Accommodate January next year
         const indexAdjusted = index < 12 ? index : 0;
@@ -66,6 +82,26 @@ const listYear = transformToThisYearData(listOfficial, currentYear);
 </Layout>
 
 <style>
+  .legend {
+    padding-bottom: var(--space-size-x3);
+  }
+
+  .legend-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: calc(var(--space-size) / 2);
+  }
+
+  .legend-preview {
+    display: inline-block;
+    width: 2em;
+    height: 1em;
+    margin-right: var(--space-size);
+    overflow: hidden;
+    text-indent: 100%;
+    background-color: gray;
+  }
+
   .section {
     padding-bottom: var(--space-size-x2);
   }
@@ -85,6 +121,9 @@ const listYear = transformToThisYearData(listOfficial, currentYear);
   }
 
   hp-month {
+    --hp-month-holiday-background: var(--palett-holiday-background);
+    --hp-month-suggestion-background: var(--palett-suggestion-background);
+
     --hp-month-th-border-color: var(--palette-complimentary);
     --hp-month-td-border-color: transparent;
     --hp-month-weekend-color: #aaa;

@@ -25,9 +25,20 @@ const listYear = transformToThisYearData(listOfficial, currentYear);
   <HPTypography element="h2" appearance="h1">{currentYear} - {t('PAGES.THIS_YEAR.TITLE')}</HPTypography>
 
   {error ? (
-    <HPTypography appearance="h3" font="primary">Има проблем!</HPTypography>
+    <HPTypography appearance="h3" font="primary">{t('GLOBAL.ERROR')}</HPTypography>
   ) : (
     <>
+      <div class="legend">
+        <HPTypography appearance="h4" font="primary">{t('PAGES.THIS_YEAR.LEGEND.TITLE')}</HPTypography>
+
+        <dl>
+          <dt>*</dt>
+          <dd>{t('PAGES.THIS_YEAR.LEGEND.HOLIDAY')}</dd>
+
+          <dt>*</dt>
+          <dd>{t('PAGES.THIS_YEAR.LEGEND.SUGGESTION')}</dd>
+        </dl>
+      </div>
       {listYear.map((events: GoogleEvent[], index: number) => {
         // Accommodate January next year
         const indexAdjusted = index < 12 ? index : 0;

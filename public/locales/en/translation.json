@@ -1,7 +1,8 @@
 {
   "GLOBAL": {
     "PROJECT_NAME": "Pochivnik",
-    "WIP": "work in progress"
+    "WIP": "work in progress",
+    "ERROR": "There is a problem!"
   },
   "PAGES": {
     "HOME": {
@@ -16,7 +17,12 @@
       }
     },
     "THIS_YEAR": {
-      "TITLE": "This year"
+      "TITLE": "This year",
+      "LEGEND": {
+        "TITLE": "Legend:",
+        "HOLIDAY": "Public holiday",
+        "SUGGESTION": "Suggestion for day off"
+      }
     }
   }
 }
