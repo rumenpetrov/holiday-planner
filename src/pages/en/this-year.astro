@@ -13,8 +13,12 @@ import { addExtraProperties } from "@utilities/add-extra-properties";
 changeLanguage("en");
 
 const currentYear = new Date().getFullYear();
-const { data, error } = await getCalendarEvents({ fromYear: currentYear, toYear: currentYear + 1 });
-const listOfficial = addExtraProperties(filterOutUnofficialCalendarEvents(sortCalendarEvents(data)));
+const { data, error } = await getCalendarEvents({
+    fromYear: currentYear,
+    toYear: currentYear + 1,
+    locale: i18next.language,
+});
+const listOfficial = addExtraProperties(filterOutUnofficialCalendarEvents(sortCalendarEvents(data)), i18next.language);
 const listYear = transformToThisYearData(listOfficial, currentYear);
 ---
 <Layout title={`${currentYear} - ${t('PAGES.THIS_YEAR.TITLE')}`}>

@@ -1,10 +1,10 @@
 import { LitElement, html, css, nothing } from 'lit';
-import { sortCalendarEvents } from '../../utilities/sort-calendar-events';
-import { filterOutUnofficialCalendarEvents } from '../../utilities/filter-out-unofficial-calendar-events';
-import { transformToThisMonthData } from '../../utilities/transform-to-this-month-data';
-import { addExtraProperties } from '../../utilities/add-extra-properties';
+import { sortCalendarEvents } from '@utilities/sort-calendar-events';
+import { filterOutUnofficialCalendarEvents } from '@utilities/filter-out-unofficial-calendar-events';
+import { transformToThisMonthData } from '@utilities/transform-to-this-month-data';
+import { addExtraProperties } from '@utilities/add-extra-properties';
 
-import '../hp-month/hp-month.js';
+import '@components/hp-month/hp-month.js';
 
 const tagName = 'hp-event-list';
 

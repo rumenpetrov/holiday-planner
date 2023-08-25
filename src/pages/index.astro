@@ -1,11 +1,19 @@
 ---
-import { changeLanguage, t } from "i18next";
+import i18next, { changeLanguage, t } from "i18next";
 import Layout from "@layouts/Layout.astro";
 import Link from "@components/Link.astro";
 import { HPEventList } from "@components/hp-event-list";
 import { HPTypography } from "@components/hp-typography";
+import getCalendarEvents from "@data/get-calendar-events";
 
 changeLanguage("bg");
+
+const currentYear = new Date().getFullYear();
+const { data, error } = await getCalendarEvents({
+    fromYear: currentYear,
+    toYear: currentYear + 1,
+    locale: i18next.language,
+});
 ---
 <Layout title={t('GLOBAL.PROJECT_NAME')}>
   <HPTypography element="h2" appearance="h1">{t('PAGES.HOME.TITLE')}</HPTypography>
@@ -23,7 +31,13 @@ changeLanguage("bg");
   <div class="section">
     <HPTypography element="h3" appearance="h3">{t('PAGES.HOME.SECTION_THIS_MONTH.TITLE')}</HPTypography>
 
-    <HPEventList client:load id="event-list">
+    <HPEventList
+      client:load
+      index={new Date().getMonth()}
+      year={currentYear}
+      data={data}
+      id="event-list"
+    >
       <HPTypography slot="fallback" disableMarginBottom>:(</HPTypography>
     </HPEventList>
   </div>
@@ -50,25 +64,3 @@ changeLanguage("bg");
     color: var(--palette-accent);
   }
 </style>
-
-<script>
-  import getCalendarEvents from '../data/get-calendar-events';
-
-  const index = new Date().getMonth();
-  const year = new Date().getFullYear();
-
-  const eventListElement = document.getElementById('event-list');
-  const calendarId = document.body?.dataset?.calendarId;
-  const accessKey = document.body?.dataset?.accessKey;
-
-  const { data, error } = await getCalendarEvents({
-    fromYear: year,
-    toYear: year + 1,
-    calendarId,
-    accessKey,
-  });
-
-  if (!error && eventListElement) {
-    eventListElement.data = data;
-  }
-</script>

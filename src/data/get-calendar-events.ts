@@ -9,17 +9,23 @@ export interface GoogleEvent {
 export interface Params {
   fromYear: number;
   toYear: number;
-  calendarId?: string;
+  locale?: string;
   accessKey?: string;
+};
+
+const calenarIds = {
+  bg: import.meta.env.CALENDAR_ID_BG,
+  en: import.meta.env.CALENDAR_ID_EN,
 };
 
 export const getCalendarEvents =  async (params: Params): Promise<{ data: GoogleEvent[], error: any }> => {
   const {
     fromYear,
     toYear,
-    calendarId = import.meta.env.CALENDAR_ID,
+    locale = 'bg',
     accessKey = import.meta.env.ACCESS_KEY,
   } = params;
+  const calendarId = calenarIds[locale];
   const from = `${fromYear}-01-01T00:00:00Z`;
   const to = `${toYear}-02-01T00:00:00Z`;
   const URL = `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(calendarId)}/events?timeMin=${from}&timeMax=${to}&maxResults=500&key=${accessKey}`;

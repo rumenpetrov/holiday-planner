@@ -16,7 +16,8 @@ permissions:
 
 env:
   ACCESS_KEY: ${{ secrets.ACCESS_KEY }}
-  CALENDAR_ID: ${{ secrets.CALENDAR_ID }}
+  CALENDAR_ID_BG: ${{ secrets.CALENDAR_ID_BG }}
+  CALENDAR_ID_EN: ${{ secrets.CALENDAR_ID_EN }}
 
 jobs:
   build:
