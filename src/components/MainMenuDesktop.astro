@@ -21,7 +21,7 @@ const {
       <Link href="/" className="menu-link">Начало</Link>
     </li>
     <li>
-      <Link href="/this-year" className="menu-link">Тази година</Link>
+      <Link href="/this-year/" className="menu-link">Тази година</Link>
     </li>
   </ul>
 </nav>
@@ -55,19 +55,19 @@ const {
 </style>
 
 <script>
-  const navLinks = document.querySelectorAll("nav a");
+  const navLinks = document.querySelectorAll('nav a');
 
   navLinks.forEach((link) => {
     link.classList.remove('active');
 
-    const currentPath = window.location.pathname.replace('/holiday-planner/', '').replace('/', '');
+    const currentPath = window.location.pathname.replace('/holiday-planner', '');
 
-    // `link.href` returns a whole url, such as: 'https://somedomain.com/posts' and we only need the last part
-    const hrefArray = link.href.split('/');
+    // `link.href` returns a whole url, such as: 'https://somedomain.com/posts/' and we only need the last part
+    const hrefArray = link.href.split('/holiday-planner');
     const thisPath = hrefArray[hrefArray.length - 1];
 
     if (currentPath === thisPath) {
-      link.classList.add("active");
+      link.classList.add('active');
     }
   });
 </script>
