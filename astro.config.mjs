@@ -1,4 +1,5 @@
 import { defineConfig } from 'astro/config';
+import astroI18next from 'astro-i18next';
 import lit from '@astrojs/lit';
 import prefetch from '@astrojs/prefetch';
 
@@ -12,6 +13,7 @@ export default defineConfig({
   },
   base: '/holiday-planner',
   integrations: [
+    astroI18next(),
     lit(),
     prefetch(),
   ],

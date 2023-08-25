@@ -10,7 +10,7 @@ import { filterOutUnofficialCalendarEvents } from "@utilities/filter-out-unoffic
 import { transformToThisYearData } from "@utilities/transform-to-this-year-data";
 import { addExtraProperties } from "@utilities/add-extra-properties";
 
-changeLanguage("bg");
+changeLanguage("en");
 
 const currentYear = new Date().getFullYear();
 const { data, error } = await getCalendarEvents({ fromYear: currentYear, toYear: currentYear + 1 });

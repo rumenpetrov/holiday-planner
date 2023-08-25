@@ -1,0 +1,22 @@
+{
+  "GLOBAL": {
+    "PROJECT_NAME": "Pochivnik",
+    "WIP": "work in progress"
+  },
+  "PAGES": {
+    "HOME": {
+      "TITLE": "Home",
+      "INTRO": {
+        "TITLE": "Pochivnik brings you one step closer to your dream vacation.",
+        "DESCRIPTION": "It is a tool that allows you to view all public holidays throughout the year, so you can easily plan your days off.",
+        "TO_THIS_YEAR": "To this year"
+      },
+      "SECTION_THIS_MONTH": {
+        "TITLE": "Public holidays this month"
+      }
+    },
+    "THIS_YEAR": {
+      "TITLE": "This year"
+    }
+  }
+}

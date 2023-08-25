@@ -5,7 +5,7 @@ import Link from "@components/Link.astro";
 import { HPEventList } from "@components/hp-event-list";
 import { HPTypography } from "@components/hp-typography";
 
-changeLanguage("bg");
+changeLanguage("en");
 ---
 <Layout title={t('GLOBAL.PROJECT_NAME')}>
   <HPTypography element="h2" appearance="h1">{t('PAGES.HOME.TITLE')}</HPTypography>
@@ -52,7 +52,7 @@ changeLanguage("bg");
 </style>
 
 <script>
-  import getCalendarEvents from '../data/get-calendar-events';
+  import getCalendarEvents from '../../data/get-calendar-events';
 
   const index = new Date().getMonth();
   const year = new Date().getFullYear();

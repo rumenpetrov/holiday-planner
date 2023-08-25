@@ -1,4 +1,6 @@
 ---
+import { localizePath } from 'astro-i18next';
+
 export interface Props {
   href: string;
   className?: string,
@@ -9,7 +11,7 @@ const {
   className,
 } = Astro.props;
 ---
-<a href={`${import.meta.env.BASE_URL}${href.replace('/', '')}`} rel="prefetch" class:list={['root', className]}>
+<a href={localizePath(href)} rel="prefetch" class:list={['root', className]}>
   <slot />
 </a>
 

@@ -1,5 +1,6 @@
 ---
-import Link from './Link.astro';
+import { t } from 'i18next';
+import Link from '@components/Link.astro';
 
 export interface Props {
   element?: string;
@@ -18,10 +19,10 @@ const {
 <nav class:list={[className]}>
   <ul>
     <li>
-      <Link href="/" className="menu-link">Начало</Link>
+      <Link href="/" className="menu-link">{t('PAGES.HOME.TITLE')}</Link>
     </li>
     <li>
-      <Link href="/this-year/" className="menu-link">Тази година</Link>
+      <Link href="/this-year/" className="menu-link">{t('PAGES.THIS_YEAR.TITLE')}</Link>
     </li>
   </ul>
 </nav>
