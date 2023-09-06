@@ -1,5 +1,5 @@
 import { LitElement, html, css, nothing } from 'lit';
-import { composeMonthData } from './utils';
+import { composeMonthData, getWeekDays } from './utils';
 
 const tagName = 'hp-month';
 
@@ -79,6 +79,7 @@ export class HPMonth extends LitElement {
       year: { type: Number },
       name: { type: String },
       holidays: { type: Array },
+      locale: { type: String },
     };
   };
 
@@ -89,8 +90,10 @@ export class HPMonth extends LitElement {
     this.year = null;
     this.name;
     this.holidays = [];
+    this.locale = 'bg';
 
     this.monthData = [];
+    this.weekDays = [];
   };
 
   connectedCallback() {
@@ -104,6 +107,10 @@ export class HPMonth extends LitElement {
   willUpdate(changedProperties) {
     if (changedProperties.has('index') || changedProperties.has('year') || changedProperties.has('holidays')) {
       this.monthData = composeMonthData(this.index, this.year, this.holidays);
+    }
+
+    if (changedProperties.has('locale')) {
+      this.weekDays = getWeekDays(this.locale);
     }
   };
 
@@ -135,6 +142,14 @@ export class HPMonth extends LitElement {
     return html`<td>${day.label}</td>`;
   };
 
+  renderWeekDayLabel(index) {
+    if (!Array.isArray(this.weekDays) || this.weekDays.length < 1) {
+      return html`<td>X</td>`;
+    }
+
+    return html`<td>${this.weekDays[index]}</td>`;
+  };
+
   render() {
     if (!Array.isArray(this.monthData) || this.monthData.length < 1) {
       return nothing;
@@ -145,13 +160,7 @@ export class HPMonth extends LitElement {
         ${this.renderCaption()}
         <thead>
           <tr>
-            <th>П</th>
-            <th>В</th>
-            <th>С</th>
-            <th>Ч</th>
-            <th>П</th>
-            <th>С</th>
-            <th>Н</th>
+            ${this.weekDays.map((_, index) => this.renderWeekDayLabel(index))}
           </tr>
         </thead>
         <tbody>

@@ -62,6 +62,7 @@ const listYear = transformToThisYearData(listOfficial, currentYear);
                       year={yearAdjusted}
                       name={monthName}
                       holidays={[...new Set(events.map((event: GoogleEvent) => parseInt(event.start.date.substring(8, 10), 10)))]}
+                      locale={i18next.language}
                     />
                   </div>
 

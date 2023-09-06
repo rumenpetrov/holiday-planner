@@ -91,3 +91,15 @@ export const composeMonthData = (monthIndex: number, year: number, holidays: num
 
   return output;
 }
+
+export const getWeekDays = (locale: string): string[] => {
+  let baseDate = new Date(Date.UTC(2017, 0, 2)); // just a Monday
+  let weekDays = [];
+
+  for(let i = 0; i < 7; i++) {
+    weekDays.push(baseDate.toLocaleDateString(locale, { weekday: 'short' }));
+    baseDate.setDate(baseDate.getDate() + 1);
+  }
+
+  return weekDays;
+}
