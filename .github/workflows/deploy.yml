@@ -1,13 +1,13 @@
 name: Deploy to GitHub Pages
 
 on:
+  # Rebuild on schedule (UTC time) - https://crontab.guru
+  schedule:
+    - cron: '*/5 * * * *'
   # Trigger the workflow every time you push to the `main` branch
   # Using a different branch name? Replace `main` with your branch’s name
   push:
     branches: [ main ]
-  # Rebuild on schedule (UTC time) - https://crontab.guru
-  schedule:
-    - cron: '*/5 * * * *'
   # Allows you to run this workflow manually from the Actions tab on GitHub.
   workflow_dispatch:
 
