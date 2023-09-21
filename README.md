@@ -5,8 +5,30 @@ The project is in active development phase.
 ## Check out the [Wiki](https://github.com/rumenpetrov/holiday-planner/wiki)
 
 ## Requirements
+
 - node 18
-- npm 8.15.0
+- npm 9.8.1
+- podman 4+
+
+
+## Initial setup
+
+1. Create the environment variables file and set all the required values
+  ```bash
+  $ cp .env.example .env
+  ```
+
+2. Make all scripts excutable and run the setup-env script which will create the app's podman image
+  ```bash
+  $ chmod +x ./bin/*
+  $ ./bin/setup-env.sh
+  ```
+
+3. Run the app in dev mode (make sure port 3000 is free on your machine)
+  ```bash
+  $ ./bin/start.sh
+  ```
+
 
 ## 🚀 Project Structure
 
@@ -44,6 +66,7 @@ All commands are run from the root of the project, from a terminal:
 | `npm run preview`      | Preview your build locally, before deploying     |
 | `npm run astro ...`    | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro --help` | Get help using the Astro CLI                     |
+
 
 ## 👀 Want to learn more?
 
