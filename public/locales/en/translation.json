@@ -7,6 +7,7 @@
       "TITLE": "Legend:",
       "HOLIDAY": "Public holiday",
       "SUGGESTION": "Suggestion for day off"
+    }
   },
   "PAGES": {
     "HOME": {
@@ -22,10 +23,9 @@
     },
     "THIS_YEAR": {
       "TITLE": "This year"
-      },
-      "NEXT_YEAR": {
-        "TITLE": "Следваща година"
-      }
+    },
+    "NEXT_YEAR": {
+      "TITLE": "Next year"
     }
   }
 }

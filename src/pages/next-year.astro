@@ -6,11 +6,10 @@ import Year from "@components/Year.astro";
 
 changeLanguage("bg");
 
-const currentYear = new Date().getFullYear();
-const nextYear = currentYear + 1;
+const year = new Date().getFullYear() + 1;
 ---
-<Layout title={`${nextYear} - ${t('PAGES.NEXT_YEAR.TITLE')}`}>
-  <HPTypography element="h2" appearance="h1">{nextYear} - {t('PAGES.NEXT_YEAR.TITLE')}</HPTypography>
+<Layout title={`${year} - ${t('PAGES.NEXT_YEAR.TITLE')}`}>
+  <HPTypography element="h2" appearance="h1">{year} - {t('PAGES.NEXT_YEAR.TITLE')}</HPTypography>
 
-  <Year year={nextYear} />
+  <Year year={year} />
 </Layout>
