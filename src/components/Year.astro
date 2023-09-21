@@ -1,0 +1,146 @@
+---
+import i18next, { t } from 'i18next';
+import { HPTypography } from "@components/hp-typography";
+import { HPMonth } from "@components/hp-month";
+import type { GoogleEvent } from "@data/get-calendar-events";
+import getCalendarEvents from "@data/get-calendar-events";
+import { sortCalendarEvents } from "@utilities/sort-calendar-events";
+import { filterOutUnofficialCalendarEvents } from "@utilities/filter-out-unofficial-calendar-events";
+import { transformToThisYearData } from "@utilities/transform-to-this-year-data";
+import { addExtraProperties } from "@utilities/add-extra-properties";
+
+export interface Props {
+  year: number;
+  className?: string,
+};
+
+const {
+  year,
+  className,
+} = Astro.props;
+
+const { data, error } = await getCalendarEvents({
+    fromYear: year,
+    toYear: year + 1,
+    locale: i18next.language,
+});
+const listOfficial = addExtraProperties(filterOutUnofficialCalendarEvents(sortCalendarEvents(data)), i18next.language);
+const listYear = transformToThisYearData(listOfficial, year);
+---
+<div class:list={[className]}>
+  {error ? (
+    <HPTypography appearance="h3" font="primary">{t('GLOBAL.ERROR')}</HPTypography>
+  ) : (
+    <>
+      <div class="legend">
+        <HPTypography appearance="h4" font="primary">{t('GLOBAL.LEGEND.TITLE')}</HPTypography>
+
+        <dl>
+          <div class="legend-row">
+            <dt class="legend-preview" style={{ backgroundColor: 'var(--palett-holiday-background)' }}>{t('GLOBAL.LEGEND.HOLIDAY')}</dt>
+            <dd>{t('GLOBAL.LEGEND.HOLIDAY')}</dd>
+          </div>
+
+          <div class="legend-row">
+            <dt class="legend-preview" style={{ backgroundColor: 'var(--palett-suggestion-background)' }}>{t('GLOBAL.LEGEND.SUGGESTION')}</dt>
+            <dd>{t('GLOBAL.LEGEND.SUGGESTION')}</dd>
+          </div>
+        </dl>
+      </div>
+
+      {listYear.map((events: GoogleEvent[], index: number) => {
+        // Accommodate January next year
+        const indexAdjusted = index < 12 ? index : 0;
+        const yearAdjusted = index < 12 ? year : year + 1;
+        const monthName = new Intl.DateTimeFormat(i18next?.language, { month: "long" }).format(new Date(1, indexAdjusted));
+
+        return (
+          <div class="section">
+            <HPTypography appearance="h3" font="primary">{monthName || '-'}</HPTypography>
+
+            {Array.isArray(events) && events.length > 0
+              ? <div class="section-grid">
+                  <div class="section-grid-column">
+                    <HPMonth
+                      index={indexAdjusted}
+                      year={yearAdjusted}
+                      name={monthName}
+                      holidays={[...new Set(events.map((event: GoogleEvent) => parseInt(event.start.date.substring(8, 10), 10)))]}
+                      locale={i18next.language}
+                    />
+                  </div>
+
+                  <div class="section-grid-column">
+                    {events.map((event: GoogleEvent) => {
+                      return <HPTypography>{event.start.displayDate} - {event.displaySummary}</HPTypography>
+                    })}
+                  </div>
+                </div>
+              : (
+                <HPTypography>{`:(`}</HPTypography>
+              )}
+          </div>
+        );
+      })}
+    </>
+  )}
+</div>
+
+<style>
+  .legend {
+    padding-bottom: var(--space-size-x3);
+  }
+
+  .legend-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: calc(var(--space-size) / 2);
+  }
+
+  .legend-preview {
+    display: inline-block;
+    width: 2em;
+    height: 1em;
+    margin-right: var(--space-size);
+    overflow: hidden;
+    text-indent: 100%;
+    background-color: gray;
+  }
+
+  .section {
+    padding-bottom: var(--space-size-x2);
+  }
+
+  @media (min-width: 700px) {
+    .section-grid {
+      display: flex;
+      flex-wrap: wrap;
+      margin: var(--space-size) calc(var(--space-size-x2) * -1);
+    }
+
+    .section-grid-column {
+      box-sizing: border-box;
+      width: 50%;
+      padding: var(--space-size-x2);
+    }
+  }
+
+  hp-month {
+    --hp-month-holiday-background: var(--palett-holiday-background);
+    --hp-month-suggestion-background: var(--palett-suggestion-background);
+
+    --hp-month-th-border-color: var(--palette-complimentary);
+    --hp-month-td-border-color: transparent;
+    --hp-month-weekend-color: #aaa;
+    --hp-month-pre-post-color: #aaa;
+
+    min-width: 300px;
+    box-sizing: border-box;
+    font-family: var(--font-family-primary);
+    padding: var(--space-size);
+    margin-bottom: var(--space-size-x2);
+    background: var(--palette-dominant);
+    border: 1px solid var(--palette-complimentary);
+    color: var(--palette-complimentary);
+  }
+</style>

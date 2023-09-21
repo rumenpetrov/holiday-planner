@@ -4,12 +4,13 @@ import { HPTypography } from "@components/hp-typography";
 import Layout from "@layouts/Layout.astro";
 import Year from "@components/Year.astro";
 
-changeLanguage("bg");
+changeLanguage("en");
 
 const currentYear = new Date().getFullYear();
+const nextYear = currentYear + 1;
 ---
-<Layout title={`${currentYear} - ${t('PAGES.THIS_YEAR.TITLE')}`}>
-  <HPTypography element="h2" appearance="h1">{currentYear} - {t('PAGES.THIS_YEAR.TITLE')}</HPTypography>
+<Layout title={`${nextYear} - ${t('PAGES.NEXT_YEAR.TITLE')}`}>
+  <HPTypography element="h2" appearance="h1">{nextYear} - {t('PAGES.NEXT_YEAR.TITLE')}</HPTypography>
 
-  <Year year={currentYear} />
+  <Year year={nextYear} />
 </Layout>
