@@ -2,9 +2,11 @@
 
 podman run \
   -it \
-  --init \
   --rm \
-  --user node \
-  -p "3000:3000" \
-  --name holiday-planner \
-  holiday-planner-node
+  --net=host \
+  --privileged \
+  --name holiday-planner-node \
+  -v "$(pwd)"/:/var/www/app:Z \
+  -p 3000:3000 \
+  holiday-planner-node:latest
+
