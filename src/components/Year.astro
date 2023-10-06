@@ -33,16 +33,16 @@ const listYear = transformToThisYearData(listOfficial, year);
   ) : (
     <>
       <div class="legend">
-        <HPTypography appearance="h4" font="primary">{t('GLOBAL.LEGEND.TITLE')}</HPTypography>
+        <HPTypography appearance="h5" font="primary">{t('GLOBAL.LEGEND.TITLE')}</HPTypography>
 
         <dl>
           <div class="legend-row">
-            <dt class="legend-preview" style={{ backgroundColor: 'var(--palett-holiday-background)' }}>{t('GLOBAL.LEGEND.HOLIDAY')}</dt>
+            <dt class="legend-preview" style={{ backgroundColor: 'var(--block-calendar-holiday-background)' }}>{t('GLOBAL.LEGEND.HOLIDAY')}</dt>
             <dd>{t('GLOBAL.LEGEND.HOLIDAY')}</dd>
           </div>
 
           <div class="legend-row">
-            <dt class="legend-preview" style={{ backgroundColor: 'var(--palett-suggestion-background)' }}>{t('GLOBAL.LEGEND.SUGGESTION')}</dt>
+            <dt class="legend-preview" style={{ backgroundColor: 'var(--block-calendar-suggestion-background)' }}>{t('GLOBAL.LEGEND.SUGGESTION')}</dt>
             <dd>{t('GLOBAL.LEGEND.SUGGESTION')}</dd>
           </div>
         </dl>
@@ -55,8 +55,8 @@ const listYear = transformToThisYearData(listOfficial, year);
         const monthName = new Intl.DateTimeFormat(i18next?.language, { month: "long" }).format(new Date(1, indexAdjusted));
 
         return (
-          <div class="section">
-            <HPTypography appearance="h3" font="primary">{monthName || '-'}</HPTypography>
+          <section class="section">
+            <HPTypography appearance="h4" font="primary" style="text-transform: capitalize">{monthName || '-'}</HPTypography>
 
             {Array.isArray(events) && events.length > 0
               ? <div class="section-grid">
@@ -79,7 +79,7 @@ const listYear = transformToThisYearData(listOfficial, year);
               : (
                 <HPTypography>{`:(`}</HPTypography>
               )}
-          </div>
+          </section>
         );
       })}
     </>
@@ -88,46 +88,46 @@ const listYear = transformToThisYearData(listOfficial, year);
 
 <style>
   .legend {
-    padding-bottom: var(--space-size-x3);
+    padding-bottom: var(--space-size-400);
   }
 
   .legend-row {
     display: flex;
     align-items: center;
-    margin-bottom: calc(var(--space-size) / 2);
+    margin-bottom: var(--space-size-100);
   }
 
   .legend-preview {
     display: inline-block;
     width: 2em;
     height: 1em;
-    margin-right: var(--space-size);
+    margin-right: var(--space-size-100);
     overflow: hidden;
     text-indent: 100%;
     background-color: gray;
   }
 
   .section {
-    padding-bottom: var(--space-size-x2);
+    padding-bottom: var(--space-size-700);
   }
 
   @media (min-width: 700px) {
     .section-grid {
       display: flex;
       flex-wrap: wrap;
-      margin: var(--space-size) calc(var(--space-size-x2) * -1);
+      margin: calc(var(--space-size-400) * -1);
     }
 
     .section-grid-column {
       box-sizing: border-box;
       width: 50%;
-      padding: var(--space-size-x2);
+      padding: var(--space-size-400);
     }
   }
 
   hp-month {
-    --hp-month-holiday-background: var(--palett-holiday-background);
-    --hp-month-suggestion-background: var(--palett-suggestion-background);
+    --hp-month-holiday-background: var(--block-calendar-holiday-background);
+    --hp-month-suggestion-background: var(--block-calendar-suggestion-background);
 
     --hp-month-th-border-color: var(--palette-complimentary);
     --hp-month-td-border-color: transparent;
@@ -137,8 +137,8 @@ const listYear = transformToThisYearData(listOfficial, year);
     min-width: 300px;
     box-sizing: border-box;
     font-family: var(--font-family-primary);
-    padding: var(--space-size);
-    margin-bottom: var(--space-size-x2);
+    padding: var(--space-size-200);
+    margin-bottom: var(--space-size-400);
     background: var(--palette-dominant);
     border: 1px solid var(--palette-complimentary);
     color: var(--palette-complimentary);

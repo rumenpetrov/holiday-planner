@@ -11,11 +11,12 @@ const { title } = Astro.props;
 <html lang={i18next.language}>
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content={t('GLOBAL.PROJECT_NAME')} />
     <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
-    <meta name="generator" content={Astro.generator} />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>{title}</title>
+    <meta name="description" content={t('GLOBAL.PROJECT_NAME')} />
+    <meta name="generator" content={Astro.generator} />
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,23 +37,29 @@ const { title } = Astro.props;
   }
 
   :root {
-    --space-size: 0.8rem;
-    --space-size-x2: 1.6rem;
-    --space-size-x3: 2.4rem;
-    --space-size-x4: 3.2rem;
-    --space-size-x5: 4rem;
+    --space-size-100: 0.25rem;
+    --space-size-200: 0.5rem;
+    --space-size-300: 0.75rem;
+    --space-size-400: 1rem;
+    --space-size-500: 1.25rem;
+    --space-size-600: 1.5rem;
+    --space-size-700: 1.75rem;
+    --space-size-800: 2rem;
+
     --font-family-primary: 'Sofia Sans', sans-serif;
     --font-family-secondary: 'Cormorant Infant', serif;
+
     /* 60% Backgrounds mainly (light/dark) */
-    --palette-dominant: #fff; /* #F6F6F6 */
+    --palette-dominant: #fff; /* #f6f6f6 */
     /* 30% Headlines/Imagery (could be gradient) */
     --palette-complimentary: #000; /* #222222 */
     /* 10% CTA, highlights (could be gradient) */
-    --palette-accent: #4e4e4e; /* #7fef89, #7C3AED */
-    --palette-accent-contrast: #fff; /* #7fef89, #7C3AED */
+    --palette-accent: #4e4e4e; /* #7fef89, #7c3aed */
+    --palette-accent-contrast: #fff; /* #7fef89, #7c3aed */
 
-    --palett-holiday-background: #617A55;
-    --palett-suggestion-background: #7EB57E;
+    /* blocks */
+    --block-calendar-holiday-background: var(--palette-accent);
+    --block-calendar-suggestion-background: #bbb;
   }
 
   .accent {
@@ -68,11 +75,11 @@ const { title } = Astro.props;
   html {
     background: var(--palette-dominant);
     font-family: var(--font-family-primary);
-    font-size: 10px;
+    font-size: 100%;
     color: var(--palette-complimentary);
   }
 
   body {
-    font-size: 1.6rem;
+    font-size: 1rem;
   }
 </style>

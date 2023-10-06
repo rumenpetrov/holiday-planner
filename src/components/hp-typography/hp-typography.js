@@ -10,32 +10,39 @@ export class HPTypography extends LitElement {
       padding: 0;
       margin: 0;
       outline: 0;
+      letter-spacing: 0.3px;
     }
 
-    .h1,
-    .h2,
-    .h3,
-    .h4 {
+    /* Scheme: 1.333 - Perfect fourth */
+    .headline {
       font-family: var(--font-family-secondary);
+      font-weight: 400;
       line-height: 1;
     }
 
     .h1 {
-      font-size: 4.8rem;
+      margin-top: 0;
+      font-size: 4.209rem;
     }
     .h2 {
-      font-size: 3.4rem;
+      font-size: 3.157rem;
     }
     .h3 {
-      font-size: 2.4rem;
+      font-size: 2.369rem;
     }
     .h4 {
-      font-size: 2rem;
+      font-size: 1.777rem;
     }
-
+    .h5 {
+      font-size: 1.333rem;
+    }
     .p {
       font-family: var(--font-family-primary);
-      font-size: 1.6rem;
+      font-size: 1rem;
+      line-height: 1.3;
+    }
+    .small {
+      font-size: 0.75rem;
       line-height: 1.3;
     }
 
@@ -48,6 +55,9 @@ export class HPTypography extends LitElement {
     }
 
     .margin-bottom {
+      margin-bottom: 0.4em;
+    }
+    .margin-bottom.h1 {
       margin-bottom: 0.6em;
     }
   `;
@@ -72,6 +82,8 @@ export class HPTypography extends LitElement {
     this.lineHeight;
     this.disableMarginBottom = false;
 
+    this.headlineElementList = ['h1', 'h2', 'h3', 'h4', 'h5'];
+
     this.styles = {};
   };
 
@@ -79,6 +91,7 @@ export class HPTypography extends LitElement {
     const classRoot = classMap({
       [`${this.appearance}`]: Boolean(this.appearance),
       [`font-${this.font}`]: Boolean(this.font),
+      'headline': this.headlineElementList.includes(this.appearance),
       'margin-bottom': !this.disableMarginBottom,
     });
     const styleRoot = styleMap({ ...this.styles, lineHeight: this.lineHeight });
@@ -97,6 +110,14 @@ export class HPTypography extends LitElement {
 
     if (this.element === 'h4') {
       return html`<h4 class=${classRoot} style=${styleRoot}><slot></slot></h4>`;
+    }
+
+    if (this.element === 'h5') {
+      return html`<h5 class=${classRoot} style=${styleRoot}><slot></slot></h5>`;
+    }
+
+    if (this.element === 'small') {
+      return html`<small class=${classRoot} style=${styleRoot}><slot></slot></small>`;
     }
 
     return html`<p class=${classRoot} style=${styleRoot}><slot></slot></p>`;

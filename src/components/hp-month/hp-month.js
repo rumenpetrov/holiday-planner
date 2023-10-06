@@ -24,7 +24,7 @@ export class HPMonth extends LitElement {
 
     table caption {
       margin: 0 0 10px;
-      font-size: 16px;
+      font-size: 18px;
       line-height: 1.2;
       font-weight: normal;
       text-align: var(--hp-month-caption-text-align, center);

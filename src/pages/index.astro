@@ -18,7 +18,7 @@ const { data, error } = await getCalendarEvents({
 <Layout title={t('GLOBAL.PROJECT_NAME')}>
   <HPTypography element="h2" appearance="h1">{t('PAGES.HOME.TITLE')}</HPTypography>
 
-  <div class="section">
+  <section class="section">
     <div class="pad">
       <HPTypography element="h2" appearance="h4" font="primary" lineHeight="1.2">{t('PAGES.HOME.INTRO.TITLE')}</HPTypography>
 
@@ -26,9 +26,9 @@ const { data, error } = await getCalendarEvents({
 
       <Link href="/this-year/" className="pad-link">{t('PAGES.HOME.INTRO.TO_THIS_YEAR')}</Link>
     </div>
-  </div>
+  </section>
 
-  <div class="section">
+  <section class="section">
     <HPTypography element="h3" appearance="h3">{t('PAGES.HOME.SECTION_THIS_MONTH.TITLE')}</HPTypography>
 
     <HPEventList
@@ -40,20 +40,19 @@ const { data, error } = await getCalendarEvents({
     >
       <HPTypography slot="fallback" disableMarginBottom>:(</HPTypography>
     </HPEventList>
-  </div>
+  </section>
 </Layout>
 
 <style>
   .section {
-    margin: 0 0 var(--space-size-x4);
+    margin: 0 0 var(--space-size-600);
   }
 
   .pad {
-    border-radius: var(--space-size);
-    padding: var(--space-size-x2);
+    border-radius: var(--space-size-200);
+    padding: var(--space-size-400);
     background: var(--palette-complimentary);
     color: var(--palette-dominant);
-    line-height: 1.3;
   }
 
   .pad-link {
