@@ -21,7 +21,7 @@ export class HPEventList extends LitElement {
     }
 
     .root {
-      padding: 0 0 var(--space-size) 0;
+      padding: 0 0 var(--space-size-200) 0;
       margin: 0;
     }
   `;

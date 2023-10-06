@@ -22,27 +22,27 @@ export class HPTypography extends LitElement {
 
     .h1 {
       margin-top: 0;
-      font-size: 4.209rem;
+      font-size: var(--font-size-h1);
     }
     .h2 {
-      font-size: 3.157rem;
+      font-size: var(--font-size-h2);
     }
     .h3 {
-      font-size: 2.369rem;
+      font-size: var(--font-size-h3);
     }
     .h4 {
-      font-size: 1.777rem;
+      font-size: var(--font-size-h4);
     }
     .h5 {
-      font-size: 1.333rem;
+      font-size: var(--font-size-h5);
     }
     .p {
       font-family: var(--font-family-primary);
-      font-size: 1rem;
+      font-size: var(--font-size-p);
       line-height: 1.3;
     }
     .small {
-      font-size: 0.75rem;
+      font-size: var(--font-size-small);
       line-height: 1.3;
     }
 

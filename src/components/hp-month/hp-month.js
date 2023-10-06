@@ -27,16 +27,16 @@ export class HPMonth extends LitElement {
       font-size: 18px;
       line-height: 1.2;
       font-weight: normal;
-      text-align: var(--hp-month-caption-text-align, center);
+      text-align: var(--block-calendar-caption-text-align, center);
     }
 
     table tr th {
-      border-bottom: 1px solid var(--hp-month-th-border-color, #000);
+      border-bottom: 1px solid var(--block-calendar-th-border-color, #000);
       font-weight: normal;
     }
 
     table tr td {
-      border-bottom: 1px solid var(--hp-month-td-border-color, #aaa);
+      border-bottom: 1px solid var(--block-calendar-td-border-color, #aaa);
     }
 
     table tr:last-child td {
@@ -53,23 +53,23 @@ export class HPMonth extends LitElement {
 
     table td:nth-last-child(2),
     table td:last-child {
-      background: var(--hp-month-weekend-background, #fff);
-      color: var(--hp-month-weekend-color, #000);
+      background: var(--block-calendar-weekend-background, #fff);
+      color: var(--block-calendar-weekend-color, #000);
     }
 
     table td.suggestion {
-      background: var(--hp-month-suggestion-background, #666);
-      color: var(--hp-month-suggestion-color, #fff);
+      background: var(--block-calendar-suggestion-background, #666);
+      color: var(--block-calendar-suggestion-color, #fff);
     }
 
     table td.holiday {
-      background: var(--hp-month-holiday-background, #222);
-      color: var(--hp-month-holiday-color, #fff);
+      background: var(--block-calendar-holiday-background, #222);
+      color: var(--block-calendar-holiday-color, #fff);
     }
 
     table td.pre-month,
     table td.post-month {
-      color: var(--hp-month-pre-post-color, #000);
+      color: var(--block-calendar-pre-post-color, #000);
     }
   `;
 
