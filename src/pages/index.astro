@@ -15,7 +15,7 @@ const { data, error } = await getCalendarEvents({
     locale: i18next.language,
 });
 ---
-<Layout title={t('GLOBAL.PROJECT_NAME')}>
+<Layout title={`${t('GLOBAL.PROJECT_NAME')} - ${t('PAGES.HOME.TITLE')}`}>
   <HPTypography element="h2" appearance="h1">{t('PAGES.HOME.TITLE')}</HPTypography>
 
   <section class="section">
@@ -36,7 +36,7 @@ const { data, error } = await getCalendarEvents({
       index={new Date().getMonth()}
       year={currentYear}
       data={data}
-      id="event-list"
+      class="pad"
     >
       <HPTypography slot="fallback" disableMarginBottom>:(</HPTypography>
     </HPEventList>
