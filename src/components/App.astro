@@ -13,6 +13,7 @@ const { title } = Astro.props;
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark">
 
     <title>{title}</title>
     <meta name="description" content={t('GLOBAL.PROJECT_NAME')} />
@@ -29,6 +30,51 @@ const { title } = Astro.props;
   </body>
 </html>
 
+<script is:inline>
+  const colorSchemeTriggerElement = document.querySelector('#color-scheme-trigger');
+  const rootElement = document.documentElement;
+  const colorSchemeDefaultValue = 'light';
+
+  const getColorScheme = () => {
+    const storedValue = localStorage.getItem('colorScheme');
+    const isLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+    const isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    if (storedValue) {
+      return storedValue;
+    } else if (isLight) {
+      return 'light';
+    } else if (isDark) {
+      return 'dark';
+    }
+
+    return colorSchemeDefaultValue;
+  }
+
+  const setColorScheme = (colorScheme = colorSchemeDefaultValue) => {
+    rootElement.dataset.colorScheme = colorScheme;
+
+    localStorage.setItem('colorScheme', colorScheme);
+  }
+
+  setColorScheme(getColorScheme());
+
+
+  colorSchemeTriggerElement.addEventListener('click', () => {
+    const colorScheme = getColorScheme();
+
+    if (colorScheme === 'light') {
+      setColorScheme('dark');
+    } else if (colorScheme === 'dark') {
+      setColorScheme('light');
+    }
+  });
+
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+    setColorScheme(event.matches ? 'dark' : 'light');
+  });
+</script>
+
 <style is:global>
   * {
     padding: 0;
@@ -36,7 +82,10 @@ const { title } = Astro.props;
     outline: 0;
   }
 
-  :root {
+  :root,
+  :root[data-color-scheme="light"] {
+    color-scheme: light;
+
     --space-size-100: 0.25rem;
     --space-size-200: 0.5rem;
     --space-size-300: 0.75rem;
@@ -57,14 +106,14 @@ const { title } = Astro.props;
     --font-size-small: 0.75rem;
 
     /* 60% Backgrounds mainly (light/dark) */
-    --palette-dominant: #fff;
-    --palette-dominant-contrast: #000;
-    --palette-primary: #222;
-    --palette-primary-contrast: #fff;
-    --palette-secondary: #ddd;
-    --palette-secondary-contrast: #000;
-    --palette-accent: #555;
-    --palette-accent-contrast: #fff;
+    --palette-dominant: #f0eddb;
+    --palette-dominant-contrast: #0e0d06;
+    --palette-primary: #fb5e09;
+    --palette-primary-contrast: #f0eddb;
+    --palette-secondary: #FEF2AF;
+    --palette-secondary-contrast: #0e0d06;
+    --palette-accent: #DDBC03;
+    --palette-accent-contrast: #f0eddb;
     --palette-semantic-success: #00ff00;
     --palette-semantic-warning: #ffff00;
     --palette-semantic-error: #ff0000;
@@ -83,6 +132,41 @@ const { title } = Astro.props;
     --block-calendar-pre-post-color: #aaa;
   }
 
+  :root[data-color-scheme="dark"] {
+    color-scheme: dark;
+
+    /* 60% Backgrounds mainly (light/dark) */
+    --palette-dominant: #24210f;
+    --palette-dominant-contrast: #f9f8f1;
+    --palette-primary: #F65904;
+    --palette-primary-contrast: #f9f8f1;
+    --palette-secondary: #514501;
+    --palette-secondary-contrast: #f9f8f1;
+    --palette-accent: #FCDB22;
+    --palette-accent-contrast: #24210f;
+    --palette-semantic-success: #00ff00;
+    --palette-semantic-warning: #ffff00;
+    --palette-semantic-error: #ff0000;
+    --palette-semantic-info: #0000ff;
+
+    /* blocks */
+    --block-pad-background: var(--palette-secondary);
+    --block-pad-color: var(--palette-secondary-contrast);
+    --block-calendar-holiday-background: var(--palette-accent);
+    --block-calendar-holiday-color: var(--palette-accent-contrast);
+    --block-calendar-suggestion-background: var(--palette-secondary);
+    --block-calendar-suggestion-color: var(--palette-secondary-contrast);
+    --block-calendar-th-border-color: var(--palette-secondary);
+    --block-calendar-td-border-color: transparent;
+    --block-calendar-weekend-color: #aaa;
+    --block-calendar-pre-post-color: #aaa;
+  }
+
+  ::selection {
+    background-color: var(--palette-accent);
+    color: var(--palette-accent-contrast);
+  }
+
   .accent {
     background: var(--palette-accent);
     -webkit-background-clip: text;
@@ -94,6 +178,7 @@ const { title } = Astro.props;
 
 <style>
   html {
+    accent-color: var(--palette-accent);
     background: var(--palette-dominant);
     font-family: var(--font-family-primary);
     font-size: 80%;
