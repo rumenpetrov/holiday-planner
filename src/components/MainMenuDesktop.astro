@@ -44,18 +44,18 @@ const {
 
   nav li .menu-link {
     display: block;
-    border-radius: var(--space-size-200);
     padding: var(--space-size-200) var(--space-size-400);
     margin: 0 var(--space-size-100);
-    background: var(--palette-primary-contrast);
+    border-width: 0 0 var(--space-size-100) 0;
+    border-style: solid;
+    border-color: transparent;
     color: var(--palette-primary);
     text-decoration: none;
   }
 
   nav .active.menu-link,
   nav li:hover .menu-link {
-    background: var(--palette-primary);
-    color: var(--palette-primary-contrast);
+    border-color: var(--palette-primary);
   }
 </style>
 

@@ -12,8 +12,7 @@ export class HPEventList extends LitElement {
   static styles = css`
     :host {
       font-family: sans-serif;
-      background: #fff;
-      color: #000;
+      color: var(--palette-dominant-contrast, #000);
       display: block;
       overflow: hidden;
       border-radius: 10px;
@@ -21,8 +20,8 @@ export class HPEventList extends LitElement {
     }
 
     .root {
-      padding: 0 0 var(--space-size-200) 0;
-      margin: 0;
+      border-bottom: calc(var(--space-size-100) / 2) dotted var(--palette-dominant-contrast);
+      margin: 0 0 var(--space-size-200) 0;
     }
   `;
 

@@ -7,8 +7,8 @@ export class HPMonth extends LitElement {
   static styles = css`
     :host {
       font-family: sans-serif;
-      background: #fff;
-      color: #000;
+      background: var(--block-calendar-background, #fff);
+      color: var(--block-calendar-color, #000);
       display: block;
       overflow: hidden;
       border-radius: 10px;
