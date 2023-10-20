@@ -3,15 +3,17 @@ import { localizePath } from 'astro-i18next';
 
 export interface Props {
   href: string;
+  accent: boolean,
   className?: string,
 };
 
 const {
   href,
+  accent,
   className,
 } = Astro.props;
 ---
-<a href={localizePath(href)} rel="prefetch" class:list={['root', className]}>
+<a href={localizePath(href)} rel="prefetch" class:list={['root', accent && 'accent', className]}>
   <slot />
 </a>
 
@@ -23,5 +25,9 @@ const {
 
   .root:hover {
     text-decoration: none;
+  }
+
+  .root.accent {
+    color: var(--palette-accent);
   }
 </style>
