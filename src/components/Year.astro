@@ -291,7 +291,6 @@ const listYear = transformToThisYearData(listOfficial, year);
     position: relative;
     display: inline-flex;
     margin-bottom: var(--space-size-600);
-    color: var(--palette-primary);
   }
 
   .timeline-point::before {
@@ -338,17 +337,6 @@ const listYear = transformToThisYearData(listOfficial, year);
     outline-width: calc(var(--space-size-100) / 2);
     outline-style: dashed;
     outline-color: var(--block-calendar-timeline-color);
-  }
-
-  hp-month::before {
-    content: '';
-    width: var(--space-size-100);
-    height: calc(100% - (var(--space-size-400) * 2));
-    position: absolute;
-    top: 50%;
-    left: calc(-1 * (var(--space-size-100) / 2));
-    background-color: var(--block-calendar-timeline-color);
-    transform: translate3d(0, -50%, 0);
   }
 
   .events {
