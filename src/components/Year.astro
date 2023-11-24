@@ -23,6 +23,7 @@ const { data, error } = await getCalendarEvents({
     fromYear: year,
     toYear: year + 1,
     locale: i18next.language,
+    toNextJanuary: true,
 });
 const listOfficial = addExtraProperties(filterOutUnofficialCalendarEvents(sortCalendarEvents(data)), i18next.language);
 const listYear = transformToThisYearData(listOfficial, year);

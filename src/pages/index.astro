@@ -11,7 +11,7 @@ changeLanguage("bg");
 const currentYear = new Date().getFullYear();
 const { data, error } = await getCalendarEvents({
     fromYear: currentYear,
-    toYear: currentYear + 1,
+    toYear: currentYear,
     locale: i18next.language,
 });
 ---
