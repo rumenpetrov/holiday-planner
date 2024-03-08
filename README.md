@@ -1,6 +1,6 @@
 # holiday-planner
 
-The project is in active development phase.
+This is a planner web app which provides information about all the holidays in Bulgaria.
 
 ## Check out the [Wiki](https://github.com/rumenpetrov/holiday-planner/wiki)
 
