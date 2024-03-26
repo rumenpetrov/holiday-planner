@@ -359,12 +359,13 @@ const listYear = transformToThisYearData(listOfficial, year);
   const timeline = gsap.timeline();
 
   timeline.set(decorationElements, {
-    backfaceVisibility: 'hidden',
+    visibility: 'hidden',
   });
 
   timeline.from(decorationElements, {
     x: 30,
     opacity: 0,
+    visibility: 'visible',
     duration: 0.3,
     delay: 0.3,
     ease: 'circ.out',
