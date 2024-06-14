@@ -32,12 +32,18 @@ const {
 
 <style>
   nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    overflow: auto;
     padding: var(--space-size-200);
+    background-color: var(--palette-secondary);
   }
 
   nav ul {
     display: flex;
-    flex-wrap: wrap;
     list-style-type: none;
     justify-content: center;
   }
@@ -51,12 +57,25 @@ const {
     border-color: transparent;
     color: var(--palette-dominant-contrast);
     text-decoration: none;
+    text-wrap: nowrap;
   }
 
   nav .active.menu-link,
   nav li:hover .menu-link {
     color: var(--palette-primary);
     border-color: var(--palette-primary);
+  }
+
+  @media (min-width: 1200px) {
+    nav {
+      position: relative;
+      width: auto;
+      background-color: transparent;
+    }
+
+    nav ul {
+      flex-wrap: wrap;
+    }
   }
 </style>
 

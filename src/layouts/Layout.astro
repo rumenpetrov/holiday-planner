@@ -52,20 +52,26 @@ const { title } = Astro.props;
 
 <style>
   header {
+    display: flex;
+    flex-direction: column;
     padding: var(--space-size-200);
   }
 
-  @media (min-width: 850px) {
+  @media (min-width: 600px) {
     header {
-      display: flex;
+      flex-direction: row;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
     }
   }
 
+  .logo {
+    margin: auto;
+  }
+
   .logo svg {
-    width: 16rem;
+    width: 18rem;
     height: auto;
     fill: var(--palette-dominant-contrast);
   }
@@ -74,13 +80,9 @@ const { title } = Astro.props;
     fill: url(#logo-gradient) #fff;
   }
 
-  .menu {
-    margin-bottom: var(--space-size-200);
-  }
-
-  @media (min-width: 750px) {
-    .menu {
-      margin-bottom: 0;
+  @media (min-width: 600px) {
+    .logo {
+      margin: 0;
     }
   }
 

@@ -96,6 +96,8 @@ const listYear = transformToThisYearData(listOfficial, year);
     <HPTypography appearance="h3" font="primary">{t('GLOBAL.ERROR')}</HPTypography>
   ) : (
     <div class="timeline">
+      <button class="button" id="export-markdown" hidden>Export as Markdown</button>
+
       <div class="legend">
         <HPTypography appearance="h5" font="primary">{t('GLOBAL.LEGEND.TITLE')}</HPTypography>
 
@@ -272,6 +274,15 @@ const listYear = transformToThisYearData(listOfficial, year);
     }
   }
 
+  .button {
+    border: 0;
+    padding: var(--space-size-200) var(--space-size-400);
+    margin-bottom: var(--space-size-600);
+    background-color: var(--palette-secondary);
+    color: var(--palette-secondary-contrast);
+    cursor: pointer;
+  }
+
   .timeline {
     position: relative;
     z-index: 1;
@@ -376,5 +387,109 @@ const listYear = transformToThisYearData(listOfficial, year);
     opacity: 0,
     duration: 1,
     stagger: 0.8,
+  });
+</script>
+
+<script define:vars={{ listYear, year }}>
+  const exportAsMarkdownElement = document.querySelector('#export-markdown');
+  const requiredFeaturesAvailable = typeof window === 'object'
+    && 'showSaveFilePicker' in window
+    && typeof window?.showSaveFilePicker === 'function';
+
+  const getTotalDays = (y, m) => new Date(y, m, 0).getDate();
+  const isWeekend = (y, m, d) => {
+    const dayOfWeek = new Date(y, m, d).getDay();
+
+    return (dayOfWeek === 6) || (dayOfWeek  === 0);
+  };
+
+  const prepareData = () => {
+    return listYear.map((item, idx) => {
+      if (idx >= 0 && idx <= 11) {
+        return {
+          totalDays: getTotalDays(year, idx + 1),
+          month: idx + 1,
+          events: item.map(listItem => listItem.start.date),
+        };
+      }
+
+      return {
+        totalDays: getTotalDays(year + 1, 1),
+        month: 1,
+        events: item.map(listItem => listItem.start.date),
+      };
+    })
+  };
+
+  const generateTable = (props) => {
+    const { totalDays, month, events } = props;
+
+    const headingsLine = Array
+      .from({ length: totalDays })
+      .map((_, idx) => `${idx + 1}`)
+      .join('|')
+    const dividerLine = Array
+      .from({ length: totalDays })
+      .map((_, idx) => `-`)
+      .join('|');
+    const eventsLine = Array
+        .from({ length: totalDays })
+        .map((_, idx) => {
+          const dayAsText = idx + 1 < 10 ? `0${idx + 1}` : idx + 1;
+          const monthAsText = month < 10 ? `0${month}` : month;
+          const currentDateAsString = `${year}-${monthAsText}-${dayAsText}`;
+          const isPublicHoliday = events.includes(currentDateAsString);
+          const isWeekendOut = isWeekend(...currentDateAsString.split('-'));
+
+          if (isWeekendOut) {
+            return 'x';
+          }
+
+          if (isPublicHoliday && !isWeekendOut) {
+            return '✓';
+          }
+
+          return ' ';
+        })
+        .join('|');
+
+    return `## ${month}\n|${headingsLine}|\n|${dividerLine}|\n|${eventsLine}|`
+  };
+
+  const generateYear = (data) => {
+    const outputDraft = data
+      .map(item => generateTable(item))
+      .join('\n\n');
+
+    return `# ${year}\n${outputDraft}`;
+  };
+
+  const saveFile = async () => {
+    const fileOptions = {
+      suggestedName: `${year}-holidays-export.md`,
+      types: [
+        {
+          accept: { 'text/markdown': ['.md'] },
+        },
+      ],
+    };
+    const handle = await window.showSaveFilePicker(fileOptions);
+    const writableStream = await handle.createWritable();
+
+    const nextValue = prepareData();
+    const fileContent = generateYear(nextValue);
+
+    await writableStream.write(fileContent);
+    await writableStream.close();
+  };
+
+  if (requiredFeaturesAvailable) {
+    exportAsMarkdownElement?.removeAttribute('hidden');
+  }
+
+  exportAsMarkdownElement?.addEventListener('click', () => {
+    if (requiredFeaturesAvailable) {
+      saveFile();
+    }
   });
 </script>
