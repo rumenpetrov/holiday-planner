@@ -7,7 +7,8 @@
       "TITLE": "Legend:",
       "HOLIDAY": "Public holiday",
       "SUGGESTION": "Day off suggestion"
-    }
+    },
+    "GLOBAL.EXPORT_AS_MARKDOWN": "Export as Markdown"
   },
   "PAGES": {
     "HOME": {
