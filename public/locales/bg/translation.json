@@ -8,7 +8,7 @@
       "HOLIDAY": "Официален празник",
       "SUGGESTION": "Предложение за почивен ден"
     },
-    "GLOBAL.EXPORT_AS_MARKDOWN": "Запази като markdown"
+    "EXPORT_AS_MARKDOWN": "Запази като markdown"
   },
   "PAGES": {
     "HOME": {

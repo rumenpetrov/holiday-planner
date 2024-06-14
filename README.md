@@ -18,7 +18,7 @@ This is a planner web app which provides information about all the holidays in B
   $ cp .env.example .env
   ```
 
-2. Make all scripts excutable and run the setup-env script which will create the app's podman image
+2. Make all scripts executable and run the setup-env script which will create the app's podman image
   ```bash
   $ chmod +x ./bin/*
   $ ./bin/setup-env.sh
