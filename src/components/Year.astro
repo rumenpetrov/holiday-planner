@@ -233,6 +233,8 @@ const listYear = transformToThisYearData(listOfficial, year);
     vertical-align: top;
     width: 100%;
     fill: var(--palette-primary);
+    transform: translateX(30px);
+    opacity: 0;
   }
 
 
@@ -369,14 +371,9 @@ const listYear = transformToThisYearData(listOfficial, year);
 
   const timeline = gsap.timeline();
 
-  timeline.set(decorationElements, {
-    visibility: 'hidden',
-  });
-
-  timeline.from(decorationElements, {
-    x: 30,
-    opacity: 0,
-    visibility: 'visible',
+  timeline.to(decorationElements, {
+    x: 0,
+    opacity: 1,
     duration: 0.3,
     delay: 0.3,
     ease: 'circ.out',
