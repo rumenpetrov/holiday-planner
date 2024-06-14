@@ -138,6 +138,10 @@ const { data, error } = await getCalendarEvents({
   hp-event-list {
     background-color: var(--palette-dominant);
   }
+
+  #decoration-pin {
+    opacity: 0;
+  }
 </style>
 
 <script>
@@ -149,6 +153,7 @@ const { data, error } = await getCalendarEvents({
   const timeline = gsap.timeline();
 
   timeline.set([decorationPinElement, decorationTreeElements], {
+    opacity: 1,
     transformPerspective: 300,
     perspective: 300,
     backfaceVisibility: 'hidden',
