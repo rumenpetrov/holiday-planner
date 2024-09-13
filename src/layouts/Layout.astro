@@ -30,6 +30,8 @@ const { title } = Astro.props;
     <MainMenuDesktop className="menu" />
 
     <div class="actions">
+      <span id="color-scheme-trigger-placeholder" />
+
       <button id="color-scheme-trigger">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="color-scheme-trigger-icon-dark">
           <path d="M11.771 2.004a7.241 7.241 0 0 0-6.92 6.92 7.141 7.141 0 0 0 4.286 6.763v2.742a1.428 1.428 0 0 0 1.428 1.429h2.857a1.428 1.428 0 0 0 1.428-1.429v-2.742a7.141 7.141 0 0 0 2.142-11.669 7.141 7.141 0 0 0-5.22-2.014Zm-1.92 18.568a.714.714 0 0 0 0 1.428h4.285a.714.714 0 0 0 0-1.428z"/>
@@ -52,6 +54,8 @@ const { title } = Astro.props;
 
 <style>
   header {
+    position: relative;
+    z-index: 2;
     display: flex;
     flex-direction: column;
     padding: var(--space-size-200);
@@ -94,6 +98,8 @@ const { title } = Astro.props;
   }
 
   main {
+    position: relative;
+    z-index: 1;
     padding: 0.5rem 0;
   }
 
@@ -119,6 +125,11 @@ const { title } = Astro.props;
     display: none;
   }
 
+  html[data-color-scheme] #color-scheme-trigger-placeholder {
+    display: none;
+  }
+
+  #color-scheme-trigger-placeholder,
   #color-scheme-trigger {
     border: none;
     background-color: transparent;
