@@ -179,48 +179,10 @@ const { title } = Astro.props;
     color: var(--palette-accent-contrast);
   }
 
-  :root {
-    /* Remove default animation from the root transition group */
-    view-transition-name: none;
-  }
-
-  main {
-    view-transition-name: main-group;
-  }
-
-  @view-transition {
-    navigation: auto;
-  }
-
-  @keyframes fade-in {
-    from { opacity: 0; }
-  }
-
-  @keyframes fade-out {
-    to { opacity: 0; }
-  }
-
-  @keyframes slide-from-right {
-    from { transform: translateX(60px); }
-  }
-
-  @keyframes slide-to-left {
-    to { transform: translateX(-60px); }
-  }
-
-  ::view-transition-old(main-group),
-  ::view-transition-new(main-group) {
-    animation-duration: 1s;
-  }
-
-  ::view-transition-old(main-group) {
-    animation: 90ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
-      300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-left;
-  }
-
-  ::view-transition-new(main-group) {
-    animation: 210ms cubic-bezier(0, 0, 0.2, 1) 90ms both fade-in,
-      300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-right;
+  @supports (view-transition-name: none) {
+    @view-transition {
+      navigation: auto;
+    }
   }
 </style>
 
