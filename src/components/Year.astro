@@ -29,7 +29,7 @@ const listOfficial = addExtraProperties(filterOutUnofficialCalendarEvents(sortCa
 const listYear = transformToThisYearData(listOfficial, year);
 ---
 <div class:list={[className]}>
-  <div class="page-header">
+  <div class="page-header" aria-hidden="true">
     <div class="page-header-content">
       <span class="page-header-year">
         <slot name="year" />
@@ -95,11 +95,15 @@ const listYear = transformToThisYearData(listOfficial, year);
   {error ? (
     <HPTypography appearance="h3" font="primary">{t('GLOBAL.ERROR')}</HPTypography>
   ) : (
-    <div class="timeline">
+    <div class="timeline" role="region" aria-labelledby="timeline-title">
+      <h2 hidden id="timeline-title">{t('GLOBAL.TIMELINE.LABEL')}</h2>
+
       <button class="button" id="export-markdown" hidden>{t('GLOBAL.EXPORT_AS_MARKDOWN')}</button>
 
-      <div class="legend">
-        <HPTypography appearance="h5" font="primary">{t('GLOBAL.LEGEND.TITLE')}</HPTypography>
+      <div class="legend" role="region" aria-labelledby="legend-title">
+        <h3 hidden>{t('GLOBAL.LEGEND.TITLE')}</h3>
+
+        <HPTypography appearance="h5" font="primary" id="legend-title">{t('GLOBAL.LEGEND.TITLE')}</HPTypography>
 
         <dl>
           <div class="legend-row">
@@ -121,14 +125,16 @@ const listYear = transformToThisYearData(listOfficial, year);
         const monthName = new Intl.DateTimeFormat(i18next?.language, { month: "long" }).format(new Date(1, indexAdjusted));
 
         return (
-          <section class="section">
+          <section class="section" aria-labelledby={`month-title-${index}`}>
             <div class="timeline-point">
-              <HPTypography appearance="h4" font="primary" style="text-transform: capitalize" disableMarginBottom>{monthName || '-'}</HPTypography>
+              <h3 hidden>{monthName}</h3>
+
+              <HPTypography appearance="h4" font="primary" style="text-transform: capitalize" disableMarginBottom id={`month-title-${index}`}>{monthName || '-'}</HPTypography>
             </div>
 
             {Array.isArray(events) && events.length > 0
               ? <div class="section-grid">
-                  <div class="section-grid-column">
+                  <div class="section-grid-column" aria-hidden="true">
                     <div class="timeline-point-link">
                       <HPMonth
                       index={indexAdjusted}
@@ -144,6 +150,7 @@ const listYear = transformToThisYearData(listOfficial, year);
                       {events.map((event: GoogleEvent) => {
                         return (
                           <div class="events-item">
+                            <h4 hidden>{event.start.displayDate} - {event.displaySummary}</h4>
                             <HPTypography disableMarginBottom>{event.start.displayDate} - {event.displaySummary}</HPTypography>
                           </div>
                         );

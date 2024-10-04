@@ -9,6 +9,8 @@ changeLanguage("bg");
 const year = new Date().getFullYear() + 1;
 ---
 <Layout title={`${t('GLOBAL.PROJECT_NAME')} - ${year} ${t('PAGES.NEXT_YEAR.TITLE')}`}>
+  <h1 hidden>{year} - {t('PAGES.NEXT_YEAR.TITLE')}</h1>
+
   <Year year={year}>
     <HPTypography disableMarginBottom slot="year" element="h2" appearance="h3">{year}</HPTypography>
 

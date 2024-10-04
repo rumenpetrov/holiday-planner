@@ -174,6 +174,10 @@ const { title } = Astro.props;
     --block-calendar-pre-post-color: #aaa;
   }
 
+  *:focus-visible {
+    outline: 1px solid var(--palette-accent);
+  }
+
   ::selection {
     background-color: var(--palette-accent);
     color: var(--palette-accent-contrast);
