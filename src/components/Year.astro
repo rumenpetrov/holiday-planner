@@ -100,10 +100,8 @@ const listYear = transformToThisYearData(listOfficial, year);
 
       <button class="button" id="export-markdown" hidden>{t('GLOBAL.EXPORT_AS_MARKDOWN')}</button>
 
-      <div class="legend" role="region" aria-labelledby="legend-title">
-        <h3 hidden>{t('GLOBAL.LEGEND.TITLE')}</h3>
-
-        <HPTypography appearance="h5" font="primary" id="legend-title">{t('GLOBAL.LEGEND.TITLE')}</HPTypography>
+      <div class="legend" role="region" aria-hidden="true">
+        <HPTypography appearance="h5" font="primary">{t('GLOBAL.LEGEND.TITLE')}</HPTypography>
 
         <dl>
           <div class="legend-row">
