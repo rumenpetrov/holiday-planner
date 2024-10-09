@@ -114,7 +114,7 @@ const { data, error } = await getCalendarEvents({
 
       <HPEventList
         client:load
-        index={11}
+        index={new Date().getMonth()}
         year={currentYear}
         data={data}
       >
