@@ -87,6 +87,7 @@ const {
 
   navLinks.forEach((link) => {
     link.classList.remove('active');
+    link.setAttribute('aria-selected', 'false');
 
     const currentPath = window.location.pathname.replace('/holiday-planner', '');
 
@@ -96,6 +97,7 @@ const {
 
     if (currentPath === thisPath) {
       link.classList.add('active');
+      link.setAttribute('aria-selected', 'true');
     }
   });
 </script>
