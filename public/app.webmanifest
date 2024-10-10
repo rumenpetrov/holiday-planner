@@ -10,9 +10,10 @@
   "background_color": "#f0eddb",
   "icons": [
     {
-      "src": "favicon.svg",
+      "src": "/holiday-planner/icons/icon-vector.svg",
       "sizes": "any",
-      "type": "image/svg+xml"
+      "type": "image/svg+xml",
+      "purpose": "any"
     },
     {
       "src": "/holiday-planner/icons/maskable-icon.png",
@@ -30,14 +31,16 @@
   "screenshots": [
     {
       "src": "/holiday-planner/screenshots/home-tall-bg.png",
-      "sizes": "1442x3203",
+      "sizes": "1442x3202",
       "type": "image/png",
+      "form_factor": "narrow",
       "label": "Home page on mobile"
     },
     {
       "src": "/holiday-planner/screenshots/this-year-tall-bg.png",
       "sizes": "1442x3202",
       "type": "image/png",
+      "form_factor": "narrow",
       "label": "This year page on mobile"
     },
     {
