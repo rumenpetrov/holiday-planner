@@ -26,7 +26,7 @@ const { title } = Astro.props;
       </svg>
     </figure>
 
-    <MainMenu className="menu" />
+    <MainMenu />
 
     <div class="actions">
       <span id="color-scheme-trigger-placeholder" />
@@ -44,7 +44,7 @@ const { title } = Astro.props;
     </div>
   </header>
 
-  <main>
+  <main transition:animate="fade">
     <div class="wrapper">
       <slot />
     </div>

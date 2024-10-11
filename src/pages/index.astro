@@ -4,7 +4,6 @@ import Layout from "@layouts/Layout.astro";
 import Link from "@components/Link.astro";
 import { HPEventList } from "@components/hp-event-list";
 import { HPTypography } from "@components/hp-typography";
-import { HPTypography } from "@components/hp-typography";
 import getCalendarEvents from "@data/get-calendar-events";
 
 changeLanguage("bg");
@@ -97,11 +96,11 @@ const { data, error } = await getCalendarEvents({
           <div class="intro-content">
             <h2 hidden>{t('PAGES.HOME.INTRO.TITLE')}</h2>
 
-            <HPTypography element="h2" appearance="h2" font="primary" lineHeight="1.2">{t('PAGES.HOME.INTRO.TITLE')}</HPTypography>
+            <HPTypography element="h2" appearance="h2" font="primary" lineHeight="1.2" client:visible>{t('PAGES.HOME.INTRO.TITLE')}</HPTypography>
 
-            <HPTypography element="p" appearance="p" font="primary">{t('PAGES.HOME.INTRO.DESCRIPTION')}</HPTypography>
+            <HPTypography element="p" appearance="p" font="primary" client:visible>{t('PAGES.HOME.INTRO.DESCRIPTION')}</HPTypography>
 
-            <Link href="/this-year/" className="pad-link">{t('PAGES.HOME.INTRO.TO_THIS_YEAR')}</Link>
+            <Link href="/this-year/" class="pad-link">{t('PAGES.HOME.INTRO.TO_THIS_YEAR')}</Link>
           </div>
         </div>
       </div>
@@ -110,15 +109,16 @@ const { data, error } = await getCalendarEvents({
     <section class="section" aria-labelledby="section-this-month-title">
       <h2 hidden>{t('PAGES.HOME.SECTION_THIS_MONTH.TITLE')}</h2>
 
-      <HPTypography element="h2" appearance="h3" id="section-this-month-title">{t('PAGES.HOME.SECTION_THIS_MONTH.TITLE')}</HPTypography>
+      <HPTypography element="h2" appearance="h3" id="section-this-month-title" client:visible>{t('PAGES.HOME.SECTION_THIS_MONTH.TITLE')}</HPTypography>
 
       <HPEventList
         client:load
         index={new Date().getMonth()}
         year={currentYear}
         data={data}
+        client:visible
       >
-        <HPTypography slot="fallback" disableMarginBottom>:(</HPTypography>
+        <HPTypography slot="fallback" disableMarginBottom client:visible>:(</HPTypography>
       </HPEventList>
     </section>
   </div>
@@ -182,37 +182,39 @@ const { data, error } = await getCalendarEvents({
 <script>
   import { gsap } from 'gsap';
 
-  const decorationPinElement = document.querySelector('#decoration-pin');
-  const decorationTreeElements = document.querySelectorAll('.decoration-tree');
+  document.addEventListener('astro:page-load', () => {
+    const decorationPinElement = document.querySelector('#decoration-pin');
+    const decorationTreeElements = document.querySelectorAll('.decoration-tree');
 
-  const timeline = gsap.timeline();
+    const timeline = gsap.timeline();
 
-  timeline.set([decorationPinElement, decorationTreeElements], {
-    opacity: 1,
-    transformPerspective: 300,
-    perspective: 300,
-    backfaceVisibility: 'hidden',
-    transformStyle: 'preserve-3d',
-    transformOrigin: '50% 100%',
-  });
+    timeline.set([decorationPinElement, decorationTreeElements], {
+      opacity: 1,
+      transformPerspective: 300,
+      perspective: 300,
+      backfaceVisibility: 'hidden',
+      transformStyle: 'preserve-3d',
+      transformOrigin: '50% 100%',
+    });
 
-  timeline.from(decorationPinElement, {
-    y: -50,
-    delay: 0.3,
-    duration: 0.5,
-    ease: 'bounce.out',
-  });
+    timeline.from(decorationPinElement, {
+      y: -50,
+      delay: 0.3,
+      duration: 0.5,
+      ease: 'bounce.out',
+    });
 
-  timeline.to([decorationPinElement, decorationTreeElements], {
-    delay: 2,
-    rotation: -6,
-    duration: 1,
-    stagger: 0.2,
-  });
+    timeline.to([decorationPinElement, decorationTreeElements], {
+      delay: 2,
+      rotation: -6,
+      duration: 1,
+      stagger: 0.2,
+    });
 
-  timeline.to([decorationPinElement, decorationTreeElements], {
-    rotation: 0,
-    duration: 1,
-    stagger: 0.2,
+    timeline.to([decorationPinElement, decorationTreeElements], {
+      rotation: 0,
+      duration: 1,
+      stagger: 0.2,
+    });
   });
 </script>

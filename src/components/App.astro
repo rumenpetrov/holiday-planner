@@ -1,6 +1,8 @@
 ---
 import i18next, { t } from 'i18next';
 import { HeadHrefLangs } from 'astro-i18next/components';
+import { ViewTransitions } from "astro:transitions";
+
 export interface Props {
   title: string;
 }
@@ -8,8 +10,9 @@ export interface Props {
 const { title } = Astro.props;
 ---
 <!DOCTYPE html>
-<html lang={i18next.language}>
+<html lang={i18next.language} transition:animate="none">
   <head>
+    <ViewTransitions />
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
     <link rel="manifest" href={`${import.meta.env.BASE_URL}app.webmanifest`} />
@@ -32,47 +35,49 @@ const { title } = Astro.props;
 </html>
 
 <script is:inline>
-  const colorSchemeTriggerElement = document.querySelector('#color-scheme-trigger');
-  const rootElement = document.documentElement;
-  const colorSchemeDefaultValue = 'light';
+  document.addEventListener('astro:page-load', () => {
+    const colorSchemeTriggerElement = document.querySelector('#color-scheme-trigger');
+    const rootElement = document.documentElement;
+    const colorSchemeDefaultValue = 'light';
 
-  const getColorScheme = () => {
-    const storedValue = localStorage.getItem('colorScheme');
-    const isLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
-    const isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const getColorScheme = () => {
+      const storedValue = localStorage.getItem('colorScheme');
+      const isLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+      const isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-    if (storedValue) {
-      return storedValue;
-    } else if (isLight) {
-      return 'light';
-    } else if (isDark) {
-      return 'dark';
+      if (storedValue) {
+        return storedValue;
+      } else if (isLight) {
+        return 'light';
+      } else if (isDark) {
+        return 'dark';
+      }
+
+      return colorSchemeDefaultValue;
     }
 
-    return colorSchemeDefaultValue;
-  }
+    const setColorScheme = (colorScheme = colorSchemeDefaultValue) => {
+      rootElement.dataset.colorScheme = colorScheme;
 
-  const setColorScheme = (colorScheme = colorSchemeDefaultValue) => {
-    rootElement.dataset.colorScheme = colorScheme;
-
-    localStorage.setItem('colorScheme', colorScheme);
-  }
-
-  setColorScheme(getColorScheme());
-
-
-  colorSchemeTriggerElement.addEventListener('click', () => {
-    const colorScheme = getColorScheme();
-
-    if (colorScheme === 'light') {
-      setColorScheme('dark');
-    } else if (colorScheme === 'dark') {
-      setColorScheme('light');
+      localStorage.setItem('colorScheme', colorScheme);
     }
-  });
 
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
-    setColorScheme(event.matches ? 'dark' : 'light');
+    setColorScheme(getColorScheme());
+
+
+    colorSchemeTriggerElement.addEventListener('click', () => {
+      const colorScheme = getColorScheme();
+
+      if (colorScheme === 'light') {
+        setColorScheme('dark');
+      } else if (colorScheme === 'dark') {
+        setColorScheme('light');
+      }
+    });
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+      setColorScheme(event.matches ? 'dark' : 'light');
+    });
   });
 </script>
 
@@ -184,11 +189,11 @@ const { title } = Astro.props;
     color: var(--palette-accent-contrast);
   }
 
-  @supports (view-transition-name: none) {
+  /* @supports (view-transition-name: none) {
     @view-transition {
       navigation: auto;
     }
-  }
+  } */
 </style>
 
 <style>

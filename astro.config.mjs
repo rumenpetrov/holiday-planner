@@ -1,20 +1,16 @@
-import { defineConfig } from 'astro/config';
-import astroI18next from 'astro-i18next';
-import lit from '@astrojs/lit';
-import prefetch from '@astrojs/prefetch';
+import { defineConfig } from "astro/config";
+import astroI18next from "astro-i18next";
+import lit from "@astrojs/lit";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://rumenpetrov.github.io',
-  output: 'static',
-  trailingSlash: 'always',
+  site: "https://rumenpetrov.github.io",
+  output: "static",
+  trailingSlash: "always",
   build: {
-    format: 'directory',
+    format: "directory",
   },
-  base: '/holiday-planner',
-  integrations: [
-    astroI18next(),
-    lit(),
-    prefetch(),
-  ],
+  base: "/holiday-planner",
+  prefetch: true,
+  integrations: [astroI18next(), lit()],
 });

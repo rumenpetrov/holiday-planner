@@ -6,26 +6,27 @@ export interface Props {
   element?: string;
   appearance?: 'h1' | 'h2' | 'h3' | 'h4' | 'p';
   font?: 'primary' | 'secondary';
-  className?: string,
+  class?: string,
 };
 
 const {
   element = 'p',
   appearance = 'p',
   font,
-  className,
+  class: className,
+  ...rest
 } = Astro.props;
 ---
-<nav class:list={[className]} aria-label={t('GLOBAL.PRIMARY_NAVIGATION_LABEL')}>
+<nav {...rest} class:list={[className]} aria-label={t('GLOBAL.PRIMARY_NAVIGATION_LABEL')}>
   <ul>
     <li>
-      <Link href="/" className="menu-link">{t('PAGES.HOME.TITLE')}</Link>
+      <Link href="/" class="menu-link">{t('PAGES.HOME.TITLE')}</Link>
     </li>
     <li>
-      <Link href="/this-year/" className="menu-link">{t('PAGES.THIS_YEAR.TITLE')}</Link>
+      <Link href="/this-year/" class="menu-link">{t('PAGES.THIS_YEAR.TITLE')}</Link>
     </li>
     <li>
-      <Link href="/next-year/" className="menu-link">{t('PAGES.NEXT_YEAR.TITLE')}</Link>
+      <Link href="/next-year/" class="menu-link">{t('PAGES.NEXT_YEAR.TITLE')}</Link>
     </li>
   </ul>
 </nav>
@@ -61,7 +62,7 @@ const {
     text-wrap: nowrap;
   }
 
-  nav .active.menu-link,
+  nav li [aria-current="page"],
   nav li:hover .menu-link {
     color: var(--palette-primary);
     border-color: var(--palette-primary);
@@ -83,21 +84,23 @@ const {
 </style>
 
 <script>
-  const navLinks = document.querySelectorAll('nav a');
+  document.addEventListener('astro:page-load', () => {
+    const navLinks = document.querySelectorAll('nav a');
 
-  navLinks.forEach((link) => {
-    link.classList.remove('active');
-    link.removeAttribute('aria-current');
+    navLinks.forEach((link) => {
+      // link.classList.remove('active');
+      link.removeAttribute('aria-current');
 
-    const currentPath = window.location.pathname.replace('/holiday-planner', '');
+      const currentPath = window.location.pathname.replace('/holiday-planner', '');
 
-    // `link.href` returns a whole url, such as: 'https://somedomain.com/posts/' and we only need the last part
-    const hrefArray = link.href.split('/holiday-planner');
-    const thisPath = hrefArray[hrefArray.length - 1];
+      // `link.href` returns a whole url, such as: 'https://somedomain.com/posts/' and we only need the last part
+      const hrefArray = link.href.split('/holiday-planner');
+      const thisPath = hrefArray[hrefArray.length - 1];
 
-    if (currentPath === thisPath) {
-      link.classList.add('active');
-      link.setAttribute('aria-current', 'page');
-    }
+      if (currentPath === thisPath) {
+        // link.classList.add('active');
+        link.setAttribute('aria-current', 'page');
+      }
+    });
   });
 </script>
