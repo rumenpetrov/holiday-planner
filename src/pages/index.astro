@@ -24,7 +24,7 @@ const { data, error } = await getCalendarEvents({
     <section class="section" aria-label={t("PAGES.HOME.INTRO.LABEL")}>
       <div class="pad">
         <div class="intro">
-          <LocationSceneDecoration />
+          <LocationSceneDecoration class="intro-decoration" />
 
           <div class="intro-content">
             <h2 hidden>{t("PAGES.HOME.INTRO.TITLE")}</h2>
@@ -89,14 +89,6 @@ const { data, error } = await getCalendarEvents({
   .intro-decoration {
     display: flex;
     margin: 0;
-  }
-
-  .intro-decoration svg {
-    vertical-align: top;
-    max-width: 300px;
-    width: 100%;
-    fill: var(--palette-accent);
-    margin: auto;
   }
 
   .intro-content {

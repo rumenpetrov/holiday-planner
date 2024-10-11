@@ -1,12 +1,13 @@
 ---
-
+const { class: className, ...rest } = Astro.props;
 ---
 
 <svg
+  {...rest}
+  class:list={["decoration", className]}
   xmlns="http://www.w3.org/2000/svg"
   data-name="Layer 1"
   viewBox="0 0 751.155 558.147"
-  class="decoration"
 >
   <path
     fill="#f0f0f0"
@@ -205,6 +206,16 @@
     fill="#f2f2f2"
     style="isolation:isolate"></circle>
 </svg>
+
+<style>
+  svg {
+    vertical-align: top;
+    width: 100%;
+    fill: var(--palette-primary);
+    transform: translateX(30px);
+    opacity: 0;
+  }
+</style>
 
 <script>
   import { gsap } from "gsap";

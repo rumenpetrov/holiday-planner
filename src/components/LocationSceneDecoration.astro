@@ -1,8 +1,8 @@
 ---
-
+const { class: className, ...rest } = Astro.props;
 ---
 
-<figure class="intro-decoration" aria-hidden="true">
+<figure {...rest} class:list={["root", className]} aria-hidden="true">
   <svg
     xmlns="http://www.w3.org/2000/svg"
     data-name="Layer 1"
@@ -131,6 +131,14 @@
 </figure>
 
 <style>
+  .root svg {
+    vertical-align: top;
+    max-width: 300px;
+    width: 100%;
+    fill: var(--palette-accent);
+    margin: auto;
+  }
+
   #decoration-pin {
     opacity: 0;
   }
