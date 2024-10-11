@@ -374,7 +374,7 @@ const listYear = transformToThisYearData(listOfficial, year);
 <script>
   import { gsap } from 'gsap';
 
-  document.addEventListener('astro:page-load', () => {
+  // document.addEventListener('astro:page-load', () => {
     const decorationElements = document.querySelectorAll('.decoration');
     const decorationDotElements = document.querySelectorAll('.decoration-dot');
 
@@ -394,11 +394,11 @@ const listYear = transformToThisYearData(listOfficial, year);
       duration: 1,
       stagger: 0.8,
     });
-  });
+  // });
 </script>
 
 <script define:vars={{ listYear, year }}>
-  document.addEventListener('astro:page-load', () => {
+  // document.addEventListener('astro:page-load', () => {
     const exportAsMarkdownElement = document.querySelector('#export-markdown');
     const requiredFeaturesAvailable = typeof window === 'object'
       && 'showSaveFilePicker' in window
@@ -500,5 +500,5 @@ const listYear = transformToThisYearData(listOfficial, year);
         saveFile();
       }
     });
-  });
+  // });
 </script>

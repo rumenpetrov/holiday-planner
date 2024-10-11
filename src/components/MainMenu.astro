@@ -17,7 +17,7 @@ const {
   ...rest
 } = Astro.props;
 ---
-<nav {...rest} class:list={[className]} aria-label={t('GLOBAL.PRIMARY_NAVIGATION_LABEL')} transition:animate="none">
+<nav {...rest} class:list={[className]} aria-label={t('GLOBAL.PRIMARY_NAVIGATION_LABEL')}>
   <ul>
     <li>
       <Link href="/" class="menu-link">{t('PAGES.HOME.TITLE')}</Link>
@@ -84,7 +84,7 @@ const {
 </style>
 
 <script>
-  document.addEventListener('astro:page-load', () => {
+  // document.addEventListener('astro:page-load', () => {
     const navLinks = document.querySelectorAll('nav a');
 
     navLinks.forEach((link) => {
@@ -102,5 +102,5 @@ const {
         link.setAttribute('aria-current', 'page');
       }
     });
-  });
+  // });
 </script>

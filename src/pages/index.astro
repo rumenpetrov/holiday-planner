@@ -182,7 +182,7 @@ const { data, error } = await getCalendarEvents({
 <script>
   import { gsap } from 'gsap';
 
-  document.addEventListener('astro:page-load', () => {
+  // document.addEventListener('astro:page-load', () => {
     const decorationPinElement = document.querySelector('#decoration-pin');
     const decorationTreeElements = document.querySelectorAll('.decoration-tree');
 
@@ -216,5 +216,5 @@ const { data, error } = await getCalendarEvents({
       duration: 1,
       stagger: 0.2,
     });
-  });
+  // });
 </script>
