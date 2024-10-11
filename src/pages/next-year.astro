@@ -8,12 +8,27 @@ changeLanguage("bg");
 
 const year = new Date().getFullYear() + 1;
 ---
-<Layout title={`${t('GLOBAL.PROJECT_NAME')} - ${year} ${t('PAGES.NEXT_YEAR.TITLE')}`}>
-  <h1 hidden>{year} - {t('PAGES.NEXT_YEAR.TITLE')}</h1>
+
+<Layout
+  title={`${t("GLOBAL.PROJECT_NAME")} - ${year} ${t("PAGES.NEXT_YEAR.TITLE")}`}
+>
+  <h1 hidden>{year} - {t("PAGES.NEXT_YEAR.TITLE")}</h1>
 
   <Year year={year}>
-    <HPTypography client:load disableMarginBottom slot="year" element="h2" appearance="h3">{year}</HPTypography>
+    <HPTypography
+      client:load
+      disableMarginBottom
+      slot="year"
+      element="h2"
+      appearance="h3">{year}</HPTypography
+    >
 
-    <HPTypography client:load disableMarginBottom slot="title" element="h2" appearance="h1">{t('PAGES.NEXT_YEAR.TITLE')}</HPTypography>
+    <HPTypography
+      client:load
+      disableMarginBottom
+      slot="title"
+      element="h2"
+      appearance="h1">{t("PAGES.NEXT_YEAR.TITLE")}</HPTypography
+    >
   </Year>
 </Layout>

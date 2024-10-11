@@ -1,8 +1,8 @@
-import { LitElement, html, css, nothing } from 'lit';
-import { classMap } from 'lit/directives/class-map.js';
-import { styleMap } from 'lit/directives/style-map.js';
+import { LitElement, html, css, nothing } from "lit";
+import { classMap } from "lit/directives/class-map.js";
+import { styleMap } from "lit/directives/style-map.js";
 
-const tagName = 'hp-typography';
+const tagName = "hp-typography";
 
 export class HPTypography extends LitElement {
   static styles = css`
@@ -71,57 +71,59 @@ export class HPTypography extends LitElement {
       disableMarginBottom: { type: Boolean },
       styles: { type: Object },
     };
-  };
+  }
 
   constructor() {
     super();
 
-    this.element = 'p';
-    this.appearance = 'p';
+    this.element = "p";
+    this.appearance = "p";
     this.font;
     this.lineHeight;
     this.disableMarginBottom = false;
 
-    this.headlineElementList = ['h1', 'h2', 'h3', 'h4', 'h5'];
+    this.headlineElementList = ["h1", "h2", "h3", "h4", "h5"];
 
     this.styles = {};
-  };
+  }
 
   render() {
     const classRoot = classMap({
       [`${this.appearance}`]: Boolean(this.appearance),
       [`font-${this.font}`]: Boolean(this.font),
-      'headline': this.headlineElementList.includes(this.appearance),
-      'margin-bottom': !this.disableMarginBottom,
+      headline: this.headlineElementList.includes(this.appearance),
+      "margin-bottom": !this.disableMarginBottom,
     });
     const styleRoot = styleMap({ ...this.styles, lineHeight: this.lineHeight });
 
-    if (this.element === 'h1') {
+    if (this.element === "h1") {
       return html`<h1 class=${classRoot} style=${styleRoot}><slot></slot></h1>`;
     }
 
-    if (this.element === 'h2') {
+    if (this.element === "h2") {
       return html`<h2 class=${classRoot} style=${styleRoot}><slot></slot></h2>`;
     }
 
-    if (this.element === 'h3') {
+    if (this.element === "h3") {
       return html`<h3 class=${classRoot} style=${styleRoot}><slot></slot></h3>`;
     }
 
-    if (this.element === 'h4') {
+    if (this.element === "h4") {
       return html`<h4 class=${classRoot} style=${styleRoot}><slot></slot></h4>`;
     }
 
-    if (this.element === 'h5') {
+    if (this.element === "h5") {
       return html`<h5 class=${classRoot} style=${styleRoot}><slot></slot></h5>`;
     }
 
-    if (this.element === 'small') {
-      return html`<small class=${classRoot} style=${styleRoot}><slot></slot></small>`;
+    if (this.element === "small") {
+      return html`<small class=${classRoot} style=${styleRoot}
+        ><slot></slot
+      ></small>`;
     }
 
     return html`<p class=${classRoot} style=${styleRoot}><slot></slot></p>`;
-  };
+  }
 }
 
 customElements.define(tagName, HPTypography);

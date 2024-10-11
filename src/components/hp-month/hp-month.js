@@ -1,7 +1,7 @@
-import { LitElement, html, css, nothing } from 'lit';
-import { composeMonthData, getWeekDays } from './utils';
+import { LitElement, html, css, nothing } from "lit";
+import { composeMonthData, getWeekDays } from "./utils";
 
-const tagName = 'hp-month';
+const tagName = "hp-month";
 
 export class HPMonth extends LitElement {
   static styles = css`
@@ -49,8 +49,6 @@ export class HPMonth extends LitElement {
       font-size: 14px;
     }
 
-    table th {}
-
     table td:nth-last-child(2),
     table td:last-child {
       background: var(--block-calendar-weekend-background, #fff);
@@ -81,7 +79,7 @@ export class HPMonth extends LitElement {
       holidays: { type: Array },
       locale: { type: String },
     };
-  };
+  }
 
   constructor() {
     super();
@@ -90,57 +88,63 @@ export class HPMonth extends LitElement {
     this.year = null;
     this.name;
     this.holidays = [];
-    this.locale = 'bg';
+    this.locale = "bg";
 
     this.monthData = [];
     this.weekDays = [];
-  };
+  }
 
   connectedCallback() {
     super.connectedCallback();
-  };
+  }
 
   disconnectedCallback() {
     super.disconnectedCallback();
-  };
+  }
 
   willUpdate(changedProperties) {
-    if (changedProperties.has('index') || changedProperties.has('year') || changedProperties.has('holidays')) {
+    if (
+      changedProperties.has("index") ||
+      changedProperties.has("year") ||
+      changedProperties.has("holidays")
+    ) {
       this.monthData = composeMonthData(this.index, this.year, this.holidays);
     }
 
-    if (changedProperties.has('locale')) {
+    if (changedProperties.has("locale")) {
       this.weekDays = getWeekDays(this.locale);
     }
-  };
+  }
 
   renderCaption() {
-    if (typeof this.name !== 'string' || this.name.length < 1) {
+    if (typeof this.name !== "string" || this.name.length < 1) {
       return nothing;
     }
 
-    return html`<caption>${this.name}</caption>`;
-  };
+    return html`<caption>
+      ${this.name}
+    </caption>`;
+  }
 
   renderPreMonth() {
     return html`<td class="pre-month">x</td>`;
-  };
+  }
 
   renderPostMonth() {
     return html`<td class="post-month">x</td>`;
-  };
+  }
 
   renderSuggestion(day) {
     return html`<td class="suggestion">${day.label}</td>`;
-  };
+  }
 
   renderHoliday(day) {
     return html`<td class="holiday">${day.label}</td>`;
-  };
+  }
 
   renderDay(day) {
     return html`<td>${day.label}</td>`;
-  };
+  }
 
   renderWeekDayLabel(index) {
     if (!Array.isArray(this.weekDays) || this.weekDays.length < 1) {
@@ -148,7 +152,7 @@ export class HPMonth extends LitElement {
     }
 
     return html`<td>${this.weekDays[index]}</td>`;
-  };
+  }
 
   render() {
     if (!Array.isArray(this.monthData) || this.monthData.length < 1) {
@@ -168,11 +172,11 @@ export class HPMonth extends LitElement {
             return html`
               <tr>
                 ${days.map((day) => {
-                  if (day.label === 'preMonth') {
+                  if (day.label === "preMonth") {
                     return this.renderPreMonth();
                   }
 
-                  if (day.label === 'postMonth') {
+                  if (day.label === "postMonth") {
                     return this.renderPostMonth();
                   }
 
@@ -192,7 +196,7 @@ export class HPMonth extends LitElement {
         </tbody>
       </table>
     `;
-  };
+  }
 }
 
 customElements.define(tagName, HPMonth);

@@ -1,20 +1,22 @@
 ---
-import { localizePath } from 'astro-i18next';
+import { localizePath } from "astro-i18next";
 
 export interface Props {
   href: string;
-  accent?: boolean,
-  class?: string,
-};
+  accent?: boolean;
+  class?: string;
+}
 
-const {
-  href,
-  accent,
-  class: className,
-  ...rest
-} = Astro.props;
+const { href, accent, class: className, ...rest } = Astro.props;
 ---
-<a {...rest} href={localizePath(href)} rel="prefetch" class:list={['root', accent && 'accent', className]} data-astro-prefetch="viewport">
+
+<a
+  {...rest}
+  href={localizePath(href)}
+  rel="prefetch"
+  class:list={["root", accent && "accent", className]}
+  data-astro-prefetch="viewport"
+>
   <slot />
 </a>
 

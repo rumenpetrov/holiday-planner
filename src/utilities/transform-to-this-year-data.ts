@@ -1,7 +1,10 @@
-import type { GoogleEvent } from '../data/get-calendar-events';
+import type { GoogleEvent } from "../data/get-calendar-events";
 
-export const transformToThisYearData = (list: GoogleEvent[] = [], year?: number) => {
-  if (!Array.isArray(list) || list.length < 1 || typeof year !== 'number') {
+export const transformToThisYearData = (
+  list: GoogleEvent[] = [],
+  year?: number,
+) => {
+  if (!Array.isArray(list) || list.length < 1 || typeof year !== "number") {
     return [];
   }
 

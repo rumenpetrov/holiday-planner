@@ -3,11 +3,12 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro-i18next generate && astro dev",
-    "start": "astro-i18next generate && astro dev",
-    "build": "astro-i18next generate && astro build",
+    "dev": "astro-i18next generate && npm run format:fix && astro dev",
+    "start": "npm run dev",
+    "build": "astro-i18next generate && npm run format:fix && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "format:fix": "prettier . --write"
   },
   "dependencies": {
     "@astrojs/lit": "^4.3.0",
@@ -15,5 +16,9 @@
     "astro-i18next": "^1.0.0-beta.21",
     "gsap": "^3.12.5",
     "lit": "^3.2.1"
+  },
+  "devDependencies": {
+    "prettier": "^3.3.3",
+    "prettier-plugin-astro": "^0.14.1"
   }
 }
