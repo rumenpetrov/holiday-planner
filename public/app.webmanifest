@@ -8,6 +8,11 @@
   "display": "standalone",
   "theme_color": "#fb5e09",
   "background_color": "#f0eddb",
+  "categories": [
+    "productivity",
+    "events",
+    "lifestyle"
+  ],
   "icons": [
     {
       "src": "/holiday-planner/icons/icon-vector.svg",
