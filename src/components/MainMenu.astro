@@ -17,7 +17,7 @@ const {
   ...rest
 } = Astro.props;
 ---
-<nav {...rest} class:list={[className]} aria-label={t('GLOBAL.PRIMARY_NAVIGATION_LABEL')}>
+<nav {...rest} class:list={[className]} aria-label={t('GLOBAL.PRIMARY_NAVIGATION_LABEL')} transition:animate="none">
   <ul>
     <li>
       <Link href="/" class="menu-link">{t('PAGES.HOME.TITLE')}</Link>
