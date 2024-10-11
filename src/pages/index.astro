@@ -96,9 +96,9 @@ const { data, error } = await getCalendarEvents({
           <div class="intro-content">
             <h2 hidden>{t('PAGES.HOME.INTRO.TITLE')}</h2>
 
-            <HPTypography element="h2" appearance="h2" font="primary" lineHeight="1.2" client:visible>{t('PAGES.HOME.INTRO.TITLE')}</HPTypography>
+            <HPTypography element="h2" appearance="h2" font="primary" lineHeight="1.2" client:load>{t('PAGES.HOME.INTRO.TITLE')}</HPTypography>
 
-            <HPTypography element="p" appearance="p" font="primary" client:visible>{t('PAGES.HOME.INTRO.DESCRIPTION')}</HPTypography>
+            <HPTypography element="p" appearance="p" font="primary" client:load>{t('PAGES.HOME.INTRO.DESCRIPTION')}</HPTypography>
 
             <Link href="/this-year/" class="pad-link">{t('PAGES.HOME.INTRO.TO_THIS_YEAR')}</Link>
           </div>
