@@ -34,7 +34,9 @@ export const getCalendarEvents = async (
   const to = toNextJanuary
     ? `${toYear}-02-01T00:00:00Z`
     : `${toYear}-12-31T00:00:00Z`;
-  const URL = `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(calendarId)}/events?timeMin=${from}&timeMax=${to}&maxResults=500&key=${accessKey}`;
+  const URL = `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(
+    calendarId,
+  )}/events?timeMin=${from}&timeMax=${to}&maxResults=500&key=${accessKey}`;
 
   const response = await fetch(URL);
 

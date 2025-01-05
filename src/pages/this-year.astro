@@ -20,15 +20,19 @@ const year = new Date().getFullYear();
       disableMarginBottom
       slot="year"
       element="h2"
-      appearance="h3">{year}</HPTypography
+      appearance="h3"
     >
+      {year}
+    </HPTypography>
 
     <HPTypography
       client:load
       disableMarginBottom
       slot="title"
       element="h2"
-      appearance="h1">{t("PAGES.THIS_YEAR.TITLE")}</HPTypography
+      appearance="h1"
     >
+      {t("PAGES.THIS_YEAR.TITLE")}
+    </HPTypography>
   </Year>
 </Layout>

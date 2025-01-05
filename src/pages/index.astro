@@ -4,8 +4,8 @@ import Layout from "@layouts/Layout.astro";
 import Link from "@components/Link.astro";
 import { HPEventList } from "@components/hp-event-list";
 import { HPTypography } from "@components/hp-typography";
-import getCalendarEvents from "@data/get-calendar-events";
 import LocationSceneDecoration from "@components/LocationSceneDecoration.astro";
+import getCalendarEvents from "@data/get-calendar-events";
 
 changeLanguage("bg");
 
@@ -34,16 +34,18 @@ const { data, error } = await getCalendarEvents({
               appearance="h2"
               font="primary"
               lineHeight="1.2"
-              client:load>{t("PAGES.HOME.INTRO.TITLE")}</HPTypography
+              client:load
             >
+              {t("PAGES.HOME.INTRO.TITLE")}
+            </HPTypography>
 
-            <HPTypography element="p" appearance="p" font="primary" client:load
-              >{t("PAGES.HOME.INTRO.DESCRIPTION")}</HPTypography
-            >
+            <HPTypography element="p" appearance="p" font="primary" client:load>
+              {t("PAGES.HOME.INTRO.DESCRIPTION")}
+            </HPTypography>
 
-            <Link href="/this-year/" class="pad-link"
-              >{t("PAGES.HOME.INTRO.TO_THIS_YEAR")}</Link
-            >
+            <Link href="/this-year/" class="pad-link">
+              {t("PAGES.HOME.INTRO.TO_THIS_YEAR")}
+            </Link>
           </div>
         </div>
       </div>
@@ -56,8 +58,10 @@ const { data, error } = await getCalendarEvents({
         element="h2"
         appearance="h3"
         id="section-this-month-title"
-        client:visible>{t("PAGES.HOME.SECTION_THIS_MONTH.TITLE")}</HPTypography
+        client:visible
       >
+        {t("PAGES.HOME.SECTION_THIS_MONTH.TITLE")}
+      </HPTypography>
 
       <HPEventList
         client:load
@@ -66,9 +70,9 @@ const { data, error } = await getCalendarEvents({
         data={data}
         client:visible
       >
-        <HPTypography slot="fallback" disableMarginBottom client:visible
-          >:(</HPTypography
-        >
+        <HPTypography slot="fallback" disableMarginBottom client:visible>
+          :(
+        </HPTypography>
       </HPEventList>
     </section>
   </div>
