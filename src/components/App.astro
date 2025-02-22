@@ -584,66 +584,68 @@ const { title } = Astro.props;
       }
     </style>
 
+    <script is:inline>
+      // document.addEventListener('astro:page-load', () => {
+      const colorSchemeTriggerElement = document.querySelector(
+        "#color-scheme-trigger",
+      );
+      const rootElement = document.documentElement;
+      const colorSchemeDefaultValue = "light";
+
+      const getColorScheme = () => {
+        const storedValue = localStorage.getItem("colorScheme");
+        const isLight =
+          window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: light)").matches;
+        const isDark =
+          window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+        if (storedValue) {
+          return storedValue;
+        } else if (isLight) {
+          return "light";
+        } else if (isDark) {
+          return "dark";
+        }
+
+        return colorSchemeDefaultValue;
+      };
+
+      const setColorScheme = (colorScheme = colorSchemeDefaultValue) => {
+        rootElement.dataset.colorScheme = colorScheme;
+
+        localStorage.setItem("colorScheme", colorScheme);
+      };
+
+      setColorScheme(getColorScheme());
+
+      document.addEventListener("DOMContentLoaded", () => {
+        colorSchemeTriggerElement.addEventListener("click", () => {
+          const colorScheme = getColorScheme();
+
+          if (colorScheme === "light") {
+            setColorScheme("dark");
+          } else if (colorScheme === "dark") {
+            setColorScheme("light");
+          }
+        });
+
+        window
+          .matchMedia("(prefers-color-scheme: dark)")
+          .addEventListener("change", (event) => {
+            setColorScheme(event.matches ? "dark" : "light");
+          });
+      });
+      // });
+    </script>
+
     <HeadHrefLangs />
   </head>
   <body id="body">
     <slot />
   </body>
 </html>
-
-<script is:inline>
-  // document.addEventListener('astro:page-load', () => {
-  const colorSchemeTriggerElement = document.querySelector(
-    "#color-scheme-trigger",
-  );
-  const rootElement = document.documentElement;
-  const colorSchemeDefaultValue = "light";
-
-  const getColorScheme = () => {
-    const storedValue = localStorage.getItem("colorScheme");
-    const isLight =
-      window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: light)").matches;
-    const isDark =
-      window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches;
-
-    if (storedValue) {
-      return storedValue;
-    } else if (isLight) {
-      return "light";
-    } else if (isDark) {
-      return "dark";
-    }
-
-    return colorSchemeDefaultValue;
-  };
-
-  const setColorScheme = (colorScheme = colorSchemeDefaultValue) => {
-    rootElement.dataset.colorScheme = colorScheme;
-
-    localStorage.setItem("colorScheme", colorScheme);
-  };
-
-  setColorScheme(getColorScheme());
-
-  colorSchemeTriggerElement.addEventListener("click", () => {
-    const colorScheme = getColorScheme();
-
-    if (colorScheme === "light") {
-      setColorScheme("dark");
-    } else if (colorScheme === "dark") {
-      setColorScheme("light");
-    }
-  });
-
-  window
-    .matchMedia("(prefers-color-scheme: dark)")
-    .addEventListener("change", (event) => {
-      setColorScheme(event.matches ? "dark" : "light");
-    });
-  // });
-</script>
 
 <style is:global>
   * {

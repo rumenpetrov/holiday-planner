@@ -7,6 +7,6 @@ podman run \
   --privileged \
   --name "holiday-planner-node" \
   -v "$(pwd)"/:/var/www/app:Z \
-  -p 3000:3000 \
+  -p 4321:4321 \
   holiday-planner-node:latest
 
