@@ -5,6 +5,11 @@ const tagName = "hp-month";
 
 export class HPMonth extends LitElement {
   static styles = css`
+    ::selection {
+      background-color: var(--selection-background-color);
+      color: var(--selection-color);
+    }
+
     :host {
       font-family: sans-serif;
       background: var(--block-calendar-background, #fff);
