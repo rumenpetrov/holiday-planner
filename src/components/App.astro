@@ -759,6 +759,10 @@ const { title } = Astro.props;
     color: var(--palette-accent-contrast);
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   @supports (view-transition-name: none) {
     @view-transition {
       navigation: auto;

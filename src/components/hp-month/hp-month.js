@@ -71,7 +71,7 @@ export class HPMonth extends LitElement {
       color: var(--block-calendar-holiday-color, #fff);
     }
 
-    table td[data-today="true"] {
+    table td#today {
       background: var(--block-calendar-today-background, red);
       color: var(--block-calendar-today-color, #fff);
     }
@@ -146,19 +146,35 @@ export class HPMonth extends LitElement {
   }
 
   renderSuggestion(day) {
-    return html`<td class="suggestion" data-today="${ifDefined(day.today)}">
+    const today = day.today ? "today" : undefined;
+
+    return html`<td
+      class="suggestion"
+      id="${ifDefined(today)}"
+      part="${ifDefined(today)}"
+    >
       ${day.label}
     </td>`;
   }
 
   renderHoliday(day) {
-    return html`<td class="holiday" data-today="${ifDefined(day.today)}">
+    const today = day.today ? "today" : undefined;
+
+    return html`<td
+      class="holiday"
+      id="${ifDefined(today)}"
+      part="${ifDefined(today)}"
+    >
       ${day.label}
     </td>`;
   }
 
   renderDay(day) {
-    return html`<td data-today="${ifDefined(day.today)}">${day.label}</td>`;
+    const today = day.today ? "today" : undefined;
+
+    return html`<td id="${ifDefined(today)}" part="${ifDefined(today)}">
+      ${day.label}
+    </td>`;
   }
 
   renderWeekDayLabel(index) {
