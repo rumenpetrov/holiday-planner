@@ -26,11 +26,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: This is stupid
-        run: |
-          echo ${{secrets.ACCESS_KEY}} | sed 's/./& /g'
-          echo ${{secrets.CALENDAR_ID_BG}}
-          echo ${{secrets.CALENDAR_ID_EN}}
       - name: Checkout your repository using git
         uses: actions/checkout@v4
       - name: Install, build, and upload your site
