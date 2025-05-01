@@ -34,6 +34,7 @@ export interface Day {
   label: string;
   holiday?: boolean;
   suggestion?: boolean;
+  today?: boolean;
 }
 
 export type WeekData = Day[];
@@ -49,6 +50,10 @@ export const composeMonthData = (
   const firstDayNumber = getFirstDayOfMonthNumber(monthIndex, year);
   const totalDays = getTotalDaysInMonth(monthIndex, year);
   const data: MothData = [[], [], [], [], [], []];
+  const todayDate = new Date();
+  const todayYear = todayDate.getFullYear();
+  const todayMonthIndex = todayDate.getMonth();
+  const todayDay = todayDate.getDate();
 
   // Filler days from the previous month
   for (let i = 1; i < firstDayNumber; i++) {
@@ -66,6 +71,10 @@ export const composeMonthData = (
           label: dayOfMonth.toString(),
           holiday: holidays.includes(dayOfMonth),
           suggestion: false,
+          today:
+            todayYear === year &&
+            todayMonthIndex === monthIndex &&
+            todayDay === dayOfMonth,
         });
         break;
       }

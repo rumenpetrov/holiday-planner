@@ -1,4 +1,5 @@
 import { LitElement, html, css, nothing } from "lit";
+import { ifDefined } from "lit/directives/if-defined.js";
 import { composeMonthData, getWeekDays } from "./utils";
 
 const tagName = "hp-month";
@@ -68,6 +69,11 @@ export class HPMonth extends LitElement {
     table td.holiday {
       background: var(--block-calendar-holiday-background, #222);
       color: var(--block-calendar-holiday-color, #fff);
+    }
+
+    table td[data-today="true"] {
+      background: var(--block-calendar-today-background, red);
+      color: var(--block-calendar-today-color, #fff);
     }
 
     table td.pre-month,
@@ -140,15 +146,19 @@ export class HPMonth extends LitElement {
   }
 
   renderSuggestion(day) {
-    return html`<td class="suggestion">${day.label}</td>`;
+    return html`<td class="suggestion" data-today="${ifDefined(day.today)}">
+      ${day.label}
+    </td>`;
   }
 
   renderHoliday(day) {
-    return html`<td class="holiday">${day.label}</td>`;
+    return html`<td class="holiday" data-today="${ifDefined(day.today)}">
+      ${day.label}
+    </td>`;
   }
 
   renderDay(day) {
-    return html`<td>${day.label}</td>`;
+    return html`<td data-today="${ifDefined(day.today)}">${day.label}</td>`;
   }
 
   renderWeekDayLabel(index) {
