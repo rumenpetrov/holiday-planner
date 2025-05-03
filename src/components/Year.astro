@@ -131,7 +131,8 @@ const listYear = transformToThisYearData(listOfficial, year);
                         ),
                       ]}
                       locale={i18next.language}
-                      client:load
+                      now={Date.now()}
+                      client:visible
                     />
                   </div>
                 </div>

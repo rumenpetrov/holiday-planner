@@ -88,6 +88,7 @@ export class HPMonth extends LitElement {
       year: { type: Number },
       name: { type: String },
       holidays: { type: Array },
+      now: { type: Date },
       locale: { type: String },
     };
   }
@@ -99,6 +100,7 @@ export class HPMonth extends LitElement {
     this.year = null;
     this.name;
     this.holidays = [];
+    this.now = 0;
     this.locale = "bg";
 
     this.monthData = [];
@@ -127,6 +129,23 @@ export class HPMonth extends LitElement {
     }
   }
 
+  isToday(day) {
+    const today = new Date(this.now);
+    const todayYear = today.getFullYear();
+    const todayMonthIndex = today.getMonth();
+    const todayDay = today.getDate();
+
+    if (!+day.label) {
+      return false;
+    }
+
+    return (
+      todayYear === this.year &&
+      todayMonthIndex === this.index &&
+      todayDay === +day.label
+    );
+  }
+
   renderCaption() {
     if (typeof this.name !== "string" || this.name.length < 1) {
       return nothing;
@@ -145,9 +164,7 @@ export class HPMonth extends LitElement {
     return html`<td class="post-month">x</td>`;
   }
 
-  renderSuggestion(day) {
-    const today = day.today ? "today" : undefined;
-
+  renderSuggestion(day, today) {
     return html`<td
       class="suggestion"
       id="${ifDefined(today)}"
@@ -157,9 +174,7 @@ export class HPMonth extends LitElement {
     </td>`;
   }
 
-  renderHoliday(day) {
-    const today = day.today ? "today" : undefined;
-
+  renderHoliday(day, today) {
     return html`<td
       class="holiday"
       id="${ifDefined(today)}"
@@ -169,9 +184,7 @@ export class HPMonth extends LitElement {
     </td>`;
   }
 
-  renderDay(day) {
-    const today = day.today ? "today" : undefined;
-
+  renderDay(day, today) {
     return html`<td id="${ifDefined(today)}" part="${ifDefined(today)}">
       ${day.label}
     </td>`;
@@ -191,7 +204,7 @@ export class HPMonth extends LitElement {
     }
 
     return html`
-      <table>
+      <table data-month="${this.month}">
         ${this.renderCaption()}
         <thead>
           <tr>
@@ -203,6 +216,8 @@ export class HPMonth extends LitElement {
             return html`
               <tr>
                 ${days.map((day) => {
+                  const today = this.isToday(day) ? "today" : undefined;
+
                   if (day.label === "preMonth") {
                     return this.renderPreMonth();
                   }
@@ -212,14 +227,14 @@ export class HPMonth extends LitElement {
                   }
 
                   if (day.suggestion) {
-                    return this.renderSuggestion(day);
+                    return this.renderSuggestion(day, today);
                   }
 
                   if (day.holiday) {
-                    return this.renderHoliday(day);
+                    return this.renderHoliday(day, today);
                   }
 
-                  return this.renderDay(day);
+                  return this.renderDay(day, today);
                 })}
               </tr>
             `;
