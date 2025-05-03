@@ -465,3 +465,9 @@ const listYear = transformToThisYearData(listOfficial, year);
   });
   // });
 </script>
+
+<script is:inline>
+  document.querySelectorAll("hp-month").forEach((monthElement) => {
+    monthElement.setAttribute("now", Date.now().toString());
+  });
+</script>

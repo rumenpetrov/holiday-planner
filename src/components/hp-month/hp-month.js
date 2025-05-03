@@ -127,6 +127,10 @@ export class HPMonth extends LitElement {
     if (changedProperties.has("locale")) {
       this.weekDays = getWeekDays(this.locale);
     }
+
+    if (changedProperties.has("now")) {
+      this.render();
+    }
   }
 
   isToday(day) {
