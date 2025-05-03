@@ -62,16 +62,14 @@ export class HPTypography extends LitElement {
     }
   `;
 
-  static get properties() {
-    return {
-      element: { type: String },
-      appearance: { type: String },
-      font: { type: String },
-      lineHeight: { type: String },
-      disableMarginBottom: { type: Boolean },
-      styles: { type: Object },
-    };
-  }
+  static properties = {
+    element: { type: String },
+    appearance: { type: String },
+    font: { type: String },
+    lineHeight: { type: String },
+    disableMarginBottom: { type: Boolean },
+    styles: { type: Object },
+  };
 
   constructor() {
     super();

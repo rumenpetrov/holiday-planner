@@ -26,14 +26,12 @@ export class HPEventList extends LitElement {
     }
   `;
 
-  static get properties() {
-    return {
-      index: { type: Number },
-      year: { type: Number },
-      data: { type: Array },
-      list: { type: Array },
-    };
-  }
+  static properties = {
+    index: { type: Number },
+    year: { type: Number },
+    data: { type: Array },
+    list: { type: Array },
+  };
 
   constructor() {
     super();

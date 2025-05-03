@@ -82,16 +82,14 @@ export class HPMonth extends LitElement {
     }
   `;
 
-  static get properties() {
-    return {
-      index: { type: Number },
-      year: { type: Number },
-      name: { type: String },
-      holidays: { type: Array },
-      now: { type: String },
-      locale: { type: String },
-    };
-  }
+  static properties = {
+    index: { type: Number },
+    year: { type: Number },
+    name: { type: String },
+    holidays: { type: Array },
+    now: { type: String },
+    locale: { type: String },
+  };
 
   constructor() {
     super();
