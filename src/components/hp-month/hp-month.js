@@ -88,7 +88,7 @@ export class HPMonth extends LitElement {
       year: { type: Number },
       name: { type: String },
       holidays: { type: Array },
-      now: { type: Date },
+      now: { type: String },
       locale: { type: String },
     };
   }
@@ -100,7 +100,7 @@ export class HPMonth extends LitElement {
     this.year = null;
     this.name;
     this.holidays = [];
-    this.now = 0;
+    this.now = "";
     this.locale = "bg";
 
     this.monthData = [];
@@ -127,21 +127,17 @@ export class HPMonth extends LitElement {
     if (changedProperties.has("locale")) {
       this.weekDays = getWeekDays(this.locale);
     }
-
-    if (changedProperties.has("now")) {
-      this.render();
-    }
   }
 
   isToday(day) {
-    const today = new Date(this.now);
+    if (!this.now || !+day.label) {
+      return false;
+    }
+
+    const today = new Date(+this.now);
     const todayYear = today.getFullYear();
     const todayMonthIndex = today.getMonth();
     const todayDay = today.getDate();
-
-    if (!+day.label) {
-      return false;
-    }
 
     return (
       todayYear === this.year &&

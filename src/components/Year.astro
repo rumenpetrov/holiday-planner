@@ -131,7 +131,6 @@ const listYear = transformToThisYearData(listOfficial, year);
                         ),
                       ]}
                       locale={i18next.language}
-                      now={Date.now()}
                       client:visible
                     />
                   </div>
@@ -466,8 +465,10 @@ const listYear = transformToThisYearData(listOfficial, year);
   // });
 </script>
 
-<script is:inline>
-  document.querySelectorAll("hp-month").forEach((monthElement) => {
-    monthElement.setAttribute("now", Date.now().toString());
+<script>
+  customElements.whenDefined("hp-month").then(() => {
+    document.querySelectorAll("hp-month:defined").forEach((monthElement) => {
+      monthElement.now = Date.now().toString();
+    });
   });
 </script>
