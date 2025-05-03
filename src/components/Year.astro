@@ -468,7 +468,9 @@ const listYear = transformToThisYearData(listOfficial, year);
 <script>
   customElements.whenDefined("hp-month").then(() => {
     document.querySelectorAll("hp-month:defined").forEach((monthElement) => {
-      monthElement.now = Date.now().toString();
+      setTimeout(() => {
+        monthElement.now = Date.now().toString();
+      }, 1000);
     });
   });
 </script>
