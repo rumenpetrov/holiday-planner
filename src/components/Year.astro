@@ -1,7 +1,7 @@
 ---
 import i18next, { t } from "i18next";
-import { HPTypography } from "@components/hp-typography";
 import { HPMonth } from "@components/hp-month";
+import HPTypography from "@components/HPTypography.astro";
 import ActionScrollToTop from "@components/ActionScrollToTop.astro";
 import type { GoogleEvent } from "@data/get-calendar-events";
 import getCalendarEvents from "@data/get-calendar-events";
@@ -47,7 +47,7 @@ const listYear = transformToThisYearData(listOfficial, year);
 
   {
     error ? (
-      <HPTypography client:visible appearance="h3" font="primary">
+      <HPTypography appearance="h3" font="primary">
         {t("GLOBAL.ERROR")}
       </HPTypography>
     ) : (
@@ -61,7 +61,7 @@ const listYear = transformToThisYearData(listOfficial, year);
         </button>
 
         <div class="legend" role="region" aria-hidden="true">
-          <HPTypography client:visible appearance="h5" font="primary">
+          <HPTypography appearance="h5" font="primary">
             {t("GLOBAL.LEGEND.TITLE")}
           </HPTypography>
 
@@ -73,7 +73,7 @@ const listYear = transformToThisYearData(listOfficial, year);
                   backgroundColor: "var(--block-calendar-holiday-background)",
                 }}
               >
-                {t("GLOBAL.LEGEND.HOLIDAY")}
+                &nbsp;
               </dt>
               <dd>{t("GLOBAL.LEGEND.HOLIDAY")}</dd>
             </div>
@@ -86,7 +86,7 @@ const listYear = transformToThisYearData(listOfficial, year);
                     "var(--block-calendar-suggestion-background)",
                 }}
               >
-                {t("GLOBAL.LEGEND.SUGGESTION")}
+                &nbsp;
               </dt>
               <dd>{t("GLOBAL.LEGEND.SUGGESTION")}</dd>
             </div>
@@ -98,7 +98,7 @@ const listYear = transformToThisYearData(listOfficial, year);
                   backgroundColor: "var(--block-calendar-today-background)",
                 }}
               >
-                {t("GLOBAL.LEGEND.TODAY")}
+                &nbsp;
               </dt>
               <dd>{t("GLOBAL.LEGEND.TODAY")}</dd>
             </div>
@@ -119,7 +119,6 @@ const listYear = transformToThisYearData(listOfficial, year);
                 <h3 hidden>{monthName}</h3>
 
                 <HPTypography
-                  client:visible
                   appearance="h4"
                   font="primary"
                   style="text-transform: capitalize"
@@ -158,7 +157,7 @@ const listYear = transformToThisYearData(listOfficial, year);
                             <h4 hidden>
                               {event.start.displayDate} - {event.displaySummary}
                             </h4>
-                            <HPTypography client:visible disableMarginBottom>
+                            <HPTypography disableMarginBottom>
                               {event.start.displayDate} - {event.displaySummary}
                             </HPTypography>
                           </div>
@@ -168,7 +167,7 @@ const listYear = transformToThisYearData(listOfficial, year);
                   </div>
                 ) : (
                   <div class="section-grid-column">
-                    <HPTypography client:visible>{`:(`}</HPTypography>
+                    <HPTypography>{`:(`}</HPTypography>
                   </div>
                 )}
               </div>

@@ -1,0 +1,48 @@
+---
+import { sortCalendarEvents } from "@utilities/sort-calendar-events";
+import { filterOutUnofficialCalendarEvents } from "@utilities/filter-out-unofficial-calendar-events";
+import { transformToThisMonthData } from "@utilities/transform-to-this-month-data";
+import { addExtraProperties } from "@utilities/add-extra-properties";
+
+export interface Props {
+  index?: number;
+  year?: number;
+  data?: any[];
+}
+
+const { index, year, data = [] } = Astro.props;
+
+const listOfficial = addExtraProperties(
+  filterOutUnofficialCalendarEvents(sortCalendarEvents(data)),
+);
+const list = transformToThisMonthData(listOfficial, index);
+---
+
+{
+  !Array.isArray(list) || list.length < 1 ? (
+    <slot name="fallback" />
+  ) : (
+    list.map((event) => (
+      <p class="root">
+        {event.start.displayDate} - {event.displaySummary}
+      </p>
+    ))
+  )
+}
+
+<style>
+  :host {
+    font-family: sans-serif;
+    color: var(--palette-dominant-contrast, #000);
+    display: block;
+    overflow: hidden;
+    border-radius: 10px;
+    margin: 10px 0;
+  }
+
+  .root {
+    border-bottom: calc(var(--space-size-100) / 2) dotted
+      var(--palette-dominant-contrast);
+    margin: 0 0 var(--space-size-200) 0;
+  }
+</style>

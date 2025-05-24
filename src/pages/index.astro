@@ -2,9 +2,9 @@
 import i18next, { changeLanguage, t } from "i18next";
 import Layout from "@layouts/Layout.astro";
 import Link from "@components/Link.astro";
-import { HPEventList } from "@components/hp-event-list";
-import { HPTypography } from "@components/hp-typography";
 import LocationSceneDecoration from "@components/LocationSceneDecoration.astro";
+import HPEventList from "@components/HPEventList.astro";
+import HPTypography from "@components/HPTypography.astro";
 import getCalendarEvents from "@data/get-calendar-events";
 
 changeLanguage("bg");
@@ -34,12 +34,11 @@ const { data, error } = await getCalendarEvents({
               appearance="h2"
               font="primary"
               lineHeight="1.2"
-              client:load
             >
               {t("PAGES.HOME.INTRO.TITLE")}
             </HPTypography>
 
-            <HPTypography element="p" appearance="p" font="primary" client:load>
+            <HPTypography element="p" appearance="p" font="primary">
               {t("PAGES.HOME.INTRO.DESCRIPTION")}
             </HPTypography>
 
@@ -54,25 +53,12 @@ const { data, error } = await getCalendarEvents({
     <section class="section" aria-labelledby="section-this-month-title">
       <h2 hidden>{t("PAGES.HOME.SECTION_THIS_MONTH.TITLE")}</h2>
 
-      <HPTypography
-        element="h2"
-        appearance="h3"
-        id="section-this-month-title"
-        client:visible
-      >
+      <HPTypography element="h2" appearance="h3" id="section-this-month-title">
         {t("PAGES.HOME.SECTION_THIS_MONTH.TITLE")}
       </HPTypography>
 
-      <HPEventList
-        client:load
-        index={new Date().getMonth()}
-        year={currentYear}
-        data={data}
-        client:visible
-      >
-        <HPTypography slot="fallback" disableMarginBottom client:visible>
-          :(
-        </HPTypography>
+      <HPEventList index={new Date().getMonth()} year={currentYear} data={data}>
+        <HPTypography slot="fallback" disableMarginBottom> :( </HPTypography>
       </HPEventList>
     </section>
   </div>
