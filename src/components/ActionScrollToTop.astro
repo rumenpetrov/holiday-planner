@@ -23,14 +23,18 @@ const { class: className, ...rest } = Astro.props;
 
   .root {
     position: fixed;
-    bottom: 100px;
+    /* Related to mobile main menu and font size */
+    bottom: 80px;
     right: 20px;
-    /* Related to mobile main menu */
     z-index: 100;
     border: 0;
     border-radius: 50%;
     padding: 8px;
     cursor: pointer;
+
+    @media (min-width: 500px) {
+      bottom: 100px;
+    }
 
     @media (min-width: 1200px) {
       bottom: 20px;

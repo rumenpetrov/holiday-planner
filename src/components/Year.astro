@@ -273,6 +273,7 @@ const listYear = transformToThisYearData(listOfficial, year);
 
   .section {
     padding-bottom: var(--space-size-700);
+    transition: opacity 0.3 ease-in-out;
   }
 
   @media (min-width: 700px) {
@@ -365,6 +366,22 @@ const listYear = transformToThisYearData(listOfficial, year);
     outline-style: dashed;
     outline-color: var(--block-calendar-timeline-color);
     border-radius: 0;
+    transition: outline-style 0.3s ease-in-out allow-discrete;
+  }
+
+  section:has([data-temporal-state="present"]) {
+    scroll-margin-top: var(--space-size-700);
+  }
+
+  hp-month[data-temporal-state="present"] {
+    outline-style: solid;
+  }
+
+  .section:has(hp-month[data-temporal-state="past"]) {
+    opacity: 0.8;
+  }
+
+  hp-month[data-temporal-state="future"] {
   }
 
   .events {
@@ -485,6 +502,11 @@ const listYear = transformToThisYearData(listOfficial, year);
     document.querySelectorAll("hp-month:defined").forEach((monthElement) => {
       setTimeout(() => {
         monthElement.now = Date.now().toString();
+        document
+          .querySelector(
+            ".section:has(hp-month[data-temporal-state='present'])",
+          )
+          ?.scrollIntoView({ behavior: "smooth" });
       }, 1000);
     });
   });

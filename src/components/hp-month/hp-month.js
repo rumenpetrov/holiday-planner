@@ -107,10 +107,32 @@ export class HPMonth extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
+    this.setMetaAttributesOnHost();
   }
 
   disconnectedCallback() {
     super.disconnectedCallback();
+  }
+
+  setMetaAttributesOnHost() {
+    if (!this.now) {
+      return;
+    }
+
+    const today = new Date(+this.now);
+    const todayYear = today.getFullYear();
+    const todayMonthIndex = today.getMonth();
+
+    if (todayYear === this.year && todayMonthIndex === this.index) {
+      this.setAttribute("data-temporal-state", "present");
+    } else if (
+      todayYear > this.year ||
+      (todayYear === this.year && todayMonthIndex > this.index)
+    ) {
+      this.setAttribute("data-temporal-state", "past");
+    } else {
+      this.setAttribute("data-temporal-state", "future");
+    }
   }
 
   willUpdate(changedProperties) {
@@ -124,6 +146,14 @@ export class HPMonth extends LitElement {
 
     if (changedProperties.has("locale")) {
       this.weekDays = getWeekDays(this.locale);
+    }
+
+    if (
+      changedProperties.has("now") ||
+      changedProperties.has("index") ||
+      changedProperties.has("year")
+    ) {
+      this.setMetaAttributesOnHost();
     }
   }
 
