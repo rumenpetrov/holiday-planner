@@ -90,6 +90,18 @@ const listYear = transformToThisYearData(listOfficial, year);
               </dt>
               <dd>{t("GLOBAL.LEGEND.SUGGESTION")}</dd>
             </div>
+
+            <div class="legend-row">
+              <dt
+                class="legend-preview"
+                style={{
+                  backgroundColor: "var(--block-calendar-today-background)",
+                }}
+              >
+                {t("GLOBAL.LEGEND.TODAY")}
+              </dt>
+              <dd>{t("GLOBAL.LEGEND.TODAY")}</dd>
+            </div>
           </dl>
         </div>
 
@@ -253,7 +265,7 @@ const listYear = transformToThisYearData(listOfficial, year);
     display: inline-block;
     width: 2em;
     height: 1em;
-    margin-right: var(--space-size-100);
+    margin-right: var(--space-size-200);
     overflow: hidden;
     text-indent: 100%;
     background-color: gray;

@@ -6,7 +6,8 @@
     "LEGEND": {
       "TITLE": "Легенда:",
       "HOLIDAY": "Официален празник",
-      "SUGGESTION": "Предложение за почивен ден"
+      "SUGGESTION": "Предложение за почивен ден",
+      "TODAY": "Днес"
     },
     "EXPORT_AS_MARKDOWN": "Запази като markdown",
     "HEADER": {
