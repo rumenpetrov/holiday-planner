@@ -2,6 +2,7 @@
 import i18next, { t } from "i18next";
 import { HPTypography } from "@components/hp-typography";
 import { HPMonth } from "@components/hp-month";
+import ActionScrollToTop from "@components/ActionScrollToTop.astro";
 import type { GoogleEvent } from "@data/get-calendar-events";
 import getCalendarEvents from "@data/get-calendar-events";
 import { sortCalendarEvents } from "@utilities/sort-calendar-events";
@@ -165,6 +166,8 @@ const listYear = transformToThisYearData(listOfficial, year);
       </div>
     )
   }
+
+  <ActionScrollToTop />
 </div>
 
 <style>
