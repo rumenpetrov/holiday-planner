@@ -2,8 +2,6 @@
 import i18next, { changeLanguage, t } from "i18next";
 import Layout from "@layouts/Layout.astro";
 import Link from "@components/Link.astro";
-import { HPEventList } from "@components/hp-event-list";
-import { HPTypography } from "@components/hp-typography";
 import LocationSceneDecoration from "@components/LocationSceneDecoration.astro";
 import getCalendarEvents from "@data/get-calendar-events";
 
@@ -17,6 +15,11 @@ const { data, error } = await getCalendarEvents({
 });
 ---
 
+<script>
+  import "@components/hp-typography";
+  import "@components/hp-event-list";
+</script>
+
 <Layout title={`${t("GLOBAL.PROJECT_NAME")} - ${t("PAGES.HOME.TITLE")}`}>
   <h1 hidden>{t("PAGES.HOME.TITLE")}</h1>
 
@@ -29,19 +32,18 @@ const { data, error } = await getCalendarEvents({
           <div class="intro-content">
             <h2 hidden>{t("PAGES.HOME.INTRO.TITLE")}</h2>
 
-            <HPTypography
+            <hp-typography
               element="h2"
               appearance="h2"
               font="primary"
               lineHeight="1.2"
-              client:load
             >
               {t("PAGES.HOME.INTRO.TITLE")}
-            </HPTypography>
+            </hp-typography>
 
-            <HPTypography element="p" appearance="p" font="primary" client:load>
+            <hp-typography element="p" appearance="p" font="primary">
               {t("PAGES.HOME.INTRO.DESCRIPTION")}
-            </HPTypography>
+            </hp-typography>
 
             <Link href="/this-year/" class="pad-link">
               {t("PAGES.HOME.INTRO.TO_THIS_YEAR")}
@@ -54,26 +56,17 @@ const { data, error } = await getCalendarEvents({
     <section class="section" aria-labelledby="section-this-month-title">
       <h2 hidden>{t("PAGES.HOME.SECTION_THIS_MONTH.TITLE")}</h2>
 
-      <HPTypography
-        element="h2"
-        appearance="h3"
-        id="section-this-month-title"
-        client:visible
-      >
+      <hp-typography element="h2" appearance="h3" id="section-this-month-title">
         {t("PAGES.HOME.SECTION_THIS_MONTH.TITLE")}
-      </HPTypography>
+      </hp-typography>
 
-      <HPEventList
-        client:load
+      <hp-event-list
         index={new Date().getMonth()}
         year={currentYear}
-        data={data}
-        client:visible
+        data={JSON.stringify(data)}
       >
-        <HPTypography slot="fallback" disableMarginBottom client:visible>
-          :(
-        </HPTypography>
-      </HPEventList>
+        <hp-typography slot="fallback" disableMarginBottom> :( </hp-typography>
+      </hp-event-list>
     </section>
   </div>
 </Layout>
