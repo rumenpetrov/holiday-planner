@@ -501,12 +501,18 @@ const listYear = transformToThisYearData(listOfficial, year);
     document.querySelectorAll("hp-month:defined").forEach((monthElement) => {
       setTimeout(() => {
         monthElement.now = Date.now().toString();
-        document
-          .querySelector(
-            ".section:has(hp-month[data-temporal-state='present'])",
-          )
-          ?.scrollIntoView({ behavior: "smooth" });
-      }, 1000);
+
+        if (
+          typeof document?.documentElement?.scrollTop === "number" &&
+          document?.documentElement?.scrollTop < 500
+        ) {
+          document
+            .querySelector(
+              ".section:has(hp-month[data-temporal-state='present'])",
+            )
+            ?.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 600);
     });
   });
 </script>
