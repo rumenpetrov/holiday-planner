@@ -15,10 +15,13 @@ export class HPMonth extends LitElement {
       font-family: sans-serif;
       background: var(--block-calendar-background, #fff);
       color: var(--block-calendar-color, #000);
-      display: block;
       overflow: hidden;
       border-radius: 10px;
       margin: 10px 0;
+    }
+
+    :host(:not([hidden])) {
+      display: block;
     }
 
     table {

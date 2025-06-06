@@ -1,5 +1,5 @@
 ---
-import { t } from "i18next";
+import { getLangFromUrl, useTranslations } from "@i18n/utils";
 import Link from "@components/Link.astro";
 
 export interface Props {
@@ -16,6 +16,8 @@ const {
   class: className,
   ...rest
 } = Astro.props;
+const locale = getLangFromUrl(Astro.url);
+const t = useTranslations(locale);
 ---
 
 <nav

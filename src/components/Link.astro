@@ -1,5 +1,5 @@
 ---
-import { localizePath } from "astro-i18next";
+import { getLangFromUrl, generateLink } from "@i18n/utils";
 
 export interface Props {
   href: string;
@@ -8,11 +8,12 @@ export interface Props {
 }
 
 const { href, accent, class: className, ...rest } = Astro.props;
+const locale = getLangFromUrl(Astro.url);
 ---
 
 <a
   {...rest}
-  href={localizePath(href)}
+  href={generateLink(locale, href)}
   rel="prefetch"
   class:list={["root", accent && "accent", className]}
   data-astro-prefetch="viewport"

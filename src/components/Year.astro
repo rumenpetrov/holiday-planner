@@ -1,6 +1,5 @@
 ---
-import i18next, { t } from "i18next";
-import { HPMonth } from "@components/hp-month";
+import { getLangFromUrl, useTranslations } from "@i18n/utils";
 import HPTypography from "@components/HPTypography.astro";
 import ActionScrollToTop from "@components/ActionScrollToTop.astro";
 import type { GoogleEvent } from "@data/get-calendar-events";
@@ -16,20 +15,27 @@ export interface Props {
   class?: string;
 }
 
+const locale = getLangFromUrl(Astro.url);
+const t = useTranslations(locale);
+
 const { year, class: className } = Astro.props;
 
 const { data, error } = await getCalendarEvents({
   fromYear: year,
   toYear: year + 1,
-  locale: i18next.language,
+  locale: locale,
   toNextJanuary: true,
 });
 const listOfficial = addExtraProperties(
   filterOutUnofficialCalendarEvents(sortCalendarEvents(data)),
-  i18next.language,
+  locale,
 );
 const listYear = transformToThisYearData(listOfficial, year);
 ---
+
+<script>
+  import "@components/hp-month";
+</script>
 
 <div class:list={[className]}>
   <div class="page-header" aria-hidden="true">
@@ -109,7 +115,7 @@ const listYear = transformToThisYearData(listOfficial, year);
           // Accommodate January next year
           const indexAdjusted = index < 12 ? index : 0;
           const yearAdjusted = index < 12 ? year : year + 1;
-          const monthName = new Intl.DateTimeFormat(i18next?.language, {
+          const monthName = new Intl.DateTimeFormat(locale, {
             month: "long",
           }).format(new Date(1, indexAdjusted));
 
@@ -132,18 +138,17 @@ const listYear = transformToThisYearData(listOfficial, year);
               <div class="section-grid">
                 <div class="section-grid-column" aria-hidden="true">
                   <div class="timeline-point-link">
-                    <HPMonth
+                    <hp-month
                       index={indexAdjusted}
                       year={yearAdjusted}
-                      holidays={[
+                      holidays={JSON.stringify([
                         ...new Set(
                           events.map((event: GoogleEvent) =>
                             parseInt(event.start.date.substring(8, 10), 10),
                           ),
                         ),
-                      ]}
-                      locale={i18next.language}
-                      client:load
+                      ])}
+                      locale={locale}
                     />
                   </div>
                 </div>
@@ -339,11 +344,14 @@ const listYear = transformToThisYearData(listOfficial, year);
   .timeline-point-link::before,
   .timeline-point-link::after {
     content: "";
+    opacity: 0;
+    visibility: hidden;
     position: absolute;
     right: 100%;
     width: var(--space-size-600);
     height: var(--space-size-100);
     background-color: var(--block-calendar-timeline-color);
+    transition: opacity 0.3s ease-in-out;
   }
 
   .timeline-point-link::before {
@@ -352,6 +360,23 @@ const listYear = transformToThisYearData(listOfficial, year);
 
   .timeline-point-link::after {
     bottom: var(--space-size-400);
+  }
+
+  .timeline-point-link:has(hp-month:defined)::before,
+  .timeline-point-link:has(hp-month:defined)::after {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  hp-month:not(:defined) {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  hp-month:defined {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease-in-out;
   }
 
   hp-month {
@@ -365,7 +390,10 @@ const listYear = transformToThisYearData(listOfficial, year);
     outline-style: dashed;
     outline-color: var(--block-calendar-timeline-color);
     border-radius: 0;
-    transition: outline-style 0.3s ease-in-out allow-discrete;
+    transition:
+      display 0.3s ease-in-out allow-discrete,
+      opacity 0.3s ease-in-out,
+      outline-style 0.3s ease-in-out;
   }
 
   section:has([data-temporal-state="present"]) {
