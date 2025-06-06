@@ -371,11 +371,13 @@ const listYear = transformToThisYearData(listOfficial, year);
   hp-month:not(:defined) {
     opacity: 0;
     visibility: hidden;
+    content-visibility: hidden;
   }
 
   hp-month:defined {
     opacity: 1;
     visibility: visible;
+    content-visibility: visible;
     transition: opacity 0.3s ease-in-out;
   }
 
