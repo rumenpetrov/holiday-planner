@@ -1,6 +1,5 @@
 ---
-import i18next, { t } from "i18next";
-import { HPMonth } from "@components/hp-month";
+import { getLangFromUrl, useTranslations } from "@i18n/utils";
 import HPTypography from "@components/HPTypography.astro";
 import ActionScrollToTop from "@components/ActionScrollToTop.astro";
 import type { GoogleEvent } from "@data/get-calendar-events";
@@ -16,20 +15,27 @@ export interface Props {
   class?: string;
 }
 
+const locale = getLangFromUrl(Astro.url);
+const t = useTranslations(locale);
+
 const { year, class: className } = Astro.props;
 
 const { data, error } = await getCalendarEvents({
   fromYear: year,
   toYear: year + 1,
-  locale: i18next.language,
+  locale: locale,
   toNextJanuary: true,
 });
 const listOfficial = addExtraProperties(
   filterOutUnofficialCalendarEvents(sortCalendarEvents(data)),
-  i18next.language,
+  locale,
 );
 const listYear = transformToThisYearData(listOfficial, year);
 ---
+
+<script>
+  import "@components/hp-month";
+</script>
 
 <div class:list={[className]}>
   <div class="page-header" aria-hidden="true">
@@ -109,7 +115,7 @@ const listYear = transformToThisYearData(listOfficial, year);
           // Accommodate January next year
           const indexAdjusted = index < 12 ? index : 0;
           const yearAdjusted = index < 12 ? year : year + 1;
-          const monthName = new Intl.DateTimeFormat(i18next?.language, {
+          const monthName = new Intl.DateTimeFormat(locale, {
             month: "long",
           }).format(new Date(1, indexAdjusted));
 
@@ -132,18 +138,17 @@ const listYear = transformToThisYearData(listOfficial, year);
               <div class="section-grid">
                 <div class="section-grid-column" aria-hidden="true">
                   <div class="timeline-point-link">
-                    <HPMonth
+                    <hp-month
                       index={indexAdjusted}
                       year={yearAdjusted}
-                      holidays={[
+                      holidays={JSON.stringify([
                         ...new Set(
                           events.map((event: GoogleEvent) =>
                             parseInt(event.start.date.substring(8, 10), 10),
                           ),
                         ),
-                      ]}
-                      locale={i18next.language}
-                      client:load
+                      ])}
+                      locale={locale}
                     />
                   </div>
                 </div>

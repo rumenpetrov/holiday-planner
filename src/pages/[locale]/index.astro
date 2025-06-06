@@ -1,0 +1,126 @@
+---
+import { getLangFromUrl, useTranslations } from "@i18n/utils";
+import Layout from "@layouts/Layout.astro";
+import Link from "@components/Link.astro";
+import LocationSceneDecoration from "@components/LocationSceneDecoration.astro";
+import HPEventList from "@components/HPEventList.astro";
+import HPTypography from "@components/HPTypography.astro";
+import getCalendarEvents from "@data/get-calendar-events";
+
+const locale = getLangFromUrl(Astro.url);
+const t = useTranslations(locale);
+
+export function getStaticPaths() {
+  return [
+    { params: { locale: "bg" } },
+    { params: { locale: "en" } },
+    { params: { locale: "this-year" } },
+    { params: { locale: "next-year" } },
+  ];
+}
+// console.log('URL:', Astro.params)
+
+// if (Astro.params.locale !== 'bg' && Astro.params.locale !== 'en') {
+//   console.log('redirecting 2')
+//   return Astro.redirect('/holiday-planner/bg/');
+// }
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+
+const currentYear = new Date().getFullYear();
+const { data, error } = await getCalendarEvents({
+  fromYear: currentYear,
+  toYear: currentYear,
+  locale,
+});
+---
+
+<Layout title={`${t("GLOBAL.PROJECT_NAME")} - ${t("PAGES.HOME.TITLE")}`}>
+  <h1 hidden>{t("PAGES.HOME.TITLE")}</h1>
+
+  <div class="content">
+    <section class="section" aria-label={t("PAGES.HOME.INTRO.LABEL")}>
+      <div class="pad">
+        <div class="intro">
+          <LocationSceneDecoration class="intro-decoration" />
+
+          <div class="intro-content">
+            <h2 hidden>{t("PAGES.HOME.INTRO.TITLE")}</h2>
+
+            <HPTypography
+              element="h2"
+              appearance="h2"
+              font="primary"
+              lineHeight="1.2"
+            >
+              {t("PAGES.HOME.INTRO.TITLE")}
+            </HPTypography>
+
+            <HPTypography element="p" appearance="p" font="primary">
+              {t("PAGES.HOME.INTRO.DESCRIPTION")}
+            </HPTypography>
+
+            <Link href="/this-year/" class="pad-link">
+              {t("PAGES.HOME.INTRO.TO_THIS_YEAR")}
+            </Link>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="section-this-month-title">
+      <h2 hidden>{t("PAGES.HOME.SECTION_THIS_MONTH.TITLE")}</h2>
+
+      <HPTypography element="h2" appearance="h3" id="section-this-month-title">
+        {t("PAGES.HOME.SECTION_THIS_MONTH.TITLE")}
+      </HPTypography>
+
+      <HPEventList index={new Date().getMonth()} year={currentYear} data={data}>
+        <HPTypography slot="fallback" disableMarginBottom> :( </HPTypography>
+      </HPEventList>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .section {
+    margin: 0 0 var(--space-size-600);
+  }
+
+  .pad {
+    border-radius: var(--space-size-200);
+    padding: var(--space-size-400);
+    background: var(--block-pad-background);
+    color: var(--block-pad-color);
+  }
+
+  .intro-decoration {
+    display: flex;
+    margin: 0;
+  }
+
+  .intro-content {
+    margin-top: var(--space-size-400);
+  }
+
+  @media (min-width: 700px) {
+    .intro {
+      display: flex;
+      align-items: center;
+      padding: var(--space-size-400) 0;
+    }
+
+    .intro-decoration {
+      flex: 1 1 40%;
+    }
+
+    .intro-content {
+      flex: 1 1 60%;
+      margin: 0 var(--space-size-800);
+    }
+  }
+
+  hp-event-list {
+    background-color: var(--palette-dominant);
+  }
+</style>

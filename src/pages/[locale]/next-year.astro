@@ -1,10 +1,15 @@
 ---
-import { changeLanguage, t } from "i18next";
+import { getLangFromUrl, useTranslations } from "@i18n/utils";
 import HPTypography from "@components/HPTypography.astro";
 import Layout from "@layouts/Layout.astro";
 import Year from "@components/Year.astro";
 
-changeLanguage("bg");
+export function getStaticPaths() {
+  return [{ params: { locale: "bg" } }, { params: { locale: "en" } }];
+}
+
+const locale = getLangFromUrl(Astro.url);
+const t = useTranslations(locale);
 
 const year = new Date().getFullYear() + 1;
 ---

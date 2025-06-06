@@ -1,7 +1,7 @@
 ---
-import { t } from "i18next";
-import { LanguageSelector } from "astro-i18next/components";
+import { getLangFromUrl, useTranslations } from "@i18n/utils";
 import App from "@components/App.astro";
+import LanguagePicker from "@components/LanguagePicker.astro";
 import MainMenu from "@components/MainMenu.astro";
 
 export interface Props {
@@ -9,6 +9,9 @@ export interface Props {
 }
 
 const { title } = Astro.props;
+
+const locale = getLangFromUrl(Astro.url);
+const t = useTranslations(locale);
 ---
 
 <App title={title}>
@@ -67,8 +70,7 @@ const { title } = Astro.props;
         </svg>
       </button>
 
-      <LanguageSelector
-        showFlag={true}
+      <LanguagePicker
         class="menu-languages"
         aria-label={t("GLOBAL.HEADER.CHANGE_LANGUAGE_LABEL")}
       />
@@ -122,9 +124,7 @@ const { title } = Astro.props;
   }
 
   .menu-languages {
-    border: calc(var(--space-size-100) / 2) solid var(--palette-primary);
-    padding: var(--space-size-200);
-    margin: var(--space-size-200);
+    margin: 0 var(--space-size-200);
   }
 
   main {
