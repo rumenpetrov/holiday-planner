@@ -344,11 +344,14 @@ const listYear = transformToThisYearData(listOfficial, year);
   .timeline-point-link::before,
   .timeline-point-link::after {
     content: "";
+    opacity: 0;
+    visibility: hidden;
     position: absolute;
     right: 100%;
     width: var(--space-size-600);
     height: var(--space-size-100);
     background-color: var(--block-calendar-timeline-color);
+    transition: opacity 0.3s ease-in-out;
   }
 
   .timeline-point-link::before {
@@ -357,6 +360,23 @@ const listYear = transformToThisYearData(listOfficial, year);
 
   .timeline-point-link::after {
     bottom: var(--space-size-400);
+  }
+
+  .timeline-point-link:has(hp-month:defined)::before,
+  .timeline-point-link:has(hp-month:defined)::after {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  hp-month:not(:defined) {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  hp-month:defined {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease-in-out;
   }
 
   hp-month {
@@ -370,7 +390,10 @@ const listYear = transformToThisYearData(listOfficial, year);
     outline-style: dashed;
     outline-color: var(--block-calendar-timeline-color);
     border-radius: 0;
-    transition: outline-style 0.3s ease-in-out allow-discrete;
+    transition:
+      display 0.3s ease-in-out allow-discrete,
+      opacity 0.3s ease-in-out,
+      outline-style 0.3s ease-in-out;
   }
 
   section:has([data-temporal-state="present"]) {
