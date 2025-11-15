@@ -1,0 +1,62 @@
+{
+  "id": "/holiday-planner/",
+  "start_url": "/holiday-planner/",
+  "scope": "/holiday-planner/",
+  "name": "Pochivnik",
+  "short_name": "Pochivnik",
+  "description": "Go over all public holidays throughout the year, so you can easily plan your days off.",
+  "display": "standalone",
+  "theme_color": "#fb5e09",
+  "background_color": "#f0eddb",
+  "categories": ["productivity", "events", "lifestyle"],
+  "icons": [
+    {
+      "src": "/holiday-planner/icons/icon-vector.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/holiday-planner/icons/maskable-icon-x1024.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/holiday-planner/icons/maskable-icon-x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/holiday-planner/screenshots/home-tall-bg.png",
+      "sizes": "1442x3202",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Home page on mobile"
+    },
+    {
+      "src": "/holiday-planner/screenshots/this-year-tall-bg.png",
+      "sizes": "1442x3202",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "This year page on mobile"
+    },
+    {
+      "src": "/holiday-planner/screenshots/home-wide-bg.png",
+      "sizes": "1920x961",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Home page on desktop"
+    },
+    {
+      "src": "/holiday-planner/screenshots/this-year-wide-bg.png",
+      "sizes": "1920x961",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "This year page on desktop"
+    }
+  ]
+}

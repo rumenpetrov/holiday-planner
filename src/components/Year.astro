@@ -1,6 +1,7 @@
 ---
 import { getLangFromUrl, useTranslations } from "@i18n/utils";
 import HPTypography from "@components/HPTypography.astro";
+import HPMonth from "@components/HPMonth.astro";
 import ActionScrollToTop from "@components/ActionScrollToTop.astro";
 import type { GoogleEvent } from "@data/get-calendar-events";
 import getCalendarEvents from "@data/get-calendar-events";
@@ -138,7 +139,22 @@ const listYear = transformToThisYearData(listOfficial, year);
               <div class="section-grid">
                 <div class="section-grid-column" aria-hidden="true">
                   <div class="timeline-point-link">
-                    <hp-month
+                    <HPMonth
+                      index={indexAdjusted}
+                      year={yearAdjusted}
+                      name={monthName}
+                      holidays={[
+                        ...new Set(
+                          events.map((event: GoogleEvent) =>
+                            parseInt(event.start.date.substring(8, 10), 10),
+                          ),
+                        ),
+                      ]}
+                      locale={locale}
+                      now={Date.now().toString()}
+                      class="hp-month"
+                    />
+                    <!-- <hp-month
                       index={indexAdjusted}
                       year={yearAdjusted}
                       holidays={JSON.stringify([
@@ -149,7 +165,7 @@ const listYear = transformToThisYearData(listOfficial, year);
                         ),
                       ])}
                       locale={locale}
-                    />
+                    /> -->
                   </div>
                 </div>
 
