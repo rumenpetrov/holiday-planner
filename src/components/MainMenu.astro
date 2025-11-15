@@ -64,19 +64,18 @@ const t = useTranslations(locale);
   nav li .menu-link {
     display: block;
     padding: var(--space-size-200) var(--space-size-400);
-    margin: 0 var(--space-size-100);
-    border-width: 0 0 var(--space-size-100) 0;
-    border-style: solid;
-    border-color: transparent;
-    color: var(--palette-dominant-contrast);
+    margin: 0 var(--space-size-200);
+    outline-width: var(--space-size-100);
+    outline-offset: 1px;
+    outline-style: solid;
+    outline-color: transparent;
     text-decoration: none;
     text-wrap: nowrap;
   }
 
   nav li [aria-current="page"],
   nav li:hover .menu-link {
-    color: var(--palette-primary);
-    border-color: var(--palette-primary);
+    outline-color: var(--palette-primary);
   }
 
   @media (min-width: 1200px) {
