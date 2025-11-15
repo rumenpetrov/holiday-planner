@@ -6,7 +6,7 @@ This is a planner web app which provides information about all the holidays in B
 
 ## Requirements
 
-- node 18
+- node 22.16+
 - npm 9.8.1
 - podman 4+
 
