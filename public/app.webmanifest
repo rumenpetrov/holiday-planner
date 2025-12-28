@@ -32,7 +32,7 @@
   "screenshots": [
     {
       "src": "/holiday-planner/screenshots/home-tall-bg.webp",
-      "sizes": "1442x3203",
+      "sizes": "1442x3202",
       "type": "image/webp",
       "form_factor": "narrow",
       "label": "Home page on mobile"
