@@ -277,7 +277,7 @@ const listYear = transformToThisYearData(listOfficial, year);
 
   .section {
     padding-bottom: var(--space-size-700);
-    transition: opacity 0.3 ease-in-out;
+    transition: opacity var(--transition-base) ease-in-out;
   }
 
   @media (min-width: 700px) {
@@ -351,7 +351,7 @@ const listYear = transformToThisYearData(listOfficial, year);
     width: var(--space-size-600);
     height: var(--space-size-100);
     background-color: var(--block-calendar-timeline-color);
-    transition: opacity 0.3s ease-in-out;
+    transition: opacity var(--transition-base) ease-in-out;
   }
 
   .timeline-point-link::before {
@@ -378,7 +378,7 @@ const listYear = transformToThisYearData(listOfficial, year);
     opacity: 1;
     visibility: visible;
     content-visibility: visible;
-    transition: opacity 0.3s ease-in-out;
+    transition: opacity var(--transition-base) ease-in-out;
   }
 
   hp-month {
@@ -393,8 +393,8 @@ const listYear = transformToThisYearData(listOfficial, year);
     outline-color: var(--block-calendar-timeline-color);
     border-radius: 0;
     transition:
-      display 0.3s ease-in-out allow-discrete,
-      opacity 0.3s ease-in-out,
+      display var(--transition-base) ease-in-out allow-discrete,
+      opacity var(--transition-base) ease-in-out,
       outline-style 0.3s ease-in-out;
   }
 

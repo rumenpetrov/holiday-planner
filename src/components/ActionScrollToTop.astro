@@ -26,7 +26,7 @@ const { class: className, ...rest } = Astro.props;
     /* Related to mobile main menu and font size */
     bottom: 80px;
     right: 20px;
-    z-index: 100;
+    z-index: var(--z-index-fab);
     border: 0;
     border-radius: 50%;
     padding: 8px;
@@ -40,7 +40,7 @@ const { class: className, ...rest } = Astro.props;
       bottom: 20px;
     }
 
-    transition: translate 0.2s ease;
+    transition: translate var(--transition-fast) ease;
 
     @container not scroll-state(scrollable: top) {
       translate: 0 200%;
