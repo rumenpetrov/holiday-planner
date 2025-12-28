@@ -53,7 +53,7 @@ const listYear = transformToThisYearData(listOfficial, year);
 
   {
     error ? (
-      <HPTypography appearance="h3" font="primary">
+      <HPTypography appearance="h3" font="body">
         {t("GLOBAL.ERROR")}
       </HPTypography>
     ) : (
@@ -67,7 +67,7 @@ const listYear = transformToThisYearData(listOfficial, year);
         </button>
 
         <div class="legend" role="region" aria-hidden="true">
-          <HPTypography appearance="h5" font="primary">
+          <HPTypography appearance="h5" font="body">
             {t("GLOBAL.LEGEND.TITLE")}
           </HPTypography>
 
@@ -126,7 +126,7 @@ const listYear = transformToThisYearData(listOfficial, year);
 
                 <HPTypography
                   appearance="h4"
-                  font="primary"
+                  font="body"
                   style="text-transform: capitalize"
                   disableMarginBottom
                   id={`month-title-${index}`}

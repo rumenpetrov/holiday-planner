@@ -9,6 +9,9 @@
   color-scheme: light;
 
   /* Primitives */
+  --font-family-primary: "Sofia Sans", sans-serif;
+  --font-family-secondary: "Cormorant Infant", serif;
+
   --space-size-100: 0.25rem;
   --space-size-200: 0.5rem;
   --space-size-300: 0.75rem;
@@ -19,8 +22,8 @@
   --space-size-800: 2rem;
 
   /* UI tokens */
-  --font-family-primary: "Sofia Sans", sans-serif;
-  --font-family-secondary: "Cormorant Infant", serif;
+  --font-family-body: var(--font-family-body);
+  --font-family-headline: var(--font-family-secondary);
   --font-size-h1: 4.209rem;
   --font-size-h2: 3.157rem;
   --font-size-h3: 2.369rem;
