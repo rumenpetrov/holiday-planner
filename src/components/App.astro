@@ -46,8 +46,7 @@ const t = useTranslations(locale);
       const rootElement = document.documentElement;
       const colorSchemeDefaultValue = "light";
 
-      const getColorScheme = () => {
-        const storedValue = localStorage.getItem("colorScheme");
+      const getSystemColorScheme = () => {
         const isLight =
           window.matchMedia &&
           window.matchMedia("(prefers-color-scheme: light)").matches;
@@ -55,9 +54,7 @@ const t = useTranslations(locale);
           window.matchMedia &&
           window.matchMedia("(prefers-color-scheme: dark)").matches;
 
-        if (storedValue) {
-          return storedValue;
-        } else if (isLight) {
+        if (isLight) {
           return "light";
         } else if (isDark) {
           return "dark";
@@ -66,13 +63,42 @@ const t = useTranslations(locale);
         return colorSchemeDefaultValue;
       };
 
+      const getColorScheme = () => {
+        const storedValue = localStorage.getItem("colorScheme");
+
+        if (storedValue === "system") {
+          return getSystemColorScheme();
+        } else if (storedValue) {
+          return storedValue;
+        }
+
+        return getSystemColorScheme();
+      };
+
+      const getStoredColorScheme = () => {
+        const stored = localStorage.getItem("colorScheme");
+        if (stored === "light" || stored === "dark" || stored === "system") {
+          return stored;
+        }
+        return "system";
+      };
+
       const setColorScheme = (colorScheme = colorSchemeDefaultValue) => {
-        rootElement.dataset.colorScheme = colorScheme;
+        // Validate colorScheme value
+        if (colorScheme !== "light" && colorScheme !== "dark" && colorScheme !== "system") {
+          colorScheme = "system";
+        }
+
+        const actualColorScheme =
+          colorScheme === "system" ? getSystemColorScheme() : colorScheme;
+
+        rootElement.dataset.colorScheme = actualColorScheme;
+        rootElement.dataset.colorSchemePreference = colorScheme;
 
         localStorage.setItem("colorScheme", colorScheme);
       };
 
-      setColorScheme(getColorScheme());
+      setColorScheme(getStoredColorScheme());
 
       document.addEventListener("DOMContentLoaded", () => {
         const colorSchemeTriggerElement = document.querySelector(
@@ -80,20 +106,30 @@ const t = useTranslations(locale);
         );
 
         colorSchemeTriggerElement.addEventListener("click", () => {
-          const colorScheme = getColorScheme();
+          const storedScheme = getStoredColorScheme();
 
-          if (colorScheme === "light") {
+          if (storedScheme === "light") {
             setColorScheme("dark");
-          } else if (colorScheme === "dark") {
+          } else if (storedScheme === "dark") {
+            setColorScheme("system");
+          } else {
             setColorScheme("light");
           }
         });
 
+        const updateSystemColorScheme = () => {
+          if (getStoredColorScheme() === "system") {
+            setColorScheme("system");
+          }
+        };
+
         window
           .matchMedia("(prefers-color-scheme: dark)")
-          .addEventListener("change", (event) => {
-            setColorScheme(event.matches ? "dark" : "light");
-          });
+          .addEventListener("change", updateSystemColorScheme);
+
+        window
+          .matchMedia("(prefers-color-scheme: light)")
+          .addEventListener("change", updateSystemColorScheme);
       });
     </script>
   </head>
