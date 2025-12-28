@@ -3,19 +3,10 @@ import { getLangFromUrl, useTranslations } from "@i18n/utils";
 import Link from "@components/Link.astro";
 
 export interface Props {
-  element?: string;
-  appearance?: "h1" | "h2" | "h3" | "h4" | "p";
-  font?: "primary" | "secondary";
   class?: string;
 }
 
-const {
-  element = "p",
-  appearance = "p",
-  font,
-  class: className,
-  ...rest
-} = Astro.props;
+const { class: className, ...rest } = Astro.props;
 const locale = getLangFromUrl(Astro.url);
 const t = useTranslations(locale);
 ---
@@ -65,12 +56,26 @@ const t = useTranslations(locale);
     display: block;
     padding: var(--space-size-200) var(--space-size-400);
     margin: 0 var(--space-size-200);
+    color: var(--palette-primary-contrast);
     outline-width: var(--space-size-100);
     outline-offset: 1px;
     outline-style: solid;
     outline-color: transparent;
     text-decoration: none;
     text-wrap: nowrap;
+  }
+  nav li .menu-link::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background-color: var(--palette-primary);
+    mask-image: var(--mask-scribble);
+    mask-position: 50%;
+    mask-size: 100% 100%;
   }
 
   nav li [aria-current="page"],

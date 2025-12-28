@@ -4,11 +4,10 @@ import { getLangFromUrl, generateLink } from "@i18n/utils";
 export interface Props {
   href: string;
   accent?: boolean;
-  asButton?: boolean;
   class?: string;
 }
 
-const { href, accent, asButton, class: className, ...rest } = Astro.props;
+const { href, accent, class: className, ...rest } = Astro.props;
 const locale = getLangFromUrl(Astro.url);
 ---
 
@@ -16,7 +15,7 @@ const locale = getLangFromUrl(Astro.url);
   {...rest}
   href={generateLink(locale, href)}
   rel="prefetch"
-  class:list={["root", accent && "accent", asButton && "as-button", className]}
+  class:list={["root", accent && "accent", className]}
   data-astro-prefetch="viewport"
 >
   <span><slot /></span>
@@ -31,7 +30,7 @@ const locale = getLangFromUrl(Astro.url);
     position: relative;
     z-index: 1;
     font-size: var(--font-size-link);
-    color: var(--palette-primary-contrast);
+    color: var(--palette-primary);
     font-weight: 500;
     text-decoration: underline;
     text-decoration-style: double;
@@ -44,19 +43,5 @@ const locale = getLangFromUrl(Astro.url);
 
   .root.accent {
     color: var(--palette-accent);
-  }
-
-  .as-button::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    width: 100%;
-    height: 100%;
-    background-color: var(--palette-primary);
-    mask-image: var(--mask-scribble);
-    mask-position: 50%;
-    mask-size: 100% 100%;
   }
 </style>
