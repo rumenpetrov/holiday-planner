@@ -32,31 +32,45 @@
   "screenshots": [
     {
       "src": "/holiday-planner/screenshots/home-tall-bg.png",
-      "sizes": "1442x3202",
-      "type": "image/png",
+      "sizes": "1442x3203",
+      "type": "image/webp",
       "form_factor": "narrow",
       "label": "Home page on mobile"
     },
     {
       "src": "/holiday-planner/screenshots/this-year-tall-bg.png",
       "sizes": "1442x3202",
-      "type": "image/png",
+      "type": "image/webp",
       "form_factor": "narrow",
       "label": "This year page on mobile"
     },
     {
+      "src": "/holiday-planner/screenshots/this-year-current-month-tall-bg.png",
+      "sizes": "1442x3202",
+      "type": "image/webp",
+      "form_factor": "narrow",
+      "label": "This year page current month on mobile"
+    },
+    {
       "src": "/holiday-planner/screenshots/home-wide-bg.png",
-      "sizes": "1920x961",
-      "type": "image/png",
+      "sizes": "1366x958",
+      "type": "image/webp",
       "form_factor": "wide",
       "label": "Home page on desktop"
     },
     {
       "src": "/holiday-planner/screenshots/this-year-wide-bg.png",
-      "sizes": "1920x961",
-      "type": "image/png",
+      "sizes": "1366x958",
+      "type": "image/webp",
       "form_factor": "wide",
       "label": "This year page on desktop"
+    },
+    {
+      "src": "/holiday-planner/screenshots/this-year-current-month-wide-bg.png",
+      "sizes": "1366x958",
+      "type": "image/webp",
+      "form_factor": "wide",
+      "label": "This year page current month on desktop"
     }
   ]
 }
