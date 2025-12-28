@@ -4,10 +4,11 @@ import { getLangFromUrl, generateLink } from "@i18n/utils";
 export interface Props {
   href: string;
   accent?: boolean;
+  asButton?: boolean;
   class?: string;
 }
 
-const { href, accent, class: className, ...rest } = Astro.props;
+const { href, accent, asButton, class: className, ...rest } = Astro.props;
 const locale = getLangFromUrl(Astro.url);
 ---
 
@@ -15,7 +16,7 @@ const locale = getLangFromUrl(Astro.url);
   {...rest}
   href={generateLink(locale, href)}
   rel="prefetch"
-  class:list={["root", accent && "accent", className]}
+  class:list={["root", accent && "accent", asButton && "as-button", className]}
   data-astro-prefetch="viewport"
 >
   <span><slot /></span>
@@ -23,7 +24,7 @@ const locale = getLangFromUrl(Astro.url);
 
 <style
   define:vars={{
-    "decoration-marked": `url(${import.meta.env.BASE_URL}decoration-marked.svg)`,
+    "mask-scribble": `url(${import.meta.env.BASE_URL}mask-scribble.png)`,
   }}
 >
   .root {
@@ -37,7 +38,15 @@ const locale = getLangFromUrl(Astro.url);
     transition: all 0.3s ease;
   }
 
-  .root::before {
+  .root:hover {
+    text-decoration: none;
+  }
+
+  .root.accent {
+    color: var(--palette-accent);
+  }
+
+  .as-button::before {
     content: "";
     position: absolute;
     top: 0;
@@ -45,14 +54,9 @@ const locale = getLangFromUrl(Astro.url);
     z-index: -1;
     width: 100%;
     height: 100%;
-    background: var(--decoration-marked);
-  }
-
-  .root:hover {
-    text-decoration: none;
-  }
-
-  .root.accent {
-    color: var(--palette-accent);
+    background-color: var(--palette-primary);
+    mask-image: var(--mask-scribble);
+    mask-position: 50%;
+    mask-size: 100% 100%;
   }
 </style>

@@ -85,7 +85,11 @@ const t = useTranslations(locale);
 
       const setColorScheme = (colorScheme = colorSchemeDefaultValue) => {
         // Validate colorScheme value
-        if (colorScheme !== "light" && colorScheme !== "dark" && colorScheme !== "system") {
+        if (
+          colorScheme !== "light" &&
+          colorScheme !== "dark" &&
+          colorScheme !== "system"
+        ) {
           colorScheme = "system";
         }
 
@@ -143,7 +147,45 @@ const t = useTranslations(locale);
     accent-color: var(--palette-accent);
     overflow-x: hidden;
     overflow-y: scroll;
-    background: var(--palette-dominant);
+    min-height: 100%;
+    background-color: var(--palette-dominant);
+    background-image:
+      repeating-linear-gradient(
+        22.5deg,
+        transparent,
+        transparent 2px,
+        color(from var(--palette-dominant-contrast) srgb r g b / 0.03) 2px,
+        color(from var(--palette-dominant-contrast) srgb r g b / 0.03) 3px,
+        transparent 3px,
+        transparent 8px
+      ),
+      repeating-linear-gradient(
+        67.5deg,
+        transparent,
+        transparent 2px,
+        color(from var(--palette-dominant-contrast) srgb r g b / 0.03) 2px,
+        color(from var(--palette-dominant-contrast) srgb r g b / 0.03) 3px,
+        transparent 3px,
+        transparent 8px
+      ),
+      repeating-linear-gradient(
+        112.5deg,
+        transparent,
+        transparent 2px,
+        color(from var(--palette-dominant-contrast) srgb r g b / 0.03) 2px,
+        color(from var(--palette-dominant-contrast) srgb r g b / 0.03) 3px,
+        transparent 3px,
+        transparent 8px
+      ),
+      repeating-linear-gradient(
+        157.5deg,
+        transparent,
+        transparent 2px,
+        color(from var(--palette-dominant-contrast) srgb r g b / 0.03) 2px,
+        color(from var(--palette-dominant-contrast) srgb r g b / 0.03) 3px,
+        transparent 3px,
+        transparent 8px
+      );
     font-family: var(--font-family-primary);
     font-size: 80%;
     color: var(--palette-dominant-contrast);
