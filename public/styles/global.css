@@ -1,0 +1,124 @@
+* {
+  padding: 0;
+  margin: 0;
+  outline: 0;
+}
+
+:root,
+:root[data-color-scheme="light"] {
+  color-scheme: light;
+
+  --space-size-100: 0.25rem;
+  --space-size-200: 0.5rem;
+  --space-size-300: 0.75rem;
+  --space-size-400: 1rem;
+  --space-size-500: 1.25rem;
+  --space-size-600: 1.5rem;
+  --space-size-700: 1.75rem;
+  --space-size-800: 2rem;
+
+  --font-family-primary: "Sofia Sans", sans-serif;
+  --font-family-secondary: "Cormorant Infant", serif;
+  --font-size-h1: 4.209rem;
+  --font-size-h2: 3.157rem;
+  --font-size-h3: 2.369rem;
+  --font-size-h4: 1.777rem;
+  --font-size-h5: 1.333rem;
+  --font-size-p: 1rem;
+  --font-size-link: 1.1rem;
+  --font-size-small: 0.75rem;
+
+  /* 60% Backgrounds mainly (light/dark) */
+  --palette-dominant: #f0eddb;
+  --palette-dominant-contrast: #0e0d06;
+  --palette-primary: #fb5e09;
+  --palette-primary-contrast: var(--palette-dominant-contrast);
+  --palette-secondary: #fff6c0;
+  --palette-secondary-contrast: var(--palette-dominant-contrast);
+  --palette-accent: #f5cb5c;
+  --palette-accent-contrast: var(--palette-dominant-contrast);
+  --palette-semantic-success: #00ff00;
+  --palette-semantic-warning: #ffff00;
+  --palette-semantic-error: #ff0000;
+  --palette-semantic-info: #0000ff;
+
+  --selection-background-color: var(--palette-accent);
+  --selection-color: var(--palette-accent-contrast);
+
+  /* blocks */
+  --block-logo-gradient-top: #fb5e09;
+  --block-logo-gradient-bottom: #f5cb5c;
+  --block-pad-background: var(--palette-secondary);
+  --block-pad-color: var(--palette-secondary-contrast);
+  --block-calendar-timeline-color: var(--palette-dominant-contrast);
+  --block-calendar-background: var(--palette-dominant);
+  --block-calendar-color: var(--palette-dominant-contrast);
+  --block-calendar-holiday-background: var(--palette-accent);
+  --block-calendar-holiday-color: var(--palette-accent-contrast);
+  --block-calendar-suggestion-background: var(--palette-secondary);
+  --block-calendar-suggestion-color: var(--palette-secondary-contrast);
+  --block-calendar-today-background: var(--palette-primary);
+  --block-calendar-today-color: var(--palette-primary-contrast);
+  --block-calendar-th-border-color: var(--palette-secondary);
+  --block-calendar-td-border-color: transparent;
+  --block-calendar-weekend-background: var(--palette-dominant);
+  --block-calendar-weekend-color: #aaa;
+  --block-calendar-pre-post-color: #aaa;
+}
+
+:root[data-color-scheme="dark"] {
+  color-scheme: dark;
+
+  /* 60% Backgrounds mainly (light/dark) */
+  --palette-dominant: #060604;
+  --palette-dominant-contrast: #f9f8f1;
+  --palette-primary: #f65904;
+  --palette-primary-contrast: var(--palette-dominant-contrast);
+  --palette-secondary: #292304;
+  --palette-secondary-contrast: var(--palette-dominant-contrast);
+  --palette-accent: #ffd800;
+  --palette-accent-contrast: var(--palette-dominant);
+  --palette-semantic-success: #00ff00;
+  --palette-semantic-warning: #ffff00;
+  --palette-semantic-error: #ff0000;
+  --palette-semantic-info: #0000ff;
+
+  /* blocks */
+  --block-logo-gradient-top: #f65904;
+  --block-logo-gradient-bottom: #fcdb22;
+  --block-pad-background: var(--palette-secondary);
+  --block-pad-color: var(--palette-secondary-contrast);
+  --block-calendar-timeline-color: var(--palette-dominant-contrast);
+  --block-calendar-background: var(--palette-dominant);
+  --block-calendar-color: var(--palette-dominant-contrast);
+  --block-calendar-holiday-background: var(--palette-accent);
+  --block-calendar-holiday-color: var(--palette-accent-contrast);
+  --block-calendar-suggestion-background: var(--palette-secondary);
+  --block-calendar-suggestion-color: var(--palette-secondary-contrast);
+  --block-calendar-today-background: var(--palette-primary);
+  --block-calendar-today-color: var(--palette-primary-contrast);
+  --block-calendar-th-border-color: var(--palette-secondary);
+  --block-calendar-td-border-color: transparent;
+  --block-calendar-weekend-background: var(--palette-dominant);
+  --block-calendar-weekend-color: #aaa;
+  --block-calendar-pre-post-color: #aaa;
+}
+
+*:focus-visible {
+  outline: 1px solid var(--palette-accent);
+}
+
+::selection {
+  background-color: var(--palette-accent);
+  color: var(--palette-accent-contrast);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@supports (view-transition-name: none) {
+  @view-transition {
+    navigation: auto;
+  }
+}
