@@ -9,6 +9,7 @@ import { filterOutUnofficialCalendarEvents } from "@utilities/filter-out-unoffic
 import { transformToThisYearData } from "@utilities/transform-to-this-year-data";
 import { addExtraProperties } from "@utilities/add-extra-properties";
 import CalendarDecoration from "./CalendarDecoration.astro";
+import Button from "./Button.astro";
 
 export interface Props {
   year: number;
@@ -62,9 +63,9 @@ const listYear = transformToThisYearData(listOfficial, year);
           {t("GLOBAL.TIMELINE.LABEL")}
         </h2>
 
-        <button class="button" id="export-markdown" hidden>
+        <Button id="export-markdown" hidden class="export-button" variant="secondary">
           {t("GLOBAL.EXPORT_AS_MARKDOWN")}
-        </button>
+        </Button>
 
         <div class="legend" role="region" aria-hidden="true">
           <HPTypography appearance="h5" font="body">
@@ -294,13 +295,8 @@ const listYear = transformToThisYearData(listOfficial, year);
     }
   }
 
-  .button {
-    border: 0;
-    padding: var(--space-size-200) var(--space-size-400);
+  .export-button {
     margin-bottom: var(--space-size-600);
-    background-color: var(--palette-secondary);
-    color: var(--palette-secondary-contrast);
-    cursor: pointer;
   }
 
   .timeline {
