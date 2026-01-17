@@ -16,21 +16,21 @@ const { class: className, variant = "primary", ...rest } = Astro.props;
 <style>
   .button {
     border: 0;
-    padding: var(--space-size-200) var(--space-size-400);
+    padding: var(--theme-space-button-y) var(--theme-space-button-x);
     cursor: pointer;
     font-family: inherit;
     font-size: inherit;
-    transition: background-color var(--transition-base) ease;
+    transition: background-color var(--theme-transition-duration-base) ease;
   }
 
   .button.primary {
-    background-color: var(--palette-primary);
-    color: var(--palette-primary-contrast);
+    background-color: var(--theme-palette-primary);
+    color: var(--theme-palette-primary-contrast);
   }
 
   .button.secondary {
-    background-color: var(--palette-secondary);
-    color: var(--palette-secondary-contrast);
+    background-color: var(--theme-palette-secondary);
+    color: var(--theme-palette-secondary-contrast);
   }
 
   .button[hidden] {

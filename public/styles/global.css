@@ -4,6 +4,13 @@
   outline: 0;
 }
 
+/**
+ * Token Hierarchy
+ * - Primitive - Raw values (the "what"). These are not for direct UI use.
+ * - Semantic(Alias) - Define intent and meaning (the "how"). These are the main tokens used for styling.
+ * - Component - Define specific component parts (the "where"). Used for unique overrides.
+ */
+
 :root,
 :root[data-color-scheme="light"] {
   color-scheme: light;
@@ -12,122 +19,157 @@
   --font-family-primary: "Sofia Sans", sans-serif;
   --font-family-secondary: "Cormorant Infant", serif;
 
-  --space-size-100: 0.25rem;
-  --space-size-200: 0.5rem;
-  --space-size-300: 0.75rem;
-  --space-size-400: 1rem;
-  --space-size-500: 1.25rem;
-  --space-size-600: 1.5rem;
-  --space-size-700: 1.75rem;
-  --space-size-800: 2rem;
+  --font-size-s: 0.75rem;
+  --font-size-base: 1rem;
+  --font-size-m: 1.1rem;
+  --font-size-l: 1.333rem;
+  --font-size-lg: 1.777rem;
+  --font-size-xl: 2.369rem;
+  --font-size-2xl: 3.157rem;
+  --font-size-3xl: 4.209rem;
+
+  --dimensions-1: 0.0625rem;
+  --dimensions-2: 0.125rem;
+  --dimensions-3: 0.25rem;
+  --dimensions-4: 0.5rem;
+  --dimensions-5: 0.75rem;
+  --dimensions-6: 1rem;
+  --dimensions-7: 1.25rem;
+  --dimensions-8: 1.5rem;
+  --dimensions-9: 1.75rem;
+  --dimensions-10: 2rem;
+
+  --transition-duration-fast: 200ms;
+  --transition-duration-base: 300ms;
+
+  --z-index-100: 10;
+  --z-index-200: 100;
 
   /* UI tokens */
-  --font-family-body: var(--font-family-body);
-  --font-family-headline: var(--font-family-secondary);
-  --font-size-h1: 4.209rem;
-  --font-size-h2: 3.157rem;
-  --font-size-h3: 2.369rem;
-  --font-size-h4: 1.777rem;
-  --font-size-h5: 1.333rem;
-  --font-size-p: 1rem;
-  --font-size-link: 1.1rem;
-  --font-size-small: 0.75rem;
+  --theme-font-family-body: var(--font-family-primary);
+  --theme-font-family-headline: var(--font-family-secondary);
+  --theme-font-size-h1: var(--font-size-3xl);
+  --theme-font-size-h2: var(--font-size-2xl);
+  --theme-font-size-h3: var(--font-size-xl);
+  --theme-font-size-h4: var(--font-size-lg);
+  --theme-font-size-h5: var(--font-size-l);
+  --theme-font-size-p: var(--font-size-base);
+  --theme-font-size-link: var(--font-size-m);
+  --theme-font-size-small: var(--font-size-s);
 
-  --transition-fast: 200ms ease;
-  --transition-base: 300ms ease;
+  --theme-transition-duration-fast: var(--transition-duration-fast);
+  --theme-transition-duration-base: var(--transition-duration-base);
 
-  --z-index-fixed: 10;
-  --z-index-fab: 100;
+  --theme-z-index-fixed: var(--z-index-100);
+  --theme-z-index-fab: var(--z-index-200);
 
-  --focus-ring-width: 1px;
-  --focus-ring-offset: 2px;
-  --focus-ring-color: var(--palette-accent);
+  --theme-border-width-subtle: var(--dimensions-1);
+  --theme-border-width-default: var(--dimensions-2);
+  --theme-border-size-thick: var(--dimensions-3);
 
-  --palette-dominant: #f0eddb;
-  --palette-dominant-contrast: #0e0d06;
-  --palette-primary: #fb5e09;
-  --palette-primary-contrast: var(--palette-dominant-contrast);
-  --palette-secondary: #fff6c0;
-  --palette-secondary-contrast: var(--palette-dominant-contrast);
-  --palette-accent: #f5cb5c;
-  --palette-accent-contrast: var(--palette-dominant-contrast);
-  --palette-semantic-success: #00ff00;
-  --palette-semantic-warning: #ffff00;
-  --palette-semantic-error: #ff0000;
-  --palette-semantic-info: #0000ff;
-  --palette-text-muted: #aaa;
-  --palette-text-muted-contrast: var(--palette-dominant-contrast);
+  /* TODO: Replace these with token which show intent */
+  --theme-space-size-100: var(--dimensions-3);
+  --theme-space-size-200: var(--dimensions-4);
+  --theme-space-size-300: var(--dimensions-5);
+  --theme-space-size-400: var(--dimensions-6);
+  --theme-space-size-500: var(--dimensions-7);
+  --theme-space-size-600: var(--dimensions-8);
+  --theme-space-size-700: var(--dimensions-9);
+  --theme-space-size-800: var(--dimensions-10);
 
-  --selection-background-color: var(--palette-accent);
-  --selection-color: var(--palette-accent-contrast);
+  --theme-space-button-x: var(--theme-space-size-400);
+  --theme-space-button-y: var(--theme-space-size-200);
+
+  --theme-focus-ring-width: 1px;
+  --theme-focus-ring-offset: 2px;
+  --theme-focus-ring-color: var(--theme-palette-accent);
+
+  /* TODO: Move all color values to primitives */
+  --theme-palette-dominant: #f0eddb;
+  --theme-palette-dominant-contrast: #0e0d06;
+  --theme-palette-primary: #fb5e09;
+  --theme-palette-primary-contrast: var(--theme-palette-dominant-contrast);
+  --theme-palette-secondary: #fff6c0;
+  --theme-palette-secondary-contrast: var(--theme-palette-dominant-contrast);
+  --theme-palette-accent: #f5cb5c;
+  --theme-palette-accent-contrast: var(--theme-palette-dominant-contrast);
+  --theme-palette-semantic-success: #00ff00;
+  --theme-palette-semantic-warning: #ffff00;
+  --theme-palette-semantic-error: #ff0000;
+  --theme-palette-semantic-info: #0000ff;
+  --theme-palette-text-muted: #aaa;
+  --theme-palette-text-muted-contrast: var(--theme-palette-dominant-contrast);
+
+  --theme-selection-background-color: var(--theme-palette-accent);
+  --theme-selection-color: var(--theme-palette-accent-contrast);
 
   --block-logo-gradient-top: #fb5e09;
   --block-logo-gradient-bottom: #f5cb5c;
-  --block-pad-background: var(--palette-secondary);
-  --block-pad-color: var(--palette-secondary-contrast);
-  --block-calendar-timeline-color: var(--palette-dominant-contrast);
-  --block-calendar-background: var(--palette-dominant);
-  --block-calendar-color: var(--palette-dominant-contrast);
-  --block-calendar-holiday-background: var(--palette-accent);
-  --block-calendar-holiday-color: var(--palette-accent-contrast);
-  --block-calendar-suggestion-background: var(--palette-secondary);
-  --block-calendar-suggestion-color: var(--palette-secondary-contrast);
-  --block-calendar-today-background: var(--palette-primary);
-  --block-calendar-today-color: var(--palette-primary-contrast);
-  --block-calendar-th-border-color: var(--palette-secondary);
+  --block-pad-background: var(--theme-palette-secondary);
+  --block-pad-color: var(--theme-palette-secondary-contrast);
+  --block-calendar-timeline-color: var(--theme-palette-dominant-contrast);
+  --block-calendar-background: var(--theme-palette-dominant);
+  --block-calendar-color: var(--theme-palette-dominant-contrast);
+  --block-calendar-holiday-background: var(--theme-palette-accent);
+  --block-calendar-holiday-color: var(--theme-palette-accent-contrast);
+  --block-calendar-suggestion-background: var(--theme-palette-secondary);
+  --block-calendar-suggestion-color: var(--theme-palette-secondary-contrast);
+  --block-calendar-today-background: var(--theme-palette-primary);
+  --block-calendar-today-color: var(--theme-palette-primary-contrast);
+  --block-calendar-th-border-color: var(--theme-palette-secondary);
   --block-calendar-td-border-color: transparent;
-  --block-calendar-weekend-background: var(--palette-dominant);
-  --block-calendar-weekend-color: var(--palette-text-muted);
-  --block-calendar-pre-post-color: var(--palette-text-muted);
+  --block-calendar-weekend-background: var(--theme-palette-dominant);
+  --block-calendar-weekend-color: var(--theme-palette-text-muted);
+  --block-calendar-pre-post-color: var(--theme-palette-text-muted);
 }
 
 :root[data-color-scheme="dark"] {
   color-scheme: dark;
 
-  --palette-dominant: #060604;
-  --palette-dominant-contrast: #f9f8f1;
-  --palette-primary: #f65904;
-  --palette-primary-contrast: var(--palette-dominant-contrast);
-  --palette-secondary: #292304;
-  --palette-secondary-contrast: var(--palette-dominant-contrast);
-  --palette-accent: #ffd800;
-  --palette-accent-contrast: var(--palette-dominant);
-  --palette-semantic-success: #00ff00;
-  --palette-semantic-warning: #ffff00;
-  --palette-semantic-error: #ff0000;
-  --palette-semantic-info: #0000ff;
-  --palette-text-muted: #888;
-  --palette-text-muted-contrast: var(--palette-dominant-contrast);
+  --theme-palette-dominant: #060604;
+  --theme-palette-dominant-contrast: #f9f8f1;
+  --theme-palette-primary: #f65904;
+  --theme-palette-primary-contrast: var(--theme-palette-dominant-contrast);
+  --theme-palette-secondary: #292304;
+  --theme-palette-secondary-contrast: var(--theme-palette-dominant-contrast);
+  --theme-palette-accent: #ffd800;
+  --theme-palette-accent-contrast: var(--theme-palette-dominant);
+  --theme-palette-semantic-success: #00ff00;
+  --theme-palette-semantic-warning: #ffff00;
+  --theme-palette-semantic-error: #ff0000;
+  --theme-palette-semantic-info: #0000ff;
+  --theme-palette-text-muted: #888;
+  --theme-palette-text-muted-contrast: var(--theme-palette-dominant-contrast);
 
   /* blocks */
   --block-logo-gradient-top: #f65904;
   --block-logo-gradient-bottom: #fcdb22;
-  --block-pad-background: var(--palette-secondary);
-  --block-pad-color: var(--palette-secondary-contrast);
-  --block-calendar-timeline-color: var(--palette-dominant-contrast);
-  --block-calendar-background: var(--palette-dominant);
-  --block-calendar-color: var(--palette-dominant-contrast);
-  --block-calendar-holiday-background: var(--palette-accent);
-  --block-calendar-holiday-color: var(--palette-accent-contrast);
-  --block-calendar-suggestion-background: var(--palette-secondary);
-  --block-calendar-suggestion-color: var(--palette-secondary-contrast);
-  --block-calendar-today-background: var(--palette-primary);
-  --block-calendar-today-color: var(--palette-primary-contrast);
-  --block-calendar-th-border-color: var(--palette-secondary);
+  --block-pad-background: var(--theme-palette-secondary);
+  --block-pad-color: var(--theme-palette-secondary-contrast);
+  --block-calendar-timeline-color: var(--theme-palette-dominant-contrast);
+  --block-calendar-background: var(--theme-palette-dominant);
+  --block-calendar-color: var(--theme-palette-dominant-contrast);
+  --block-calendar-holiday-background: var(--theme-palette-accent);
+  --block-calendar-holiday-color: var(--theme-palette-accent-contrast);
+  --block-calendar-suggestion-background: var(--theme-palette-secondary);
+  --block-calendar-suggestion-color: var(--theme-palette-secondary-contrast);
+  --block-calendar-today-background: var(--theme-palette-primary);
+  --block-calendar-today-color: var(--theme-palette-primary-contrast);
+  --block-calendar-th-border-color: var(--theme-palette-secondary);
   --block-calendar-td-border-color: transparent;
-  --block-calendar-weekend-background: var(--palette-dominant);
-  --block-calendar-weekend-color: var(--palette-text-muted);
-  --block-calendar-pre-post-color: var(--palette-text-muted);
+  --block-calendar-weekend-background: var(--theme-palette-dominant);
+  --block-calendar-weekend-color: var(--theme-palette-text-muted);
+  --block-calendar-pre-post-color: var(--theme-palette-text-muted);
 }
 
 *:focus-visible {
-  outline: var(--focus-ring-width) solid var(--focus-ring-color);
-  outline-offset: var(--focus-ring-offset);
+  outline: var(--theme-focus-ring-width) solid var(--theme-focus-ring-color);
+  outline-offset: var(--theme-focus-ring-offset);
 }
 
 ::selection {
-  background-color: var(--palette-accent);
-  color: var(--palette-accent-contrast);
+  background-color: var(--theme-palette-accent);
+  color: var(--theme-palette-accent-contrast);
 }
 
 html {

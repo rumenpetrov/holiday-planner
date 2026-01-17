@@ -84,12 +84,11 @@ const { data, error } = await getCalendarEvents({
 
 <style>
   .section {
-    margin: 0 0 var(--space-size-600);
+    margin: 0 0 var(--theme-space-size-600);
   }
 
   .pad {
-    border-radius: var(--space-size-200);
-    padding: var(--space-size-400);
+    padding: var(--theme-space-size-400);
     background: var(--block-pad-background);
     color: var(--block-pad-color);
   }
@@ -100,14 +99,14 @@ const { data, error } = await getCalendarEvents({
   }
 
   .intro-content {
-    margin-top: var(--space-size-400);
+    margin-top: var(--theme-space-size-400);
   }
 
   @media (min-width: 700px) {
     .intro {
       display: flex;
       align-items: center;
-      padding: var(--space-size-400) 0;
+      padding: var(--theme-space-size-400) 0;
     }
 
     .intro-decoration {
@@ -116,11 +115,11 @@ const { data, error } = await getCalendarEvents({
 
     .intro-content {
       flex: 1 1 60%;
-      margin: 0 var(--space-size-800);
+      margin: 0 var(--theme-space-size-800);
     }
   }
 
   hp-event-list {
-    background-color: var(--palette-dominant);
+    background-color: var(--theme-palette-dominant);
   }
 </style>

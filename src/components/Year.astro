@@ -63,7 +63,12 @@ const listYear = transformToThisYearData(listOfficial, year);
           {t("GLOBAL.TIMELINE.LABEL")}
         </h2>
 
-        <Button id="export-markdown" hidden class="export-button" variant="secondary">
+        <Button
+          id="export-markdown"
+          hidden
+          class="export-button"
+          variant="secondary"
+        >
           {t("GLOBAL.EXPORT_AS_MARKDOWN")}
         </Button>
 
@@ -194,8 +199,8 @@ const listYear = transformToThisYearData(listOfficial, year);
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    padding: var(--space-size-800) 0;
-    margin-bottom: var(--space-size-800);
+    padding: var(--theme-space-size-800) 0;
+    margin-bottom: var(--theme-space-size-800);
   }
 
   .page-header::before {
@@ -207,10 +212,10 @@ const listYear = transformToThisYearData(listOfficial, year);
     transform: translate3d(-50%, 0, 0);
     z-index: -1;
     width: 100vw;
-    background-color: var(--palette-secondary);
-    border-width: 0 0 var(--space-size-100) 0;
+    background-color: var(--theme-palette-secondary);
+    border-width: 0 0 var(--theme-border-size-m) 0;
     border-style: solid;
-    border-color: var(--palette-primary);
+    border-color: var(--theme-palette-primary);
   }
 
   .page-header-year {
@@ -218,21 +223,21 @@ const listYear = transformToThisYearData(listOfficial, year);
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    padding: var(--space-size-100) var(--space-size-200);
-    background-color: var(--palette-primary);
-    color: var(--palette-primary-contrast);
-    margin: var(--space-size-100) var(--space-size-200) var(--space-size-400)
-      var(--space-size-200);
+    padding: var(--theme-space-size-100) var(--theme-space-size-200);
+    background-color: var(--theme-palette-primary);
+    color: var(--theme-palette-primary-contrast);
+    margin: var(--theme-space-size-100) var(--theme-space-size-200)
+      var(--theme-space-size-400) var(--theme-space-size-200);
   }
 
   .page-header-year::before {
     content: "";
     position: absolute;
-    top: calc(100% + var(--space-size-100));
-    right: calc(-1 * var(--space-size-100));
-    left: calc(-1 * var(--space-size-100));
-    height: var(--space-size-100);
-    background-color: var(--palette-primary);
+    top: calc(100% + var(--theme-space-size-100));
+    right: calc(-1 * var(--theme-space-size-100));
+    left: calc(-1 * var(--theme-space-size-100));
+    height: var(--theme-space-size-100);
+    background-color: var(--theme-palette-primary);
   }
 
   .page-header-content {
@@ -257,52 +262,52 @@ const listYear = transformToThisYearData(listOfficial, year);
   }
 
   .legend {
-    padding-bottom: var(--space-size-400);
+    padding-bottom: var(--theme-space-size-400);
   }
 
   .legend-row {
     display: flex;
     align-items: center;
-    margin-bottom: var(--space-size-100);
+    margin-bottom: var(--theme-space-size-100);
   }
 
   .legend-preview {
     display: inline-block;
     width: 2em;
     height: 1em;
-    margin-right: var(--space-size-200);
+    margin-right: var(--theme-space-size-200);
     overflow: hidden;
     text-indent: 100%;
     background-color: gray;
   }
 
   .section {
-    padding-bottom: var(--space-size-700);
-    transition: opacity var(--transition-base) ease-in-out;
+    padding-bottom: var(--theme-space-size-700);
+    transition: opacity var(--theme-transition-duration-base) ease-in-out;
   }
 
   @media (min-width: 700px) {
     .section-grid {
       display: flex;
       flex-wrap: wrap;
-      margin: calc(var(--space-size-400) * -1);
+      margin: calc(var(--theme-space-size-400) * -1);
     }
 
     .section-grid-column {
       box-sizing: border-box;
       width: 50%;
-      padding: var(--space-size-400);
+      padding: var(--theme-space-size-400);
     }
   }
 
   .export-button {
-    margin-bottom: var(--space-size-600);
+    margin-bottom: var(--theme-space-size-600);
   }
 
   .timeline {
     position: relative;
     z-index: 1;
-    padding: 0 var(--space-size-600);
+    padding: 0 var(--theme-space-size-600);
   }
 
   .timeline::before {
@@ -311,26 +316,26 @@ const listYear = transformToThisYearData(listOfficial, year);
     top: 0;
     bottom: 0;
     left: 0;
-    width: var(--space-size-100);
+    width: var(--theme-space-size-100);
     background-color: var(--block-calendar-timeline-color);
   }
 
   .timeline-point {
     position: relative;
     display: inline-flex;
-    margin-bottom: var(--space-size-600);
+    margin-bottom: var(--theme-space-size-600);
   }
 
   .timeline-point::before {
     position: absolute;
     top: 100%;
-    left: calc(-1 * var(--space-size-600));
+    left: calc(-1 * var(--theme-space-size-600));
     content: "";
-    width: calc(100% + (var(--space-size-600) * 2));
-    border-width: 0 0 var(--space-size-100) 0;
+    width: calc(100% + (var(--theme-space-size-600) * 2));
+    border-width: 0 0 var(--theme-border-size-m) 0;
     border-style: solid;
     border-color: var(--block-calendar-timeline-color);
-    margin: var(--space-size-100) 0;
+    margin: var(--theme-space-size-100) 0;
   }
 
   .timeline-point-link {
@@ -344,18 +349,18 @@ const listYear = transformToThisYearData(listOfficial, year);
     visibility: hidden;
     position: absolute;
     right: 100%;
-    width: var(--space-size-600);
-    height: var(--space-size-100);
+    width: var(--theme-space-size-600);
+    height: var(--theme-space-size-100);
     background-color: var(--block-calendar-timeline-color);
-    transition: opacity var(--transition-base) ease-in-out;
+    transition: opacity var(--theme-transition-duration-base) ease-in-out;
   }
 
   .timeline-point-link::before {
-    top: var(--space-size-400);
+    top: var(--theme-space-size-400);
   }
 
   .timeline-point-link::after {
-    bottom: var(--space-size-400);
+    bottom: var(--theme-space-size-400);
   }
 
   .timeline-point-link:has(hp-month:defined)::before,
@@ -374,28 +379,28 @@ const listYear = transformToThisYearData(listOfficial, year);
     opacity: 1;
     visibility: visible;
     content-visibility: visible;
-    transition: opacity var(--transition-base) ease-in-out;
+    transition: opacity var(--theme-transition-duration-base) ease-in-out;
   }
 
   hp-month {
     box-sizing: border-box;
     min-width: 300px;
     font-family: var(--font-family-primary);
-    padding: var(--space-size-200);
-    margin-bottom: var(--space-size-400);
+    padding: var(--theme-space-size-200);
+    margin-bottom: var(--theme-space-size-400);
     border: none;
-    outline-width: calc(var(--space-size-100) / 2);
+    outline-width: calc(var(--theme-space-size-100) / 2);
     outline-style: dashed;
     outline-color: var(--block-calendar-timeline-color);
     border-radius: 0;
     transition:
-      display var(--transition-base) ease-in-out allow-discrete,
-      opacity var(--transition-base) ease-in-out,
+      display var(--theme-transition-duration-base) ease-in-out allow-discrete,
+      opacity var(--theme-transition-duration-base) ease-in-out,
       outline-style 0.3s ease-in-out;
   }
 
   section:has([data-temporal-state="present"]) {
-    scroll-margin-top: var(--space-size-700);
+    scroll-margin-top: var(--theme-space-size-700);
   }
 
   hp-month[data-temporal-state="present"] {
@@ -410,13 +415,13 @@ const listYear = transformToThisYearData(listOfficial, year);
   }
 
   .events {
-    padding: var(--space-size-400) 0;
+    padding: var(--theme-space-size-400) 0;
   }
 
   .events-item {
-    border-bottom: calc(var(--space-size-100) / 2) dotted
-      var(--palette-dominant-contrast);
-    margin-bottom: var(--space-size-200);
+    border-bottom: var(--theme-border-width-default) dotted
+      var(--theme-palette-dominant-contrast);
+    margin-bottom: var(--theme-space-size-200);
   }
 </style>
 

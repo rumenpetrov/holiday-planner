@@ -33,7 +33,7 @@ const list = transformToThisMonthData(listOfficial, index);
 <style>
   :host {
     font-family: sans-serif;
-    color: var(--palette-dominant-contrast, #000);
+    color: var(--theme-palette-dominant-contrast, #000);
     display: block;
     overflow: hidden;
     border-radius: 10px;
@@ -41,8 +41,8 @@ const list = transformToThisMonthData(listOfficial, index);
   }
 
   .root {
-    border-bottom: calc(var(--space-size-100) / 2) dotted
-      var(--palette-dominant-contrast);
-    margin: 0 0 var(--space-size-200) 0;
+    border-bottom: var(--theme-border-width-default) dotted
+      var(--theme-palette-dominant-contrast);
+    margin: 0 0 var(--theme-space-size-200) 0;
   }
 </style>

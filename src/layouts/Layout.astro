@@ -99,7 +99,7 @@ const t = useTranslations(locale);
     z-index: 2;
     display: flex;
     flex-direction: column;
-    padding: var(--space-size-400);
+    padding: var(--theme-space-size-400);
   }
 
   @media (min-width: 600px) {
@@ -108,7 +108,7 @@ const t = useTranslations(locale);
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      padding: var(--space-size-600);
+      padding: var(--theme-space-size-600);
     }
   }
 
@@ -119,7 +119,7 @@ const t = useTranslations(locale);
   .logo svg {
     width: 18rem;
     height: auto;
-    fill: var(--palette-dominant-contrast);
+    fill: var(--theme-palette-dominant-contrast);
   }
 
   .logo #logo-gradient-target {
@@ -133,7 +133,7 @@ const t = useTranslations(locale);
   }
 
   .menu-languages {
-    margin: 0 var(--space-size-200);
+    margin: 0 var(--theme-space-size-200);
   }
 
   main {
@@ -144,7 +144,7 @@ const t = useTranslations(locale);
 
   .wrapper {
     max-width: 100%;
-    padding: 0 var(--space-size-200);
+    padding: 0 var(--theme-space-size-200);
     margin: 0 auto;
   }
 
@@ -174,12 +174,12 @@ const t = useTranslations(locale);
     background-color: transparent;
     width: 32px;
     height: 32px;
-    margin: 0 var(--space-size-200);
+    margin: 0 var(--theme-space-size-200);
     cursor: pointer;
   }
 
   #color-scheme-trigger svg {
-    fill: var(--palette-dominant-contrast);
+    fill: var(--theme-palette-dominant-contrast);
   }
 
   #color-scheme-trigger-icon-light,
@@ -196,7 +196,8 @@ const t = useTranslations(locale);
     display: block;
   }
 
-  html[data-color-scheme-preference="system"] #color-scheme-trigger-icon-system {
+  html[data-color-scheme-preference="system"]
+    #color-scheme-trigger-icon-system {
     display: block;
   }
 </style>

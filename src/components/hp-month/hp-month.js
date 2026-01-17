@@ -7,8 +7,8 @@ const tagName = "hp-month";
 export class HPMonth extends LitElement {
   static styles = css`
     ::selection {
-      background-color: var(--selection-background-color);
-      color: var(--selection-color);
+      background-color: var(--theme-selection-background-color);
+      color: var(--theme-selection-color);
     }
 
     :host {

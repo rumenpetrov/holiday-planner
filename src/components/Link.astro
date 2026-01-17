@@ -29,12 +29,12 @@ const locale = getLangFromUrl(Astro.url);
   .root {
     position: relative;
     z-index: 1;
-    font-size: var(--font-size-link);
-    color: var(--palette-primary);
+    font-size: var(--theme-font-size-link);
+    color: var(--theme-palette-primary);
     font-weight: 500;
     text-decoration: underline;
     text-decoration-style: double;
-    transition: all var(--transition-base) ease;
+    transition: all var(--theme-transition-duration-base) ease;
   }
 
   .root:hover {
@@ -42,6 +42,6 @@ const locale = getLangFromUrl(Astro.url);
   }
 
   .root.accent {
-    color: var(--palette-accent);
+    color: var(--theme-palette-accent);
   }
 </style>

@@ -38,12 +38,12 @@ const t = useTranslations(locale);
     position: fixed;
     bottom: 0;
     left: 0;
-    z-index: var(--z-index-fixed);
+    z-index: var(--theme-z-index-fixed);
     width: 100%;
-    border-top: var(--space-size-100) solid var(--palette-primary);
+    border-top: var(--theme-border-size-m) solid var(--theme-palette-primary);
     overflow: auto;
-    padding: var(--space-size-400) 0;
-    background-color: var(--palette-secondary);
+    padding: var(--theme-space-size-400) 0;
+    background-color: var(--theme-palette-secondary);
   }
 
   nav ul {
@@ -54,10 +54,10 @@ const t = useTranslations(locale);
 
   nav li .menu-link {
     display: block;
-    padding: var(--space-size-200) var(--space-size-400);
-    margin: 0 var(--space-size-200);
-    color: var(--palette-primary-contrast);
-    outline-width: var(--space-size-100);
+    padding: var(--theme-space-size-200) var(--theme-space-size-400);
+    margin: 0 var(--theme-space-size-200);
+    color: var(--theme-palette-primary-contrast);
+    outline-width: var(--theme-space-size-100);
     outline-offset: 1px;
     outline-style: solid;
     outline-color: transparent;
@@ -72,7 +72,7 @@ const t = useTranslations(locale);
     z-index: -1;
     width: 100%;
     height: 100%;
-    background-color: var(--palette-primary);
+    background-color: var(--theme-palette-primary);
     mask-image: var(--mask-scribble);
     mask-position: 50%;
     mask-size: 100% 100%;
@@ -80,7 +80,7 @@ const t = useTranslations(locale);
 
   nav li [aria-current="page"],
   nav li:hover .menu-link {
-    outline-color: var(--palette-primary);
+    outline-color: var(--theme-palette-primary);
   }
 
   @media (min-width: 1200px) {
@@ -89,7 +89,7 @@ const t = useTranslations(locale);
       width: auto;
       border: 0;
       background-color: transparent;
-      padding: var(--space-size-200);
+      padding: var(--theme-space-size-200);
     }
 
     nav ul {

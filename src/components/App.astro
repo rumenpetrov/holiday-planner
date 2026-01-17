@@ -144,18 +144,18 @@ const t = useTranslations(locale);
 
 <style>
   html {
-    accent-color: var(--palette-accent);
+    accent-color: var(--theme-palette-accent);
     overflow-x: hidden;
     overflow-y: scroll;
     min-height: 100%;
-    background-color: var(--palette-dominant);
+    background-color: var(--theme-palette-dominant);
     background-image:
       repeating-linear-gradient(
         22.5deg,
         transparent,
         transparent 2px,
-        color(from var(--palette-dominant-contrast) srgb r g b / 0.03) 2px,
-        color(from var(--palette-dominant-contrast) srgb r g b / 0.03) 3px,
+        color(from var(--theme-palette-dominant-contrast) srgb r g b / 0.03) 2px,
+        color(from var(--theme-palette-dominant-contrast) srgb r g b / 0.03) 3px,
         transparent 3px,
         transparent 8px
       ),
@@ -163,8 +163,8 @@ const t = useTranslations(locale);
         67.5deg,
         transparent,
         transparent 2px,
-        color(from var(--palette-dominant-contrast) srgb r g b / 0.03) 2px,
-        color(from var(--palette-dominant-contrast) srgb r g b / 0.03) 3px,
+        color(from var(--theme-palette-dominant-contrast) srgb r g b / 0.03) 2px,
+        color(from var(--theme-palette-dominant-contrast) srgb r g b / 0.03) 3px,
         transparent 3px,
         transparent 8px
       ),
@@ -172,8 +172,8 @@ const t = useTranslations(locale);
         112.5deg,
         transparent,
         transparent 2px,
-        color(from var(--palette-dominant-contrast) srgb r g b / 0.03) 2px,
-        color(from var(--palette-dominant-contrast) srgb r g b / 0.03) 3px,
+        color(from var(--theme-palette-dominant-contrast) srgb r g b / 0.03) 2px,
+        color(from var(--theme-palette-dominant-contrast) srgb r g b / 0.03) 3px,
         transparent 3px,
         transparent 8px
       ),
@@ -181,14 +181,14 @@ const t = useTranslations(locale);
         157.5deg,
         transparent,
         transparent 2px,
-        color(from var(--palette-dominant-contrast) srgb r g b / 0.03) 2px,
-        color(from var(--palette-dominant-contrast) srgb r g b / 0.03) 3px,
+        color(from var(--theme-palette-dominant-contrast) srgb r g b / 0.03) 2px,
+        color(from var(--theme-palette-dominant-contrast) srgb r g b / 0.03) 3px,
         transparent 3px,
         transparent 8px
       );
     font-family: var(--font-family-primary);
     font-size: 80%;
-    color: var(--palette-dominant-contrast);
+    color: var(--theme-palette-dominant-contrast);
   }
 
   @media (min-width: 500px) {
