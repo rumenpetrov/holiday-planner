@@ -18,7 +18,6 @@
   /* Primitives */
   --font-family-primary: "Sofia Sans", sans-serif;
   --font-family-secondary: "Cormorant Infant", serif;
-
   --font-size-s: 0.75rem;
   --font-size-base: 1rem;
   --font-size-m: 1.1rem;
@@ -27,7 +26,6 @@
   --font-size-xl: 2.369rem;
   --font-size-2xl: 3.157rem;
   --font-size-3xl: 4.209rem;
-
   --dimensions-1: 0.0625rem;
   --dimensions-2: 0.125rem;
   --dimensions-3: 0.25rem;
@@ -38,10 +36,8 @@
   --dimensions-8: 1.5rem;
   --dimensions-9: 1.75rem;
   --dimensions-10: 2rem;
-
   --transition-duration-fast: 200ms;
   --transition-duration-base: 300ms;
-
   --z-index-100: 10;
   --z-index-200: 100;
 
@@ -56,13 +52,10 @@
   --theme-font-size-p: var(--font-size-base);
   --theme-font-size-link: var(--font-size-m);
   --theme-font-size-small: var(--font-size-s);
-
   --theme-transition-duration-fast: var(--transition-duration-fast);
   --theme-transition-duration-base: var(--transition-duration-base);
-
   --theme-z-index-fixed: var(--z-index-100);
   --theme-z-index-fab: var(--z-index-200);
-
   --theme-border-width-subtle: var(--dimensions-1);
   --theme-border-width-default: var(--dimensions-2);
   --theme-border-size-thick: var(--dimensions-3);
@@ -76,13 +69,8 @@
   --theme-space-size-600: var(--dimensions-8);
   --theme-space-size-700: var(--dimensions-9);
   --theme-space-size-800: var(--dimensions-10);
-
   --theme-space-button-x: var(--theme-space-size-400);
   --theme-space-button-y: var(--theme-space-size-200);
-
-  --theme-focus-ring-width: 1px;
-  --theme-focus-ring-offset: 2px;
-  --theme-focus-ring-color: var(--theme-palette-accent);
 
   /* TODO: Move all color values to primitives */
   --theme-palette-dominant: #f0eddb;
@@ -102,6 +90,9 @@
 
   --theme-selection-background-color: var(--theme-palette-accent);
   --theme-selection-color: var(--theme-palette-accent-contrast);
+  --theme-focus-ring-width: 1px;
+  --theme-focus-ring-offset: 2px;
+  --theme-focus-ring-color: var(--theme-palette-accent);
 
   --block-logo-gradient-top: #fb5e09;
   --block-logo-gradient-bottom: #f5cb5c;
