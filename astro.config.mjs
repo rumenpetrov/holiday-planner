@@ -9,7 +9,6 @@ export default defineConfig({
   build: {
     format: "directory",
   },
-  base: "/holiday-planner",
   prefetch: true,
   i18n: {
     defaultLocale: "bg",

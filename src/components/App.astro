@@ -15,12 +15,8 @@ const t = useTranslations(locale);
 <html lang={locale}>
   <head>
     <meta charset="UTF-8" />
-    <link
-      rel="icon"
-      type="image/svg+xml"
-      href={`${import.meta.env.BASE_URL}favicon.svg`}
-    />
-    <link rel="manifest" href={`${import.meta.env.BASE_URL}app.webmanifest`} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="manifest" href="/app.webmanifest" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light dark" />
 
@@ -32,15 +28,9 @@ const t = useTranslations(locale);
     <!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
     <!-- Fonts are locally loaded below. This line is kept just in case. -->
     <!-- <link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,400;0,700;1,400;1,700&family=Sofia+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet"> -->
-    <link
-      rel="stylesheet"
-      href={`${import.meta.env.BASE_URL}/styles/fonts.css`}
-    />
+    <link rel="stylesheet" href="/styles/fonts.css" />
 
-    <link
-      rel="stylesheet"
-      href={`${import.meta.env.BASE_URL}/styles/global.css`}
-    />
+    <link rel="stylesheet" href="/styles/global.css" />
 
     <script is:inline>
       const rootElement = document.documentElement;

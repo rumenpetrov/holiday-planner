@@ -100,22 +100,15 @@ const t = useTranslations(locale);
 
 <script>
   // document.addEventListener('astro:page-load', () => {
-  const navLinks = document.querySelectorAll("nav a");
+  const navLinks = document.querySelectorAll(
+    "nav a",
+  ) as NodeListOf<HTMLAnchorElement>;
 
   navLinks.forEach((link) => {
     // link.classList.remove('active');
     link.removeAttribute("aria-current");
 
-    const currentPath = window.location.pathname.replace(
-      "/holiday-planner",
-      "",
-    );
-
-    // `link.href` returns a whole url, such as: 'https://somedomain.com/posts/' and we only need the last part
-    const hrefArray = link.href.split("/holiday-planner");
-    const thisPath = hrefArray[hrefArray.length - 1];
-
-    if (currentPath === thisPath) {
+    if (window.location.pathname === link.pathname) {
       // link.classList.add('active');
       link.setAttribute("aria-current", "page");
     }

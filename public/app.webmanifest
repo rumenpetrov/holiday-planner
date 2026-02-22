@@ -1,29 +1,33 @@
 {
-  "id": "/holiday-planner/",
-  "start_url": "/holiday-planner/",
-  "scope": "/holiday-planner/",
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
   "name": "Pochivnik",
   "short_name": "Pochivnik",
   "description": "Go over all public holidays throughout the year, so you can easily plan your days off.",
   "display": "standalone",
   "theme_color": "#fb5e09",
   "background_color": "#f0eddb",
-  "categories": ["productivity", "events", "lifestyle"],
+  "categories": [
+    "productivity",
+    "events",
+    "lifestyle"
+  ],
   "icons": [
     {
-      "src": "/holiday-planner/icons/icon-vector.svg",
+      "src": "/icons/icon-vector.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any"
     },
     {
-      "src": "/holiday-planner/icons/maskable-icon-x1024.png",
+      "src": "/icons/maskable-icon-x1024.png",
       "sizes": "1024x1024",
       "type": "image/png",
       "purpose": "maskable"
     },
     {
-      "src": "/holiday-planner/icons/maskable-icon-x192.png",
+      "src": "/icons/maskable-icon-x192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "maskable"
@@ -31,42 +35,42 @@
   ],
   "screenshots": [
     {
-      "src": "/holiday-planner/screenshots/home-tall-bg.webp",
+      "src": "/screenshots/home-tall-bg.webp",
       "sizes": "1442x3202",
       "type": "image/webp",
       "form_factor": "narrow",
       "label": "Home page on mobile"
     },
     {
-      "src": "/holiday-planner/screenshots/this-year-tall-bg.webp",
+      "src": "/screenshots/this-year-tall-bg.webp",
       "sizes": "1442x3202",
       "type": "image/webp",
       "form_factor": "narrow",
       "label": "This year page on mobile"
     },
     {
-      "src": "/holiday-planner/screenshots/this-year-current-month-tall-bg.webp",
+      "src": "/screenshots/this-year-current-month-tall-bg.webp",
       "sizes": "1442x3202",
       "type": "image/webp",
       "form_factor": "narrow",
       "label": "This year page current month on mobile"
     },
     {
-      "src": "/holiday-planner/screenshots/home-wide-bg.webp",
+      "src": "/screenshots/home-wide-bg.webp",
       "sizes": "1366x958",
       "type": "image/webp",
       "form_factor": "wide",
       "label": "Home page on desktop"
     },
     {
-      "src": "/holiday-planner/screenshots/this-year-wide-bg.webp",
+      "src": "/screenshots/this-year-wide-bg.webp",
       "sizes": "1366x958",
       "type": "image/webp",
       "form_factor": "wide",
       "label": "This year page on desktop"
     },
     {
-      "src": "/holiday-planner/screenshots/this-year-current-month-wide-bg.webp",
+      "src": "/screenshots/this-year-current-month-wide-bg.webp",
       "sizes": "1366x958",
       "type": "image/webp",
       "form_factor": "wide",
