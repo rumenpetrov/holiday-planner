@@ -58,10 +58,9 @@ const t = useTranslations(locale);
     padding: var(--theme-space-size-200) var(--theme-space-size-400);
     margin: 0 var(--theme-space-size-200);
     color: var(--theme-palette-primary-contrast);
-    outline-width: var(--theme-space-size-100);
-    outline-offset: 1px;
-    outline-style: solid;
-    outline-color: transparent;
+    border-width: 0 6px;
+    border-style: solid;
+    border-color: transparent;
     text-decoration: none;
     text-wrap: nowrap;
   }
@@ -81,7 +80,9 @@ const t = useTranslations(locale);
 
   nav li [aria-current="page"],
   nav li:hover .menu-link {
-    outline-color: var(--theme-palette-primary);
+    box-shadow:
+      3px 0 0 var(--theme-palette-primary),
+      -3px 0 0 var(--theme-palette-primary);
   }
 
   @media (min-width: 1200px) {
