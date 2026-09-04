@@ -9,7 +9,8 @@
       "@data/*": ["src/data/*"],
       "@layouts/*": ["src/layouts/*"],
       "@utilities/*": ["src/utilities/*"],
-      "@i18n/*": ["src/i18n/*"]
-    }
-  }
+      "@i18n/*": ["src/i18n/*"],
+      "@services/*": ["src/services/*"],
+    },
+  },
 }

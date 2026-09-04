@@ -2,7 +2,11 @@ import { ui, defaultLocale } from "./ui";
 
 export function getLangFromUrl(url: URL) {
   const [, locale] = url.pathname.split("/");
-  if (locale in ui) return locale as keyof typeof ui;
+
+  if (locale in ui) {
+    return locale as keyof typeof ui;
+  }
+
   return defaultLocale;
 }
 

@@ -3,11 +3,7 @@ import { getLangFromUrl, useTranslations } from "@i18n/utils";
 import HPTypography from "@components/HPTypography.astro";
 import ActionScrollToTop from "@components/ActionScrollToTop.astro";
 import type { GoogleEvent } from "@data/get-calendar-events";
-import getCalendarEvents from "@data/get-calendar-events";
-import { sortCalendarEvents } from "@utilities/sort-calendar-events";
-import { filterOutUnofficialCalendarEvents } from "@utilities/filter-out-unofficial-calendar-events";
-import { transformToThisYearData } from "@utilities/transform-to-this-year-data";
-import { addExtraProperties } from "@utilities/add-extra-properties";
+import { CalendarService } from "@services/calendar";
 import CalendarDecoration from "./CalendarDecoration.astro";
 import Button from "./Button.astro";
 
@@ -21,17 +17,7 @@ const t = useTranslations(locale);
 
 const { year, class: className } = Astro.props;
 
-const { data, error } = await getCalendarEvents({
-  fromYear: year,
-  toYear: year + 1,
-  locale: locale,
-  toNextJanuary: true,
-});
-const listOfficial = addExtraProperties(
-  filterOutUnofficialCalendarEvents(sortCalendarEvents(data)),
-  locale,
-);
-const listYear = transformToThisYearData(listOfficial, year);
+const { data: listYear, error } = await CalendarService.getYearData(year, locale);
 ---
 
 <script>

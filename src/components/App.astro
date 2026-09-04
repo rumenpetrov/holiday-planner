@@ -67,9 +67,11 @@ const t = useTranslations(locale);
 
       const getStoredColorScheme = () => {
         const stored = localStorage.getItem("colorScheme");
+
         if (stored === "light" || stored === "dark" || stored === "system") {
           return stored;
         }
+
         return "system";
       };
 

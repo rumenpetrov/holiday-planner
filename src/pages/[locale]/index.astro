@@ -5,7 +5,7 @@ import Link from "@components/Link.astro";
 import LocationSceneDecoration from "@components/LocationSceneDecoration.astro";
 import HPEventList from "@components/HPEventList.astro";
 import HPTypography from "@components/HPTypography.astro";
-import getCalendarEvents from "@data/get-calendar-events";
+import { CalendarService } from "@services/calendar";
 
 const locale = getLangFromUrl(Astro.url);
 const t = useTranslations(locale);
@@ -28,7 +28,7 @@ export function getStaticPaths() {
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 
 const currentYear = new Date().getFullYear();
-const { data, error } = await getCalendarEvents({
+const { data, error } = await CalendarService.getBaseData({
   fromYear: currentYear,
   toYear: currentYear,
   locale,

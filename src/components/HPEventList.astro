@@ -1,8 +1,5 @@
 ---
-import { sortCalendarEvents } from "@utilities/sort-calendar-events";
-import { filterOutUnofficialCalendarEvents } from "@utilities/filter-out-unofficial-calendar-events";
 import { transformToThisMonthData } from "@utilities/transform-to-this-month-data";
-import { addExtraProperties } from "@utilities/add-extra-properties";
 
 export interface Props {
   index?: number;
@@ -12,10 +9,7 @@ export interface Props {
 
 const { index, year, data = [] } = Astro.props;
 
-const listOfficial = addExtraProperties(
-  filterOutUnofficialCalendarEvents(sortCalendarEvents(data)),
-);
-const list = transformToThisMonthData(listOfficial, index);
+const list = transformToThisMonthData(data, index);
 ---
 
 {
