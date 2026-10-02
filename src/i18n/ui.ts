@@ -8,6 +8,7 @@ export const defaultLocale = "bg";
 export const ui = {
   bg: {
     "GLOBAL.PROJECT_NAME": "Почивник",
+    "GLOBAL.PROJECT_DESCRIPTION": "Разгледай всички официални празници през годината, за да можеш по-лесно да планираш своите почивни дни.",
     "GLOBAL.WIP": "в процес на изграждане",
     "GLOBAL.ERROR": "Има проблем!",
     "GLOBAL.LEGEND.TITLE": "Легенда:",
@@ -32,6 +33,7 @@ export const ui = {
   },
   en: {
     "GLOBAL.PROJECT_NAME": "Pochivnik",
+    "GLOBAL.PROJECT_DESCRIPTION": "Go over all public holidays throughout the year, so you can easily plan your days off.",
     "GLOBAL.WIP": "work in progress",
     "GLOBAL.ERROR": "There is a problem!",
     "GLOBAL.LEGEND.TITLE": "Legend:",

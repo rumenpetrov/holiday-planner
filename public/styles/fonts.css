@@ -3,7 +3,7 @@
   font-family: "Cormorant Infant";
   font-style: italic;
   font-weight: 400;
-  font-display: fallback;
+  font-display: swap;
   src: url(https://fonts.gstatic.com/s/cormorantinfant/v17/HhyJU44g9vKiM1sORYSiWeAsLN997_Il1hMEfq4.woff2)
     format("woff2");
   unicode-range:
@@ -14,7 +14,7 @@
   font-family: "Cormorant Infant";
   font-style: italic;
   font-weight: 400;
-  font-display: fallback;
+  font-display: swap;
   src: url(https://fonts.gstatic.com/s/cormorantinfant/v17/HhyJU44g9vKiM1sORYSiWeAsLN997_Il3xMEfq4.woff2)
     format("woff2");
   unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
@@ -24,7 +24,7 @@
   font-family: "Cormorant Infant";
   font-style: italic;
   font-weight: 400;
-  font-display: fallback;
+  font-display: swap;
   src: url(https://fonts.gstatic.com/s/cormorantinfant/v17/HhyJU44g9vKiM1sORYSiWeAsLN997_Il1RMEfq4.woff2)
     format("woff2");
   unicode-range:
@@ -36,7 +36,7 @@
   font-family: "Cormorant Infant";
   font-style: italic;
   font-weight: 400;
-  font-display: fallback;
+  font-display: swap;
   src: url(https://fonts.gstatic.com/s/cormorantinfant/v17/HhyJU44g9vKiM1sORYSiWeAsLN997_Il2xME.woff2)
     format("woff2");
   unicode-range:
@@ -49,7 +49,7 @@
   font-family: "Cormorant Infant";
   font-style: italic;
   font-weight: 700;
-  font-display: fallback;
+  font-display: swap;
   src: url(https://fonts.gstatic.com/s/cormorantinfant/v17/HhyKU44g9vKiM1sORYSiWeAsLN997_ItYDYRTI8ZBrk.woff2)
     format("woff2");
   unicode-range:
@@ -60,7 +60,7 @@
   font-family: "Cormorant Infant";
   font-style: italic;
   font-weight: 700;
-  font-display: fallback;
+  font-display: swap;
   src: url(https://fonts.gstatic.com/s/cormorantinfant/v17/HhyKU44g9vKiM1sORYSiWeAsLN997_ItYDYRRY8ZBrk.woff2)
     format("woff2");
   unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
@@ -70,7 +70,7 @@
   font-family: "Cormorant Infant";
   font-style: italic;
   font-weight: 700;
-  font-display: fallback;
+  font-display: swap;
   src: url(https://fonts.gstatic.com/s/cormorantinfant/v17/HhyKU44g9vKiM1sORYSiWeAsLN997_ItYDYRT48ZBrk.woff2)
     format("woff2");
   unicode-range:
@@ -82,7 +82,7 @@
   font-family: "Cormorant Infant";
   font-style: italic;
   font-weight: 700;
-  font-display: fallback;
+  font-display: swap;
   src: url(https://fonts.gstatic.com/s/cormorantinfant/v17/HhyKU44g9vKiM1sORYSiWeAsLN997_ItYDYRQY8Z.woff2)
     format("woff2");
   unicode-range:
@@ -95,7 +95,7 @@
   font-family: "Cormorant Infant";
   font-style: normal;
   font-weight: 400;
-  font-display: fallback;
+  font-display: swap;
   src: url(https://fonts.gstatic.com/s/cormorantinfant/v17/HhyPU44g9vKiM1sORYSiWeAsLN997_oV2QsA.woff2)
     format("woff2");
   unicode-range:
@@ -106,7 +106,7 @@
   font-family: "Cormorant Infant";
   font-style: normal;
   font-weight: 400;
-  font-display: fallback;
+  font-display: swap;
   src: url(https://fonts.gstatic.com/s/cormorantinfant/v17/HhyPU44g9vKiM1sORYSiWeAsLN997_MV2QsA.woff2)
     format("woff2");
   unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
@@ -116,7 +116,7 @@
   font-family: "Cormorant Infant";
   font-style: normal;
   font-weight: 400;
-  font-display: fallback;
+  font-display: swap;
   src: url(https://fonts.gstatic.com/s/cormorantinfant/v17/HhyPU44g9vKiM1sORYSiWeAsLN997_kV2QsA.woff2)
     format("woff2");
   unicode-range:
@@ -128,7 +128,7 @@
   font-family: "Cormorant Infant";
   font-style: normal;
   font-weight: 400;
-  font-display: fallback;
+  font-display: swap;
   src: url(https://fonts.gstatic.com/s/cormorantinfant/v17/HhyPU44g9vKiM1sORYSiWeAsLN997_cV2Q.woff2)
     format("woff2");
   unicode-range:
@@ -141,7 +141,7 @@
   font-family: "Cormorant Infant";
   font-style: normal;
   font-weight: 700;
-  font-display: fallback;
+  font-display: swap;
   src: url(https://fonts.gstatic.com/s/cormorantinfant/v17/HhyIU44g9vKiM1sORYSiWeAsLN9950wwzDkhQ5cd.woff2)
     format("woff2");
   unicode-range:
@@ -152,7 +152,7 @@
   font-family: "Cormorant Infant";
   font-style: normal;
   font-weight: 700;
-  font-display: fallback;
+  font-display: swap;
   src: url(https://fonts.gstatic.com/s/cormorantinfant/v17/HhyIU44g9vKiM1sORYSiWeAsLN9950wwzDAhQ5cd.woff2)
     format("woff2");
   unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
@@ -162,7 +162,7 @@
   font-family: "Cormorant Infant";
   font-style: normal;
   font-weight: 700;
-  font-display: fallback;
+  font-display: swap;
   src: url(https://fonts.gstatic.com/s/cormorantinfant/v17/HhyIU44g9vKiM1sORYSiWeAsLN9950wwzDohQ5cd.woff2)
     format("woff2");
   unicode-range:
@@ -174,7 +174,7 @@
   font-family: "Cormorant Infant";
   font-style: normal;
   font-weight: 700;
-  font-display: fallback;
+  font-display: swap;
   src: url(https://fonts.gstatic.com/s/cormorantinfant/v17/HhyIU44g9vKiM1sORYSiWeAsLN9950wwzDQhQw.woff2)
     format("woff2");
   unicode-range:
@@ -187,7 +187,7 @@
   font-family: "Sofia Sans";
   font-style: italic;
   font-weight: 300;
-  font-display: fallback;
+  font-display: swap;
   src: url(https://fonts.gstatic.com/s/sofiasans/v16/Yq6T-LCVXSLy9uPBwlATrORKnTApcb8.woff2)
     format("woff2");
   unicode-range:
@@ -198,7 +198,7 @@
   font-family: "Sofia Sans";
   font-style: italic;
   font-weight: 300;
-  font-display: fallback;
+  font-display: swap;
   src: url(https://fonts.gstatic.com/s/sofiasans/v16/Yq6T-LCVXSLy9uPBwlATrORKlDApcb8.woff2)
     format("woff2");
   unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
@@ -208,7 +208,7 @@
   font-family: "Sofia Sans";
   font-style: italic;
   font-weight: 300;
-  font-display: fallback;
+  font-display: swap;
   src: url(https://fonts.gstatic.com/s/sofiasans/v16/Yq6T-LCVXSLy9uPBwlATrORKnjApcb8.woff2)
     format("woff2");
   unicode-range:
@@ -220,7 +220,7 @@
   font-family: "Sofia Sans";
   font-style: italic;
   font-weight: 300;
-  font-display: fallback;
+  font-display: swap;
   src: url(https://fonts.gstatic.com/s/sofiasans/v16/Yq6T-LCVXSLy9uPBwlATrORKkDAp.woff2)
     format("woff2");
   unicode-range:
@@ -233,7 +233,7 @@
   font-family: "Sofia Sans";
   font-style: italic;
   font-weight: 400;
-  font-display: fallback;
+  font-display: swap;
   src: url(https://fonts.gstatic.com/s/sofiasans/v16/Yq6T-LCVXSLy9uPBwlATrORKnTApcb8.woff2)
     format("woff2");
   unicode-range:
@@ -244,7 +244,7 @@
   font-family: "Sofia Sans";
   font-style: italic;
   font-weight: 400;
-  font-display: fallback;
+  font-display: swap;
   src: url(https://fonts.gstatic.com/s/sofiasans/v16/Yq6T-LCVXSLy9uPBwlATrORKlDApcb8.woff2)
     format("woff2");
   unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
@@ -254,7 +254,7 @@
   font-family: "Sofia Sans";
   font-style: italic;
   font-weight: 400;
-  font-display: fallback;
+  font-display: swap;
   src: url(https://fonts.gstatic.com/s/sofiasans/v16/Yq6T-LCVXSLy9uPBwlATrORKnjApcb8.woff2)
     format("woff2");
   unicode-range:
@@ -266,7 +266,7 @@
   font-family: "Sofia Sans";
   font-style: italic;
   font-weight: 400;
-  font-display: fallback;
+  font-display: swap;
   src: url(https://fonts.gstatic.com/s/sofiasans/v16/Yq6T-LCVXSLy9uPBwlATrORKkDAp.woff2)
     format("woff2");
   unicode-range:
@@ -279,7 +279,7 @@
   font-family: "Sofia Sans";
   font-style: italic;
   font-weight: 500;
-  font-display: fallback;
+  font-display: swap;
   src: url(https://fonts.gstatic.com/s/sofiasans/v16/Yq6T-LCVXSLy9uPBwlATrORKnTApcb8.woff2)
     format("woff2");
   unicode-range:
@@ -290,7 +290,7 @@
   font-family: "Sofia Sans";
   font-style: italic;
   font-weight: 500;
-  font-display: fallback;
+  font-display: swap;
   src: url(https://fonts.gstatic.com/s/sofiasans/v16/Yq6T-LCVXSLy9uPBwlATrORKlDApcb8.woff2)
     format("woff2");
   unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
@@ -300,7 +300,7 @@
   font-family: "Sofia Sans";
   font-style: italic;
   font-weight: 500;
-  font-display: fallback;
+  font-display: swap;
   src: url(https://fonts.gstatic.com/s/sofiasans/v16/Yq6T-LCVXSLy9uPBwlATrORKnjApcb8.woff2)
     format("woff2");
   unicode-range:
@@ -312,7 +312,7 @@
   font-family: "Sofia Sans";
   font-style: italic;
   font-weight: 500;
-  font-display: fallback;
+  font-display: swap;
   src: url(https://fonts.gstatic.com/s/sofiasans/v16/Yq6T-LCVXSLy9uPBwlATrORKkDAp.woff2)
     format("woff2");
   unicode-range:
@@ -325,7 +325,7 @@
   font-family: "Sofia Sans";
   font-style: italic;
   font-weight: 700;
-  font-display: fallback;
+  font-display: swap;
   src: url(https://fonts.gstatic.com/s/sofiasans/v16/Yq6T-LCVXSLy9uPBwlATrORKnTApcb8.woff2)
     format("woff2");
   unicode-range:
@@ -336,7 +336,7 @@
   font-family: "Sofia Sans";
   font-style: italic;
   font-weight: 700;
-  font-display: fallback;
+  font-display: swap;
   src: url(https://fonts.gstatic.com/s/sofiasans/v16/Yq6T-LCVXSLy9uPBwlATrORKlDApcb8.woff2)
     format("woff2");
   unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
@@ -346,7 +346,7 @@
   font-family: "Sofia Sans";
   font-style: italic;
   font-weight: 700;
-  font-display: fallback;
+  font-display: swap;
   src: url(https://fonts.gstatic.com/s/sofiasans/v16/Yq6T-LCVXSLy9uPBwlATrORKnjApcb8.woff2)
     format("woff2");
   unicode-range:
@@ -358,7 +358,7 @@
   font-family: "Sofia Sans";
   font-style: italic;
   font-weight: 700;
-  font-display: fallback;
+  font-display: swap;
   src: url(https://fonts.gstatic.com/s/sofiasans/v16/Yq6T-LCVXSLy9uPBwlATrORKkDAp.woff2)
     format("woff2");
   unicode-range:
@@ -371,7 +371,7 @@
   font-family: "Sofia Sans";
   font-style: normal;
   font-weight: 300;
-  font-display: fallback;
+  font-display: swap;
   src: url(https://fonts.gstatic.com/s/sofiasans/v16/Yq6R-LCVXSLy9uPBwlATrOx6kigt.woff2)
     format("woff2");
   unicode-range:
@@ -382,7 +382,7 @@
   font-family: "Sofia Sans";
   font-style: normal;
   font-weight: 300;
-  font-display: fallback;
+  font-display: swap;
   src: url(https://fonts.gstatic.com/s/sofiasans/v16/Yq6R-LCVXSLy9uPBwlATrOV6kigt.woff2)
     format("woff2");
   unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
@@ -392,7 +392,7 @@
   font-family: "Sofia Sans";
   font-style: normal;
   font-weight: 300;
-  font-display: fallback;
+  font-display: swap;
   src: url(https://fonts.gstatic.com/s/sofiasans/v16/Yq6R-LCVXSLy9uPBwlATrO96kigt.woff2)
     format("woff2");
   unicode-range:
@@ -404,7 +404,7 @@
   font-family: "Sofia Sans";
   font-style: normal;
   font-weight: 300;
-  font-display: fallback;
+  font-display: swap;
   src: url(https://fonts.gstatic.com/s/sofiasans/v16/Yq6R-LCVXSLy9uPBwlATrOF6kg.woff2)
     format("woff2");
   unicode-range:
@@ -417,7 +417,7 @@
   font-family: "Sofia Sans";
   font-style: normal;
   font-weight: 400;
-  font-display: fallback;
+  font-display: swap;
   src: url(https://fonts.gstatic.com/s/sofiasans/v16/Yq6R-LCVXSLy9uPBwlATrOx6kigt.woff2)
     format("woff2");
   unicode-range:
@@ -428,7 +428,7 @@
   font-family: "Sofia Sans";
   font-style: normal;
   font-weight: 400;
-  font-display: fallback;
+  font-display: swap;
   src: url(https://fonts.gstatic.com/s/sofiasans/v16/Yq6R-LCVXSLy9uPBwlATrOV6kigt.woff2)
     format("woff2");
   unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
@@ -438,7 +438,7 @@
   font-family: "Sofia Sans";
   font-style: normal;
   font-weight: 400;
-  font-display: fallback;
+  font-display: swap;
   src: url(https://fonts.gstatic.com/s/sofiasans/v16/Yq6R-LCVXSLy9uPBwlATrO96kigt.woff2)
     format("woff2");
   unicode-range:
@@ -450,7 +450,7 @@
   font-family: "Sofia Sans";
   font-style: normal;
   font-weight: 400;
-  font-display: fallback;
+  font-display: swap;
   src: url(https://fonts.gstatic.com/s/sofiasans/v16/Yq6R-LCVXSLy9uPBwlATrOF6kg.woff2)
     format("woff2");
   unicode-range:
@@ -463,7 +463,7 @@
   font-family: "Sofia Sans";
   font-style: normal;
   font-weight: 500;
-  font-display: fallback;
+  font-display: swap;
   src: url(https://fonts.gstatic.com/s/sofiasans/v16/Yq6R-LCVXSLy9uPBwlATrOx6kigt.woff2)
     format("woff2");
   unicode-range:
@@ -474,7 +474,7 @@
   font-family: "Sofia Sans";
   font-style: normal;
   font-weight: 500;
-  font-display: fallback;
+  font-display: swap;
   src: url(https://fonts.gstatic.com/s/sofiasans/v16/Yq6R-LCVXSLy9uPBwlATrOV6kigt.woff2)
     format("woff2");
   unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
@@ -484,7 +484,7 @@
   font-family: "Sofia Sans";
   font-style: normal;
   font-weight: 500;
-  font-display: fallback;
+  font-display: swap;
   src: url(https://fonts.gstatic.com/s/sofiasans/v16/Yq6R-LCVXSLy9uPBwlATrO96kigt.woff2)
     format("woff2");
   unicode-range:
@@ -496,7 +496,7 @@
   font-family: "Sofia Sans";
   font-style: normal;
   font-weight: 500;
-  font-display: fallback;
+  font-display: swap;
   src: url(https://fonts.gstatic.com/s/sofiasans/v16/Yq6R-LCVXSLy9uPBwlATrOF6kg.woff2)
     format("woff2");
   unicode-range:
@@ -509,7 +509,7 @@
   font-family: "Sofia Sans";
   font-style: normal;
   font-weight: 700;
-  font-display: fallback;
+  font-display: swap;
   src: url(https://fonts.gstatic.com/s/sofiasans/v16/Yq6R-LCVXSLy9uPBwlATrOx6kigt.woff2)
     format("woff2");
   unicode-range:
@@ -520,7 +520,7 @@
   font-family: "Sofia Sans";
   font-style: normal;
   font-weight: 700;
-  font-display: fallback;
+  font-display: swap;
   src: url(https://fonts.gstatic.com/s/sofiasans/v16/Yq6R-LCVXSLy9uPBwlATrOV6kigt.woff2)
     format("woff2");
   unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
@@ -530,7 +530,7 @@
   font-family: "Sofia Sans";
   font-style: normal;
   font-weight: 700;
-  font-display: fallback;
+  font-display: swap;
   src: url(https://fonts.gstatic.com/s/sofiasans/v16/Yq6R-LCVXSLy9uPBwlATrOJ6kigt.woff2)
     format("woff2");
   unicode-range:
@@ -541,7 +541,7 @@
   font-family: "Sofia Sans";
   font-style: normal;
   font-weight: 700;
-  font-display: fallback;
+  font-display: swap;
   src: url(https://fonts.gstatic.com/s/sofiasans/v16/Yq6R-LCVXSLy9uPBwlATrO96kigt.woff2)
     format("woff2");
   unicode-range:
@@ -553,7 +553,7 @@
   font-family: "Sofia Sans";
   font-style: normal;
   font-weight: 700;
-  font-display: fallback;
+  font-display: swap;
   src: url(https://fonts.gstatic.com/s/sofiasans/v16/Yq6R-LCVXSLy9uPBwlATrOF6kg.woff2)
     format("woff2");
   unicode-range:

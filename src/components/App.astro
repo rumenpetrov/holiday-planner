@@ -1,5 +1,6 @@
 ---
 import { getLangFromUrl, useTranslations } from "@i18n/utils";
+import { languageList, defaultLocale } from "@i18n/ui";
 
 export interface Props {
   title: string;
@@ -9,6 +10,12 @@ const { title } = Astro.props;
 
 const locale = getLangFromUrl(Astro.url);
 const t = useTranslations(locale);
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+import { getAlternateUrl } from "@utilities/get-alternate-url";
+
+const ogImage = new URL('/og-image.webp', Astro.site);
 ---
 
 <!doctype html>
@@ -21,9 +28,33 @@ const t = useTranslations(locale);
     <meta name="color-scheme" content="light dark" />
 
     <title>{title}</title>
-    <meta name="description" content={t("GLOBAL.PROJECT_NAME")} />
+    <meta name="description" content={t("GLOBAL.PROJECT_DESCRIPTION")} />
     <meta name="generator" content={Astro.generator} />
 
+    <link rel="canonical" href={canonicalURL} />
+
+    {languageList.map(({ locale: loopLocale }) => (
+      <link rel="alternate" hreflang={loopLocale} href={getAlternateUrl(loopLocale, Astro.url.pathname, Astro.site)} />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={getAlternateUrl(defaultLocale, Astro.url.pathname, Astro.site)} />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={t("GLOBAL.PROJECT_DESCRIPTION")} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content={locale} />
+    <meta property="og:site_name" content={t("GLOBAL.PROJECT_NAME")} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={t("GLOBAL.PROJECT_DESCRIPTION")} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/cormorantinfant/v17/HhyPU44g9vKiM1sORYSiWeAsLN997_MV2QsA.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/cormorantinfant/v17/HhyPU44g9vKiM1sORYSiWeAsLN997_cV2Q.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/sofiasans/v16/Yq6R-LCVXSLy9uPBwlATrOV6kigt.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/sofiasans/v16/Yq6R-LCVXSLy9uPBwlATrOF6kg.woff2" crossorigin />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
     <!-- Fonts are locally loaded below. This line is kept just in case. -->

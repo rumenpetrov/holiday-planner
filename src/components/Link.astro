@@ -18,12 +18,14 @@ const locale = getLangFromUrl(Astro.url);
   class:list={["root", accent && "accent", className]}
   data-astro-prefetch="viewport"
 >
-  <span><slot /></span>
+  <span>
+    <slot />
+  </span>
 </a>
 
 <style
   define:vars={{
-    "mask-scribble": `url(/mask-scribble.png)`,
+    "mask-scribble": `url(/mask-scribble.webp)`,
   }}
 >
   .root {
