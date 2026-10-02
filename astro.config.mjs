@@ -1,10 +1,10 @@
 // @ts-check
 import { defineConfig } from "astro/config";
-import sitemap from '@astrojs/sitemap';
+import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://rumenpetrov.github.io",
+  site: "https://pochivnik.rpetrov.dev",
   output: "static",
   trailingSlash: "always",
   build: {
@@ -19,13 +19,15 @@ export default defineConfig({
       redirectToDefaultLocale: true,
     },
   },
-  integrations: [sitemap({
-    i18n: {
-      defaultLocale: "bg",
-      locales: {
-        bg: "bg",
-        en: "en"
-      }
-    }
-  })],
+  integrations: [
+    sitemap({
+      i18n: {
+        defaultLocale: "bg",
+        locales: {
+          bg: "bg",
+          en: "en",
+        },
+      },
+    }),
+  ],
 });
