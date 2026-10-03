@@ -12,28 +12,17 @@ const { index, year, data = [] } = Astro.props;
 const list = transformToThisMonthData(data, index);
 ---
 
-{
-  !Array.isArray(list) || list.length < 1 ? (
-    <slot name="fallback" />
-  ) : (
-    list.map((event) => (
-      <p class="root">
-        {event.start.displayDate} - {event.displaySummary}
-      </p>
-    ))
-  )
-}
+{!Array.isArray(list) || list.length < 1 ? (
+  <slot name="fallback" />
+) : (
+  list.map((event) => (
+    <p class="root">
+      {event.start.displayDate} - {event.displaySummary}
+    </p>
+  ))
+)}
 
 <style>
-  :host {
-    font-family: sans-serif;
-    color: var(--theme-palette-dominant-contrast, #000);
-    display: block;
-    overflow: hidden;
-    border-radius: 10px;
-    margin: 10px 0;
-  }
-
   .root {
     border-bottom: var(--theme-border-width-default) dotted
       var(--theme-palette-dominant-contrast);
