@@ -15,9 +15,9 @@
 :root[data-color-scheme="light"] {
   color-scheme: light;
 
-  /* Primitives */
-  --font-family-primary: "Sofia Sans", sans-serif;
-  --font-family-secondary: "Cormorant Infant", serif;
+  /* Primitive tokens - use only in this file */
+  --font-family-sofia-sans: "Sofia Sans", sans-serif;
+  --font-family-cormorant-infant: "Cormorant Infant", serif;
   --font-size-s: 0.75rem;
   --font-size-base: 1rem;
   --font-size-m: 1.1rem;
@@ -36,14 +36,20 @@
   --dimensions-8: 1.5rem;
   --dimensions-9: 1.75rem;
   --dimensions-10: 2rem;
-  --transition-duration-fast: 200ms;
-  --transition-duration-base: 300ms;
-  --z-index-100: 10;
-  --z-index-200: 100;
+  /* Animation duration based on https://design.brainly.com/8adfd5f36/p/091f75-ux-motion */
+  --duration-instant: 0ms; /* e.g. text change */
+  --duration-quick-1: 80ms; /* e.g. checkbox, radio, hover */
+  --duration-quick-2: 120ms; /* e.g. toggle, tab, chip, color, fade */
+  --duration-moderate-1: 180ms; /* e.g. dropdown, tooltip */
+  --duration-moderate-2: 260ms; /* e.g. modal, toast, dialog, notification */
+  --duration-gentle-1: 320ms; /* e.g. bottom sheet, card expand */
+  --duration-gentle-2: 420ms; /* e.g. advanced animations */
+  --elevation-100: 10;
+  --elevation-200: 100;
 
-  /* UI tokens */
-  --theme-font-family-body: var(--font-family-primary);
-  --theme-font-family-headline: var(--font-family-secondary);
+  /* Semantic tokens - use to style UIs */
+  --theme-font-family-body: var(--font-family-sofia-sans);
+  --theme-font-family-headline: var(--font-family-cormorant-infant);
   --theme-font-size-h1: var(--font-size-3xl);
   --theme-font-size-h2: var(--font-size-2xl);
   --theme-font-size-h3: var(--font-size-xl);
@@ -52,15 +58,13 @@
   --theme-font-size-p: var(--font-size-base);
   --theme-font-size-link: var(--font-size-m);
   --theme-font-size-small: var(--font-size-s);
-  --theme-transition-duration-fast: var(--transition-duration-fast);
-  --theme-transition-duration-base: var(--transition-duration-base);
-  --theme-z-index-fixed: var(--z-index-100);
-  --theme-z-index-fab: var(--z-index-200);
+  --theme-transition-duration-fast: var(--duration-moderate-1);
+  --theme-transition-duration-base: var(--duration-gentle-1);
+  --theme-elevation-fixed: var(--elevation-100);
+  --theme-elevation-fab: var(--elevation-200);
   --theme-border-width-subtle: var(--dimensions-1);
   --theme-border-width-default: var(--dimensions-2);
   --theme-border-size-thick: var(--dimensions-3);
-
-  /* TODO: Replace these with token which show intent */
   --theme-space-size-100: var(--dimensions-3);
   --theme-space-size-200: var(--dimensions-4);
   --theme-space-size-300: var(--dimensions-5);
@@ -71,8 +75,6 @@
   --theme-space-size-800: var(--dimensions-10);
   --theme-space-button-x: var(--theme-space-size-400);
   --theme-space-button-y: var(--theme-space-size-200);
-
-  /* TODO: Move all color values to primitives */
   --theme-palette-dominant: #f0eddb;
   --theme-palette-dominant-contrast: #0e0d06;
   --theme-palette-primary: #fb5e09;
@@ -87,13 +89,13 @@
   --theme-palette-semantic-info: #0000ff;
   --theme-palette-text-muted: #aaa;
   --theme-palette-text-muted-contrast: var(--theme-palette-dominant-contrast);
-
   --theme-selection-background-color: var(--theme-palette-accent);
   --theme-selection-color: var(--theme-palette-accent-contrast);
   --theme-focus-ring-width: 1px;
   --theme-focus-ring-offset: 2px;
   --theme-focus-ring-color: var(--theme-palette-accent);
 
+  /* Component tokens - use to style UIs */
   --block-logo-gradient-top: #fb5e09;
   --block-logo-gradient-bottom: #f5cb5c;
   --block-pad-background: var(--theme-palette-secondary);
@@ -132,7 +134,6 @@
   --theme-palette-text-muted: #888;
   --theme-palette-text-muted-contrast: var(--theme-palette-dominant-contrast);
 
-  /* blocks */
   --block-logo-gradient-top: #f65904;
   --block-logo-gradient-bottom: #fcdb22;
   --block-pad-background: var(--theme-palette-secondary);
