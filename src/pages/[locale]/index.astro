@@ -75,11 +75,7 @@ const { data, error } = await CalendarService.getBaseData({
         {t("PAGES.HOME.SECTION_THIS_MONTH.TITLE")}
       </HPTypography>
 
-      <HPEventList
-        index={new Date().getMonth() - 1}
-        year={currentYear}
-        data={data}
-      >
+      <HPEventList index={new Date().getMonth()} year={currentYear} data={data}>
         <HPTypography slot="fallback" disableMarginBottom>
           {" "}
           :({" "}
