@@ -46,7 +46,9 @@ const t = useTranslations(locale);
       var(--theme-palette-primary);
     overflow: auto;
     padding: var(--theme-space-size-400) 0;
-    background-color: var(--theme-palette-secondary);
+    background-color: rgb(from var(--theme-palette-secondary) r g b / 0.7);
+    box-shadow: inset 0 0 20px
+      rgb(from var(--theme-palette-primary) r g b / 0.15);
   }
 
   nav ul {
@@ -94,6 +96,7 @@ const t = useTranslations(locale);
       border: 0;
       background-color: transparent;
       padding: var(--theme-space-size-200);
+      box-shadow: none;
     }
 
     nav ul {

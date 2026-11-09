@@ -198,7 +198,9 @@ const { data: listYear, error } = await CalendarService.getYearData(
     transform: translate3d(-50%, 0, 0);
     z-index: -1;
     width: 100vw;
-    background-color: var(--theme-palette-secondary);
+    background-color: rgb(from var(--theme-palette-secondary) r g b / 0.6);
+    box-shadow: inset 0 0 20px
+      rgb(from var(--theme-palette-primary) r g b / 0.15);
     border-width: 0 0 var(--theme-border-size-thick) 0;
     border-style: solid;
     border-color: var(--theme-palette-primary);

@@ -92,7 +92,9 @@ const { data, error } = await CalendarService.getBaseData({
 
   .pad {
     padding: var(--theme-space-size-400);
-    background: var(--block-pad-background);
+    background-color: rgb(from var(--block-pad-background) r g b / 0.6);
+    box-shadow: inset 0 0 20px
+      rgb(from var(--theme-palette-primary) r g b / 0.15);
     color: var(--block-pad-color);
   }
 

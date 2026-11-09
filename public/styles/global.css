@@ -83,7 +83,7 @@
   --theme-palette-secondary-contrast: var(--theme-palette-dominant-contrast);
   --theme-palette-accent: #f5cb5c;
   --theme-palette-accent-contrast: var(--theme-palette-dominant-contrast);
-  --theme-palette-semantic-success: #00ff00;
+  --theme-palette-semantic-success: #108d10;
   --theme-palette-semantic-warning: #ffff00;
   --theme-palette-semantic-error: #ff0000;
   --theme-palette-semantic-info: #0000ff;
@@ -127,10 +127,6 @@
   --theme-palette-secondary-contrast: var(--theme-palette-dominant-contrast);
   --theme-palette-accent: #ffd800;
   --theme-palette-accent-contrast: var(--theme-palette-dominant);
-  --theme-palette-semantic-success: #00ff00;
-  --theme-palette-semantic-warning: #ffff00;
-  --theme-palette-semantic-error: #ff0000;
-  --theme-palette-semantic-info: #0000ff;
   --theme-palette-text-muted: #888;
   --theme-palette-text-muted-contrast: var(--theme-palette-dominant-contrast);
 
