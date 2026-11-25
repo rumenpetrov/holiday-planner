@@ -23,8 +23,6 @@ const { data, error } = await CalendarService.getBaseData({
 ---
 
 <Layout title={`${t("GLOBAL.PROJECT_NAME")} - ${t("PAGES.HOME.TITLE")}`}>
-  <h1 hidden>{t("PAGES.HOME.TITLE")}</h1>
-
   <div class="content">
     <section class="section" aria-label={t("PAGES.HOME.INTRO.LABEL")}>
       <div class="pad">
@@ -32,10 +30,8 @@ const { data, error } = await CalendarService.getBaseData({
           <LocationSceneDecoration class="intro-decoration" />
 
           <div class="intro-content">
-            <h2 hidden>{t("PAGES.HOME.INTRO.TITLE")}</h2>
-
             <HPTypography
-              element="h2"
+              element="h1"
               appearance="h2"
               font="body"
               lineHeight="1.2"
@@ -56,8 +52,6 @@ const { data, error } = await CalendarService.getBaseData({
     </section>
 
     <section class="section" aria-labelledby="section-this-month-title">
-      <h2 hidden>{t("PAGES.HOME.SECTION_THIS_MONTH.TITLE")}</h2>
-
       <HPTypography element="h2" appearance="h3" id="section-this-month-title">
         {t("PAGES.HOME.SECTION_THIS_MONTH.TITLE")}
       </HPTypography>

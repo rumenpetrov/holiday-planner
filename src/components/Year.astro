@@ -28,15 +28,15 @@ const { data: listYear, error } = await CalendarService.getYearData(
 </script>
 
 <div class:list={[className]}>
-  <div class="page-header" aria-hidden="true">
-    <div class="page-header-content">
+  <div class="page-header">
+    <h1 class="page-header-content">
       <span class="page-header-year">
         <slot name="year" />
       </span>
       <slot name="title" />
-    </div>
+    </h1>
 
-    <div class="page-header-decoration">
+    <div class="page-header-decoration" aria-hidden="true">
       <CalendarDecoration />
     </div>
   </div>
@@ -46,10 +46,7 @@ const { data: listYear, error } = await CalendarService.getYearData(
       {t("GLOBAL.ERROR")}
     </HPTypography>
   ) : (
-    <div class="timeline" role="region" aria-labelledby="timeline-title">
-      <h2 hidden id="timeline-title">
-        {t("GLOBAL.TIMELINE.LABEL")}
-      </h2>
+    <div class="timeline" role="region" aria-label={t("GLOBAL.TIMELINE.LABEL")}>
 
       <Button
         id="export-markdown"
@@ -115,9 +112,8 @@ const { data: listYear, error } = await CalendarService.getYearData(
         return (
           <section class="section" aria-labelledby={`month-title-${index}`}>
             <div class="timeline-point">
-              <h3 hidden>{monthName}</h3>
-
               <HPTypography
+                element="h2"
                 appearance="h4"
                 font="body"
                 style="text-transform: capitalize"
@@ -152,9 +148,6 @@ const { data: listYear, error } = await CalendarService.getYearData(
                     {events.map((event: GoogleEvent) => {
                       return (
                         <div class="events-item">
-                          <h4 hidden>
-                            {event.start.displayDate} - {event.displaySummary}
-                          </h4>
                           <HPTypography disableMarginBottom>
                             {event.start.displayDate} - {event.displaySummary}
                           </HPTypography>
@@ -232,6 +225,8 @@ const { data: listYear, error } = await CalendarService.getYearData(
     flex: 1 1 auto;
     display: flex;
     flex-wrap: wrap;
+    font-size: inherit;
+    font-weight: inherit;
   }
 
   .page-header-decoration {
