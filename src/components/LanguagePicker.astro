@@ -1,5 +1,6 @@
 ---
-import { generateLink, getLangFromUrl } from "@i18n/utils";
+import { getLangFromUrl } from "@i18n/utils";
+import { getAlternateUrl } from "@utilities/get-alternate-url";
 
 export interface Props {
   class?: string;
@@ -13,7 +14,8 @@ const locale = getLangFromUrl(Astro.url);
   locale !== "bg" && (
     <a
       {...rest}
-      href={generateLink("bg", "/")}
+      href={getAlternateUrl("bg", Astro.url.pathname, Astro.site ?? Astro.url).pathname}
+      hreflang="bg"
       class:list={["root", className]}
     >
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
@@ -44,7 +46,8 @@ const locale = getLangFromUrl(Astro.url);
   locale !== "en" && (
     <a
       {...rest}
-      href={generateLink("en", "/")}
+      href={getAlternateUrl("en", Astro.url.pathname, Astro.site ?? Astro.url).pathname}
+      hreflang="en"
       class:list={["root", className]}
     >
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">

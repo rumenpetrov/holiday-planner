@@ -4,12 +4,14 @@ import { languageList, defaultLocale } from "@i18n/ui";
 
 export interface Props {
   title: string;
+  description?: string;
 }
 
-const { title } = Astro.props;
+const { title, description } = Astro.props;
 
 const locale = getLangFromUrl(Astro.url);
 const t = useTranslations(locale);
+const pageDescription = description ?? t("GLOBAL.PROJECT_DESCRIPTION");
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
@@ -28,7 +30,7 @@ const ogImage = new URL("/og-image.webp", Astro.site);
     <meta name="color-scheme" content="light dark" />
 
     <title>{title}</title>
-    <meta name="description" content={t("GLOBAL.PROJECT_DESCRIPTION")} />
+    <meta name="description" content={pageDescription} />
     <meta name="generator" content={Astro.generator} />
 
     <link rel="canonical" href={canonicalURL} />
@@ -47,7 +49,7 @@ const ogImage = new URL("/og-image.webp", Astro.site);
     />
 
     <meta property="og:title" content={title} />
-    <meta property="og:description" content={t("GLOBAL.PROJECT_DESCRIPTION")} />
+    <meta property="og:description" content={pageDescription} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:type" content="website" />
     <meta property="og:image" content={ogImage} />
@@ -58,7 +60,7 @@ const ogImage = new URL("/og-image.webp", Astro.site);
     <meta name="twitter:title" content={title} />
     <meta
       name="twitter:description"
-      content={t("GLOBAL.PROJECT_DESCRIPTION")}
+      content={pageDescription}
     />
     <meta name="twitter:image" content={ogImage} />
 

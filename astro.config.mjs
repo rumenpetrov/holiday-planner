@@ -11,6 +11,9 @@ export default defineConfig({
     format: "directory",
   },
   prefetch: true,
+  redirects: {
+    "/": "/bg/",
+  },
   i18n: {
     defaultLocale: "bg",
     locales: ["bg", "en"],
@@ -21,6 +24,7 @@ export default defineConfig({
   },
   integrations: [
     sitemap({
+      filter: (page) => page !== "https://pochivnik.rpetrov.dev/",
       i18n: {
         defaultLocale: "bg",
         locales: {

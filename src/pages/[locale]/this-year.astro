@@ -16,6 +16,7 @@ const year = new Date().getFullYear();
 
 <Layout
   title={`${t("GLOBAL.PROJECT_NAME")} - ${year} ${t("PAGES.THIS_YEAR.TITLE")}`}
+  description={t("PAGES.THIS_YEAR.DESCRIPTION").replace("{year}", String(year))}
 >
   <h1 hidden>{year} - {t("PAGES.THIS_YEAR.TITLE")}</h1>
 
