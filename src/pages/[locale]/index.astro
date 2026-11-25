@@ -11,21 +11,8 @@ const locale = getLangFromUrl(Astro.url);
 const t = useTranslations(locale);
 
 export function getStaticPaths() {
-  return [
-    { params: { locale: "bg" } },
-    { params: { locale: "en" } },
-    { params: { locale: "this-year" } },
-    { params: { locale: "next-year" } },
-  ];
+  return [{ params: { locale: "bg" } }, { params: { locale: "en" } }];
 }
-// console.log('URL:', Astro.params)
-
-// if (Astro.params.locale !== 'bg' && Astro.params.locale !== 'en') {
-//   console.log('redirecting 2')
-//   return Astro.redirect('/holiday-planner/bg/');
-// }
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 
 const currentYear = new Date().getFullYear();
 const { data, error } = await CalendarService.getBaseData({

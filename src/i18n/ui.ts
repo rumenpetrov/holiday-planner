@@ -29,7 +29,11 @@ export const ui = {
     "PAGES.HOME.INTRO.LABEL": "Интродукция",
     "PAGES.HOME.SECTION_THIS_MONTH.TITLE": "Официални почивни дни този месец",
     "PAGES.THIS_YEAR.TITLE": "Тази година",
+    "PAGES.THIS_YEAR.DESCRIPTION":
+      "Пълен календар на всички официални празници и почивни дни в България през {year} г. Планирай отпуската си лесно.",
     "PAGES.NEXT_YEAR.TITLE": "Следваща година",
+    "PAGES.NEXT_YEAR.DESCRIPTION":
+      "Разгледай всички официални празници и почивни дни в България през {year} г. и планирай почивката си предварително.",
   },
   en: {
     "GLOBAL.PROJECT_NAME": "Pochivnik",
@@ -44,7 +48,7 @@ export const ui = {
     "GLOBAL.HEADER.LOGO_LABEL": "Logo",
     "GLOBAL.HEADER.TOGGLE_THEME_LABEL": "Toggle theme",
     "GLOBAL.HEADER.CHANGE_LANGUAGE_LABEL": "Change language",
-    "GLOBAL.PRIMARY_NAVIGATION.LABEL": "Primary navigation",
+    "GLOBAL.PRIMARY_NAVIGATION_LABEL": "Primary navigation",
     "GLOBAL.TIMELINE.LABEL": "List with all vacant days by month",
     "PAGES.HOME.TITLE": "Home",
     "PAGES.HOME.INTRO.TITLE": "Bring the holidays to you!",
@@ -54,6 +58,10 @@ export const ui = {
     "PAGES.HOME.INTRO.LABEL": "Introduction",
     "PAGES.HOME.SECTION_THIS_MONTH.TITLE": "Public holidays this month",
     "PAGES.THIS_YEAR.TITLE": "This year",
+    "PAGES.THIS_YEAR.DESCRIPTION":
+      "Full calendar of all official public holidays and days off in Bulgaria for {year}. Plan your vacation easily.",
     "PAGES.NEXT_YEAR.TITLE": "Next year",
+    "PAGES.NEXT_YEAR.DESCRIPTION":
+      "Browse all official public holidays and days off in Bulgaria for {year} and plan your time off ahead.",
   },
 } as const;
