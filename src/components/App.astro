@@ -1,4 +1,7 @@
 ---
+import "@styles/fonts.css";
+import "@styles/global.css";
+import { pwaInfo } from "virtual:pwa-info";
 import { getLangFromUrl, useTranslations } from "@i18n/utils";
 import { languageList, defaultLocale } from "@i18n/ui";
 
@@ -25,9 +28,25 @@ const ogImage = new URL("/og-image.webp", Astro.site);
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="manifest" href="/app.webmanifest" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    {pwaInfo?.webManifest?.linkTag && (
+      <Fragment set:html={pwaInfo.webManifest.linkTag} />
+    )}
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
     <meta name="color-scheme" content="light dark" />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: light)"
+      content="#f0eddb"
+    />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: dark)"
+      content="#060604"
+    />
 
     <title>{title}</title>
     <meta name="description" content={pageDescription} />
@@ -96,9 +115,6 @@ const ogImage = new URL("/og-image.webp", Astro.site);
     <!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
     <!-- Fonts are locally loaded below. This line is kept just in case. -->
     <!-- <link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,400;0,700;1,400;1,700&family=Sofia+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet"> -->
-    <link rel="stylesheet" href="/styles/fonts.css" />
-
-    <link rel="stylesheet" href="/styles/global.css" />
 
     <script is:inline>
       const rootElement = document.documentElement;
@@ -158,6 +174,13 @@ const ogImage = new URL("/og-image.webp", Astro.site);
 
         rootElement.dataset.colorScheme = actualColorScheme;
         rootElement.dataset.colorSchemePreference = colorScheme;
+
+        const themeColor =
+          actualColorScheme === "dark" ? "#060604" : "#f0eddb";
+        const themeMetas = document.querySelectorAll('meta[name="theme-color"]');
+        for (const themeMeta of themeMetas) {
+          themeMeta.setAttribute("content", themeColor);
+        }
 
         localStorage.setItem("colorScheme", colorScheme);
       };
@@ -227,6 +250,38 @@ const ogImage = new URL("/og-image.webp", Astro.site);
       );
     </script>
     <!-- TWIPLA Tracking Code for https://pochivnik.rpetrov.dev -->
+    <script>
+      import { registerSW } from "virtual:pwa-register";
+
+      const UPDATE_CHECK_COOLDOWN_MS = 5000;
+      let lastUpdateCheckAt = 0;
+
+      registerSW({
+        immediate: true,
+        onRegisteredSW(_swUrl, registration) {
+          if (!registration) {
+            return;
+          }
+
+          const checkForUpdate = () => {
+            const now = Date.now();
+            if (now - lastUpdateCheckAt < UPDATE_CHECK_COOLDOWN_MS) {
+              return;
+            }
+            lastUpdateCheckAt = now;
+            void registration.update();
+          };
+
+          document.addEventListener("visibilitychange", () => {
+            if (document.visibilityState === "visible") {
+              checkForUpdate();
+            }
+          });
+
+          window.addEventListener("focus", checkForUpdate);
+        },
+      });
+    </script>
   </body>
 </html>
 
