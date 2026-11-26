@@ -11,6 +11,7 @@
       "@utilities/*": ["src/utilities/*"],
       "@i18n/*": ["src/i18n/*"],
       "@services/*": ["src/services/*"],
+      "@styles/*": ["src/styles/*"],
     },
   },
 }

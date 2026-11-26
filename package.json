@@ -16,6 +16,7 @@
     "lit": "3.3.3"
   },
   "devDependencies": {
+    "@vite-pwa/astro": "2.0.4",
     "prettier": "3.9.10",
     "prettier-plugin-astro": "1.1.1"
   }
